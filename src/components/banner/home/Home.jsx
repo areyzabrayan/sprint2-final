@@ -1,14 +1,14 @@
-import React from 'react'
-import Navbar from '../navbar/Navbar';
-import Carrusel from '../carrusel/Carrusel';
+import React from "react";
+import Navbar from "../navbar/Navbar";
+import Carrusel from "../carrusel/Carrusel";
 
 const Home = () => {
   return (
     <div>
-        <Navbar />
-        <Carrusel />
+      <Navbar />
+      <Carrusel />
     </div>
-  )
-}
+  );
+};
 
 export default Home;

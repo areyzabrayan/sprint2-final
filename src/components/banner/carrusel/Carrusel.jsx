@@ -1,8 +1,10 @@
 import React from 'react'
-
+import './carrusel.scss'
 const Carrusel = () => {
   return (
-    <div>Tambien estoy acá</div>
+    <div className='carrusel'>
+
+    </div>
   )
 }
 

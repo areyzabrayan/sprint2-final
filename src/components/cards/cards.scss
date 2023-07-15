@@ -1,0 +1,13 @@
+.title__cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 40px;
+    font-weight: 400;
+
+}
+.cards__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}

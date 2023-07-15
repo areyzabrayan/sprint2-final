@@ -37,13 +37,9 @@ const Carrusel = () => {
           modules={[EffectCoverflow]}
           className="swiper_container"
         >
-          {movies.map((movie) => (
-            <SwiperSlide>
-              <img
-                key={movie.id}
-                src={`${API_PATH + movie.poster_path}`}
-                alt="slide_image"
-              />
+          {movies.map((movie, index) => (
+            <SwiperSlide key={index}>
+              <img src={`${API_PATH + movie.poster_path}`} alt="slide_image" />
             </SwiperSlide>
           ))}
         </Swiper>

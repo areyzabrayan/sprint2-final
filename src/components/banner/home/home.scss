@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 :root {
   --primary: #6a59ff;
   --white: #ffffff;
@@ -51,3 +56,4 @@
 .swiper-slide-shadow-right {
   display: none;
 }
+

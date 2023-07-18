@@ -1,7 +1,10 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto+Flex:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 :root {
   --primary: #6a59ff;
@@ -12,6 +15,8 @@
 .container {
   padding: 0;
   margin: 0 auto;
+  //background-image: linear-gradient(to bottom, rgb(0, 0, 0) 50%, transparent);
+  background-image: linear-gradient(#000000, #000000 50%, #ffffff00 50%);
 }
 
 .heading {
@@ -30,6 +35,29 @@
   width: 23rem;
   height: 42rem;
   position: relative;
+}
+
+.img {
+  filter: brightness(0.5);
+}
+
+.container__div {
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.container__div h3 {
+  width: 100%;
+  padding: 0;
+  font-size: 2.5vmin;
+  font-weight: 500;
+  font-family: "Roboto Flex", sans-serif;
+  line-height: 1;
 }
 
 @media (max-width: 500px) {
@@ -56,4 +84,3 @@
 .swiper-slide-shadow-right {
   display: none;
 }
-

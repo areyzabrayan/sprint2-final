@@ -39,7 +39,16 @@ const Carrusel = () => {
         >
           {movies.map((movie, index) => (
             <SwiperSlide key={index}>
-              <img src={`${API_PATH + movie.poster_path}`} alt="slide_image" />
+              <img
+                className="img"
+                src={`${API_PATH + movie.poster_path}`}
+                alt="slide_image"
+              />
+              <div className="container__div">
+                <h3>{movie.title}</h3>
+                <span>{`${"titulo en inglés: " + movie.original_title}`}</span>
+                <span>{`${"Estreno: " + movie.release_date}`}</span>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

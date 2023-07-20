@@ -15,8 +15,9 @@
 .container {
   padding: 0;
   margin: 0 auto;
-  //background-image: linear-gradient(to bottom, rgb(0, 0, 0) 50%, transparent);
-  background-image: linear-gradient(#000000, #000000 50%, #ffffff00 50%);
+  //background-color: #000000;
+  background-image: linear-gradient(to bottom, rgb(0, 0, 0) 50%, transparent);
+  //background-image: linear-gradient(#000000, #000000 50%, #ffffff00 50%);
 }
 
 .heading {

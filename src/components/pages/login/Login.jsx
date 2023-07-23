@@ -3,8 +3,9 @@ import "./login.scss";
 import Swal from "sweetalert2";
 import useForm from "../../hook/useForm";
 import { getUser } from "../../../services/getUsers";
+import close from '../../../assets/close.svg'
 
-const Login = ({ signIn }) => {
+const Login = ({ signIn, showV, show}) => {
   const [dataForm, handleChange, resetForm] = useForm();
 
   const handleSubmit = async (event) => {
@@ -29,11 +30,14 @@ const Login = ({ signIn }) => {
     console.log(loggedUser);
     resetForm();
   };
-
+  
   return (
     <>
-      <div className="container__login">
+      <div className={`container__login ${showV? 'show' : ""}` }>
         <form onSubmit={handleSubmit}>
+          <figure className="container__close" onClick={()=>show(false)} >
+            <img src={close} alt="" />
+          </figure>
           <label>Correo electrónico:</label>
           <input
             onChange={handleChange}

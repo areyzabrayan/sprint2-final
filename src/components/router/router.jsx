@@ -7,12 +7,13 @@ import PrivateRouter from "./privateRouter";
 
 const Router = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const[show, setShow]= useState(false)
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/">
           <Route element={<PublicRouter isAutenticate={isLogin} />}>
-            <Route path="home" element={<Home signIn={setIsLogin} />} />
+            <Route path="home" element={<Home signIn={setIsLogin} show={setShow} showV={show} />} />
           </Route>
           <Route element={<PrivateRouter isAutenticate={isLogin} />}>
             <Route index element={<AdminPanel signIn={setIsLogin} />} />

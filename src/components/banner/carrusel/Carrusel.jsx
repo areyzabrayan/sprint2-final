@@ -5,7 +5,7 @@ import { EffectCoverflow } from "swiper/modules";
 import "swiper/scss";
 import "swiper/scss/effect-coverflow";
 import { getMovies } from "../../../services/getMovies";
-import { API_PATH } from "../../../services/data";
+import { endPoints } from "../../../services/data.js";
 
 const Carrusel = () => {
   const [movies, setMovies] = useState([]);
@@ -41,7 +41,7 @@ const Carrusel = () => {
             <SwiperSlide key={index}>
               <img
                 className="img"
-                src={`${API_PATH + movie.poster_path}`}
+                src={`${endPoints.urlImage + movie.poster_path}`}
                 alt="slide_image"
               />
               <div className="container__div">

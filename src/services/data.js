@@ -4,13 +4,10 @@ const API_KEY = "f9f10c64c7bfff66c78009f93441364c";
 const URL_IMG = "https://image.tmdb.org/t/p/w500/";
 const URL_SERVER = "https://back-sprint2.onrender.com/";
 
-export const URL_CONSULTA = `${URL_API_MOVIES}?api_key=${API_KEY}&language=es-ES`;
-export const API_PATH = "https://image.tmdb.org/t/p/w500/";
-
 export const endPoints = {
-  urlCinemas: `${URL_SERVER}cinemas`,
+  urlCinemas: `${URL_SERVER}teatros`,
   urlFunctions: `${URL_SERVER}functiones`,
-  urlTickect: `${URL_SERVER}ticket`,
+  urlTickect: `${URL_SERVER}tikets`,
   urlAdmin: `${URL_SERVER}usuarios`,
   urlMovies: `${URL_API_MOVIES}?api_key=${API_KEY}&language=es-ES`,
   urlMovie: (id) => `${URL_API_MOVIE}${id}?api_key=${API_KEY}&language=es-ES`,

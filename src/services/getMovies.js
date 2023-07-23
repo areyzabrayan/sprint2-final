@@ -1,9 +1,9 @@
 import axios from "axios";
-import { URL_CONSULTA } from "./data";
+import { endPoints } from "./data";
 
 export const getMovies = async () => {
   try {
-    const { data } = await axios.get(URL_CONSULTA);
+    const { data } = await axios.get(endPoints.urlMovies);
     return data.results;
   } catch (error) {
     return error;

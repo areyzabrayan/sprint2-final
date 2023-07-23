@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
+import { getMovie } from "../../services/getMovie";
+import { useLocation } from "react-router";
 
 const Movie = () => {
-  const [movies, setMovies] = useState([]);
+  const [movie, setMovie] = useState([]);
+  const location = useLocation();
+  const pathname = location.pathname;
+  const segments = pathname.split("/");
+  const id = segments[segments.length - 1];
+
   useEffect(() => {
     getData();
   }, []);
 
+  useEffect(() => {
+    console.log(movie);
+  }, [movie]);
+
   const getData = async () => {
-    const data = await getMovies();
-    setMovies(data);
-    console.log(data);
+    const data = await getMovie(id);
+    setMovie(data);
   };
   return (
     <>

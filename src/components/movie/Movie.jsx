@@ -2,6 +2,16 @@ import React from "react";
 import "./movie.scss";
 
 const Movie = () => {
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const data = await getMovies();
+    setMovies(data);
+    console.log(data);
+  };
   return (
     <>
       <div className="container__Movie">

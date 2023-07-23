@@ -4,3 +4,4 @@ const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
 export const URL_CONSULTA = `${URL_API}?api_key=${API_KEY}&language=es-ES`;
 export const API_PATH = "https://image.tmdb.org/t/p/w500/";
+

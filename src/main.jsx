@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Home from "./components/banner/home/Home.jsx";
 import "./main.scss";
+import Router from "./router/router.jsx";
 
-ReactDOM.createRoot(document.getElementById("root")).render(<Home />);
+ReactDOM.createRoot(document.getElementById("root")).render(<Router />);

@@ -13,11 +13,11 @@ const Cards = () => {
     const getData= async() => {
        const data = await getPelis();
        setCards(data)
-       console.log(data);
     }
     return (
     <>
      <h1 className='title__cards'>EN CARTELERA</h1>
+   
     <section className='cards__container'>
 
     

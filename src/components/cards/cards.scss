@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans&family=Roboto&display=swap');
 .title__cards{
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-top: 40px;
     font-weight: 400;
+    font-family: 'Roboto', sans-serif
 
 }
 .cards__container{

@@ -6,7 +6,10 @@
   box-sizing: border-box;
   list-style-type: none;
 }
+body{
+  position: relative;
 
+}
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;

@@ -4,16 +4,24 @@ import Home from "../pages/home/Home";
 import AdminPanel from "../adminPanel/adminPanel";
 import PublicRouter from "./publicRouter";
 import PrivateRouter from "./privateRouter";
+import Cards from "../cards/cards";
+import Movie from "../movie/Movie";
 
 const Router = () => {
   const [isLogin, setIsLogin] = useState(false);
-  const[show, setShow]= useState(false)
+  const [show, setShow] = useState(false);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/">
           <Route element={<PublicRouter isAutenticate={isLogin} />}>
-            <Route path="home" element={<Home signIn={setIsLogin} show={setShow} showV={show} />} />
+            <Route
+              path="home"
+              element={<Home signIn={setIsLogin} show={setShow} showV={show} />}
+            >
+              <Route index element={<Cards />} />
+              <Route path="movie/:movieId" element={<Movie />} />
+            </Route>
           </Route>
           <Route element={<PrivateRouter isAutenticate={isLogin} />}>
             <Route index element={<AdminPanel signIn={setIsLogin} />} />

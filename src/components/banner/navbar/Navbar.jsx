@@ -8,7 +8,7 @@ import Cine from "../cines/cine";
 import { getFechas, getTeatros } from "../../../data/data";
 import Fecha from "../fecha/fecha";
 
-const Navbar = ({ show }) => {
+const Navbar = ({ show, category, setCategory }) => {
   const [cines, setCines] = useState([]);
   useEffect(() => {
     getData();
@@ -35,7 +35,7 @@ const Navbar = ({ show }) => {
         </figure>
         <h2>CINE COLOMBIA</h2>
       </div>
-      <Categories />
+      <Categories category={category} setCategory={setCategory} />
       <div className="diary">
         <div className="diary__containers">
           <p>Cines cercanos</p>

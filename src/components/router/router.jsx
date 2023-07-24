@@ -10,6 +10,7 @@ import Movie from "../movie/Movie";
 const Router = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [show, setShow] = useState(false);
+  const [category, setCategory] = useState("");
   return (
     <BrowserRouter>
       <Routes>
@@ -17,9 +18,17 @@ const Router = () => {
           <Route element={<PublicRouter isAutenticate={isLogin} />}>
             <Route
               path="home"
-              element={<Home signIn={setIsLogin} show={setShow} showV={show} />}
+              element={
+                <Home
+                  signIn={setIsLogin}
+                  show={setShow}
+                  showV={show}
+                  category={category}
+                  setCategory={setCategory}
+                />
+              }
             >
-              <Route index element={<Cards />} />
+              <Route index element={<Cards category={category} />} />
               <Route path="movie/:movieId" element={<Movie />} />
             </Route>
           </Route>

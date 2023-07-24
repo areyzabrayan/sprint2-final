@@ -40,7 +40,6 @@ const Card = ({ data }) => {
             </div>
             <div className="card__endInfo">
               <p className="publict">genero: {genre}</p>
-              
             </div>
           </div>
         </article>

@@ -4,6 +4,7 @@ import person from '../../assets/person.svg'
 import Categories from "../banner/categories/Categories";
 import Cards from "../cards/cards";
 import './adminPanel.scss'
+import AdminEdit from "../adminEdit/adminEdit";
 
 const AdminPanel = ({ signIn }) => {
   return (
@@ -21,7 +22,8 @@ const AdminPanel = ({ signIn }) => {
       </figure>
     </div>
       <button onClick={() => signIn(false)}>Cerrar sesion</button>;
-      <Cards/>
+      {/* <Cards/> */}
+      <AdminEdit/>
     </>
   );
 };

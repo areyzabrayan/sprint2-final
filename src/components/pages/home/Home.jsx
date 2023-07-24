@@ -6,7 +6,7 @@ import Movie from "../../movie/Movie";
 import Cinema from "../../cinema/Cinema";
 import Login from "../login/Login";
 
-import Cards from '../../cards/cards.jsx'; <Cards />;
+import Cards from '../../cards/cards.jsx';
 
 const Home = ({ signIn, show, showV}) => {
   return (

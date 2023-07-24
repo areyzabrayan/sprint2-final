@@ -13,5 +13,5 @@ export const endPoints = {
   urlMovie: (id) => `${URL_API_MOVIE}${id}?api_key=${API_KEY}&language=es-ES`,
   urlImage: `${URL_IMG}`,
   urlVideo: (id) =>
-    `${URL_API_MOVIE}${id}/videos?api_key${API_KEY}&languaje=es-ES`,
+    `${URL_API_MOVIE}${id}/videos?api_key=${API_KEY}&languaje=es-ES`,
 };

@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import { getMovie } from "../../services/getMovie";
 import { useLocation } from "react-router";
+import { endPoints } from "../../services/data";
+import { getVideoMovie } from "../../services/getVideoMovie";
 
 const Movie = () => {
+  const [videoMovie, setVideoMovie] = useState("");
   const [movie, setMovie] = useState([]);
   const location = useLocation();
   const pathname = location.pathname;
@@ -11,50 +14,51 @@ const Movie = () => {
   const id = segments[segments.length - 1];
 
   useEffect(() => {
-    getData();
-  }, []);
+    getMovie(id).then((response) => {
+      setMovie({ ...response });
+    });
 
-  useEffect(() => {
-    console.log(movie);
-  }, [movie]);
+    getVideoMovie(id).then((response) => {
+      setVideoMovie(response.key);
+    });
+  }, [id, setMovie]);
 
-  const getData = async () => {
-    const data = await getMovie(id);
-    setMovie(data);
+  const getYearFromDate = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.getFullYear();
   };
   return (
     <>
       <div className="container__Movie">
         <div className="container__detail">
           <figure>
-            <img
-              src="https://lumiere-a.akamaihd.net/v1/images/p_coco_19736_fd5fa537.jpeg?region=0%2C0%2C540%2C810"
-              alt=""
-            />
+            <img src={movie.image} alt="" />
           </figure>
           <div className="description">
-            <h2>Movie</h2>
-            <span>una pelicula muy buena</span>
+            <h2>{movie.name}</h2>
+            <span>
+              {movie.originalTitle} ({getYearFromDate(movie.releaseDate)})
+            </span>
             <div>
-              <button className="b1">B</button>
-              <button className="b2">148 min</button>
-              <button className="b3">acction y aventura</button>
+              <button className="b1">{movie.adult ? "Adultos" : "A"}</button>
+              <button className="b2">{movie.runTime} min</button>
+              <button className="b3">
+                {movie.gender ? movie.gender.join(", ") : ""}
+              </button>
             </div>
             <div className="trailer">
               <h2>Trailer</h2>
-              <figure>
-                <img
-                  src="https://isopixel.net/wp-content/uploads/2017/09/Coco-Movie-2017-Trailer-Disney-Pixar.jpg"
-                  alt=""
-                />
-              </figure>
+              <iframe
+                width="560"
+                height="315"
+                src={`https://www.youtube.com/embed/${videoMovie}`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
               <h2>Sinopsis</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-                cum ipsum inventore corrupti perferendis enim ipsam aperiam
-                autem delectus fugit odit, libero accusantium quisquam quam quia
-                illo pariatur culpa. Facere!
-              </p>
+              <p>{movie.overview}</p>
             </div>
           </div>
         </div>

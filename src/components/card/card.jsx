@@ -14,17 +14,15 @@ const Card = ({ data }) => {
           <div className="card">
             <p className="card__title">{data.name}</p>
             <div className="card__info">
-              <p className="card__Etitle">{data.originalTitle}</p>
-              <p className="card__date">Fecha de estreno: {data.releaseDate}</p>
-              <div>
-                <span>{data.adult ? "Adultos" : "Todos"}</span>
-                <span>{data.releaseDate}</span>
-                <span>{data.gender.map((item) => ` ${item.name}`)}</span>
-              </div>
+              <p className="card__Etitle">
+                Titulo en ingles: {data.originalTitle}
+              </p>
+              <span>Estreno: {data.releaseDate}</span>
+              <span>Genero: {data.gender.map((item) => ` ${item}`)}</span>
             </div>
             <div className="card__endInfo">
-              <p className="publict"></p>
-              <p className="duration">120 Min</p>
+              <span>{data.adult ? "Adultos" : "Todos"}</span>
+              <span className="duration">{data.runTime} Min</span>
             </div>
           </div>
         </article>

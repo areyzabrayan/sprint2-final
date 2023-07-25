@@ -12,10 +12,10 @@ import { useLocation } from "react-router-dom";
 const Navbar = ({ show, category, setCategory }) => {
   const [cines, setCines] = useState([]);
   const location = useLocation();
-  const key = location.key;
+  const pathname = location.pathname;
   useEffect(() => {
-    console.log(key);
-  }, [key]);
+    console.log(pathname);
+  }, [pathname]);
 
   useEffect(() => {
     getData();
@@ -36,7 +36,7 @@ const Navbar = ({ show, category, setCategory }) => {
   const [isOpen, setIsOpenCine] = useState(false);
   const [isOpenF, setIsOpenFFecha] = useState(false);
 
-  const shouldShowCategories = key === "rxdxab0d";
+  const shouldShowCategories = pathname === "/home";
 
   return (
     <div className="navbar">

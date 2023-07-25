@@ -1,19 +1,19 @@
-.buttons{
-    display: flex;
-    padding-top: 41px;
-    gap: 5px;
-    & button{
-        cursor: pointer;
-        // gap: 14px;
-        padding: 5px 10px;
-        // width: 95px; 
-        // height: 37px;    
-        border-radius: 19px;        
-        font-family: Inter; 
-        font-size: 14px; 
-        line-height: 22px;
-        background: #1C508DFF; 
-        color: #FFFFFFFF;       
-    }
-    
+.buttons {
+  display: flex;
+  padding-top: 41px;
+  gap: 5px;
+  flex-wrap: wrap;
+  & button {
+    cursor: pointer;
+    // gap: 14px;
+    padding: 5px 10px;
+    // width: 95px;
+    // height: 37px;
+    border-radius: 19px;
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 22px;
+    background: #1c508dff;
+    color: #ffffffff;
+  }
 }

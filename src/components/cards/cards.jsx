@@ -3,7 +3,6 @@ import "./cards.scss";
 import Card from "../card/card.jsx";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { getMovie } from "../../services/getMovie";
 import { getMovies } from "../../services/getMovies";
 
@@ -31,7 +30,6 @@ const Cards = ({ category }) => {
       );
       setCards(filterGenders);
     }
-    //setCards(list);
   };
 
   return (
@@ -40,9 +38,7 @@ const Cards = ({ category }) => {
 
       <section className="cards__container">
         {cards.map((card, index) => (
-          <Link key={index} to={`/home/movie/${card.id}`}>
-            <Card data={card} />
-          </Link>
+          <Card data={card} key={index} />
         ))}
       </section>
     </>

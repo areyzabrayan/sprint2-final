@@ -7,12 +7,20 @@ import person from "../../../assets/person.svg";
 import Cine from "../cines/cine";
 import { getFechas, getTeatros } from "../../../data/data";
 import Fecha from "../fecha/fecha";
+import { useLocation } from "react-router-dom";
 
 const Navbar = ({ show, category, setCategory }) => {
   const [cines, setCines] = useState([]);
+  const location = useLocation();
+  const key = location.key;
+  useEffect(() => {
+    console.log(key);
+  }, [key]);
+
   useEffect(() => {
     getData();
   }, []);
+
   const getData = async () => {
     const data = await getTeatros();
     setCines(data);
@@ -27,6 +35,9 @@ const Navbar = ({ show, category, setCategory }) => {
   };
   const [isOpen, setIsOpenCine] = useState(false);
   const [isOpenF, setIsOpenFFecha] = useState(false);
+
+  const shouldShowCategories = key === "rxdxab0d";
+
   return (
     <div className="navbar">
       <div className="logo">
@@ -35,7 +46,9 @@ const Navbar = ({ show, category, setCategory }) => {
         </figure>
         <h2>CINE COLOMBIA</h2>
       </div>
-      <Categories category={category} setCategory={setCategory} />
+      {shouldShowCategories && (
+        <Categories category={category} setCategory={setCategory} />
+      )}
       <div className="diary">
         <div className="diary__containers">
           <p>Cines cercanos</p>
@@ -61,19 +74,20 @@ const Navbar = ({ show, category, setCategory }) => {
             <img src={iconD} alt="logo" />
           </figure>
         </div>
-      </div>
-      <figure className="person" onClick={() => show(true)}>
-        <img src={person} alt="" />
-      </figure>
-      <div className={`cines ${isOpen && "open"}`}>
-        {cines.map((nombre, index) => (
-          <Cine key={index} data={nombre} />
-        ))}
-      </div>
-      <div className={`fechas ${isOpenF && "openF"}`}>
-        {fechas.map((daily, index) => (
-          <Fecha key={index} data={daily} />
-        ))}
+
+        <figure className="person" onClick={() => show(true)}>
+          <img src={person} alt="" />
+        </figure>
+        <div className={`cines ${isOpen && "open"}`}>
+          {cines.map((nombre, index) => (
+            <Cine key={index} data={nombre} />
+          ))}
+        </div>
+        <div className={`fechas ${isOpenF && "openF"}`}>
+          {fechas.map((daily, index) => (
+            <Fecha key={index} data={daily} />
+          ))}
+        </div>
       </div>
     </div>
   );

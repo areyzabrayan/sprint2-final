@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./login.scss";
 import Swal from "sweetalert2";
 import useForm from "../../hook/useForm";
 import { getUser } from "../../../services/getUsers";
-import close from '../../../assets/close.svg'
+import close from "../../../assets/close.svg";
+import { AppContext } from "../../router/router";
 
-const Login = ({ signIn, showV, show}) => {
+const Login = () => {
+  const { setIsLogin, show, setShow } = useContext(AppContext);
+
   const [dataForm, handleChange, resetForm] = useForm();
 
   const handleSubmit = async (event) => {
@@ -18,7 +21,7 @@ const Login = ({ signIn, showV, show}) => {
         "Has iniciado sesión exitosamente",
         "success"
       ).then(() => {
-        signIn(true);
+        setIsLogin(true);
       });
     } else {
       Swal.fire(
@@ -30,12 +33,12 @@ const Login = ({ signIn, showV, show}) => {
     console.log(loggedUser);
     resetForm();
   };
-  
+
   return (
     <>
-      <div className={`container__login ${showV? 'show' : ""}` }>
+      <div className={`container__login ${show ? "show" : ""}`}>
         <form onSubmit={handleSubmit}>
-          <figure className="container__close" onClick={()=>show(false)} >
+          <figure className="container__close" onClick={() => setShow(false)}>
             <img src={close} alt="" />
           </figure>
           <label>Correo electrónico:</label>

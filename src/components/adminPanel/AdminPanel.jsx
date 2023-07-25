@@ -1,10 +1,11 @@
 import React from "react";
 
-const AdminPanel = ({ signIn }) => {
+const AdminPanel = () => {
+  const { setIsLogin } = useContext(AppContext);
   return (
     <>
       <h1>Panel de administrador</h1>;
-      <button onClick={() => signIn(false)}>Cerrar sesion</button>;
+      <button onClick={() => setIsLogin(false)}>Cerrar sesion</button>;
     </>
   );
 };

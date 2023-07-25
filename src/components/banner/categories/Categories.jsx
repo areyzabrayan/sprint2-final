@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./categories.scss";
+import { AppContext } from "../../router/router";
 
-const Categories = ({ category, setCategory }) => {
+const Categories = () => {
+  const { setCategory } = useContext(AppContext);
+
   const handleClick = (itemCategory) => {
     setCategory(itemCategory);
   };

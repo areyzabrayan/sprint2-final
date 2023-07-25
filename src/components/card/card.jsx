@@ -1,32 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./card.scss";
-import { API_PATH, getGender } from "../../data/data";
 import { Link } from "react-router-dom";
+import { AppContext } from "../router/router";
 
-const Card = ({ data }) => {
+const Card = () => {
+  const { cards } = useContext(AppContext);
   return (
     <>
-      <div className="principal">
-        <article className="principal__card">
-          <Link to={`/home/movie/${data.id}`}>
-            <img className="image" src={data.image} />
-          </Link>
-          <div className="card">
-            <p className="card__title">{data.name}</p>
-            <div className="card__info">
-              <p className="card__Etitle">
+      {cards.map((data, index) => (
+        <div className="principal" key={index}>
+          <article className="principal__card">
+            <Link to={`/home/movie/${data.id}`}>
+              <img className="image" src={data.image} />
+            </Link>
+            <div className="card">
+              <h2 className="card__title">{data.name}</h2>
+              <span className="card__Etitle">
                 Titulo en ingles: {data.originalTitle}
-              </p>
+              </span>
               <span>Estreno: {data.releaseDate}</span>
               <span>Genero: {data.gender.map((item) => ` ${item}`)}</span>
+              <div className="card__endInfo">
+                <span className="duration">
+                  {data.adult ? "Adultos" : "Todo publico"}
+                </span>
+                <span className="duration">{data.runTime} Min</span>
+              </div>
             </div>
-            <div className="card__endInfo">
-              <span>{data.adult ? "Adultos" : "Todos"}</span>
-              <span className="duration">{data.runTime} Min</span>
-            </div>
-          </div>
-        </article>
-      </div>
+          </article>
+        </div>
+      ))}
     </>
   );
 };

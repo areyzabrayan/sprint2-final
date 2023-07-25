@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/home/Home";
 import AdminPanel from "../adminPanel/adminPanel";
@@ -7,37 +7,42 @@ import PrivateRouter from "./privateRouter";
 import Cards from "../cards/cards";
 import Movie from "../movie/Movie";
 
+export const AppContext = createContext({});
+
 const Router = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [show, setShow] = useState(false);
   const [category, setCategory] = useState("");
+  const [cards, setCards] = useState([]);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/">
-          <Route element={<PublicRouter isAutenticate={isLogin} />}>
-            <Route
-              path="home"
-              element={
-                <Home
-                  signIn={setIsLogin}
-                  show={setShow}
-                  showV={show}
-                  category={category}
-                  setCategory={setCategory}
-                />
-              }
-            >
-              <Route index element={<Cards category={category} />} />
-              <Route path="movie/:movieId" element={<Movie />} />
+    <AppContext.Provider
+      value={{
+        isLogin,
+        setIsLogin,
+        show,
+        setShow,
+        category,
+        setCategory,
+        cards,
+        setCards,
+      }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route element={<PublicRouter />}>
+              <Route path="home" element={<Home />}>
+                <Route index element={<Cards />} />
+                <Route path="movie/:movieId" element={<Movie />} />
+              </Route>
+            </Route>
+            <Route element={<PrivateRouter />}>
+              <Route index element={<AdminPanel />} />
             </Route>
           </Route>
-          <Route element={<PrivateRouter isAutenticate={isLogin} />}>
-            <Route index element={<AdminPanel signIn={setIsLogin} />} />
-          </Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./navbar.scss";
 import Categories from "../categories/Categories";
 import logo from "../../../assets/logo.jpg";
@@ -8,33 +8,32 @@ import Cine from "../cines/cine";
 import { getFechas, getTeatros } from "../../../data/data";
 import Fecha from "../fecha/fecha";
 import { useLocation } from "react-router-dom";
+import { AppContext } from "../../router/router";
 
-const Navbar = ({ show, category, setCategory }) => {
+const Navbar = () => {
+  const { setShow } = useContext(AppContext);
   const [cines, setCines] = useState([]);
+  const [fechas, setFechas] = useState([]);
+  const [isOpen, setIsOpenCine] = useState(false);
+  const [isOpenF, setIsOpenFFecha] = useState(false);
+
   const location = useLocation();
   const pathname = location.pathname;
-  useEffect(() => {
-    console.log(pathname);
-  }, [pathname]);
 
   useEffect(() => {
-    getData();
+    getTeatros2();
+    getFechas2();
   }, []);
 
-  const getData = async () => {
+  const getTeatros2 = async () => {
     const data = await getTeatros();
     setCines(data);
   };
-  const [fechas, setFechas] = useState([]);
-  useEffect(() => {
-    getInfo();
-  }, []);
-  const getInfo = async () => {
+
+  const getFechas2 = async () => {
     const data = await getFechas();
     setFechas(data);
   };
-  const [isOpen, setIsOpenCine] = useState(false);
-  const [isOpenF, setIsOpenFFecha] = useState(false);
 
   const shouldShowCategories = pathname === "/home";
 
@@ -46,9 +45,7 @@ const Navbar = ({ show, category, setCategory }) => {
         </figure>
         <h2>CINE COLOMBIA</h2>
       </div>
-      {shouldShowCategories && (
-        <Categories category={category} setCategory={setCategory} />
-      )}
+      {shouldShowCategories && <Categories />}
       <div className="diary">
         <div className="diary__containers">
           <p>Cines cercanos</p>
@@ -75,7 +72,7 @@ const Navbar = ({ show, category, setCategory }) => {
           </figure>
         </div>
 
-        <figure className="person" onClick={() => show(true)}>
+        <figure className="person" onClick={() => setShow(true)}>
           <img src={person} alt="" />
         </figure>
         <div className={`cines ${isOpen && "open"}`}>

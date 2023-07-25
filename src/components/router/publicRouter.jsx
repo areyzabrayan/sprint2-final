@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { AppContext } from "./router";
 
-const PublicRouter = ({ isAutenticate }) => {
-  return <div>{isAutenticate ? <Navigate to={"/"} /> : <Outlet />}</div>;
+const PublicRouter = () => {
+  const { isLogin } = useContext(AppContext);
+  return <div>{isLogin ? <Navigate to={"/"} /> : <Outlet />}</div>;
 };
 
 export default PublicRouter;

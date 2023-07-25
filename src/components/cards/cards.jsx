@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./cards.scss";
 import Card from "../card/card.jsx";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getMovie } from "../../services/getMovie";
 import { getMovies } from "../../services/getMovies";
+import { AppContext } from "../router/router";
 
-const Cards = ({ category }) => {
-  const [cards, setCards] = useState([]);
+const Cards = () => {
+  const { category, cards, setCards } = useContext(AppContext);
+
   const list = [];
 
   useEffect(() => {
     getData();
-    console.log(category);
   }, [category]);
 
   const getData = async () => {
@@ -37,9 +38,7 @@ const Cards = ({ category }) => {
       <h1 className="title__cards">EN CARTELERA</h1>
 
       <section className="cards__container">
-        {cards.map((card, index) => (
-          <Card data={card} key={index} />
-        ))}
+        <Card />
       </section>
     </>
   );

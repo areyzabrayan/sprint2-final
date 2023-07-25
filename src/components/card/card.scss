@@ -1,8 +1,10 @@
 .principal {
-  padding-top: 50px;
+  padding-top: 35px;
   &__card {
-    width: 97%;
-    margin-left: 10px;
+    //width: 97%;
+    //margin-left: 10px;
+    display: flex;
+    flex-direction: column;
   }
 }
 .image {
@@ -11,41 +13,39 @@
   border-radius: 6px;
 }
 .card {
+  font-size: 1.2rem;
+  padding: 15px 0 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 293px;
   &__title {
     width: 284px;
     font-family: Inter;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 2rem;
+    font-weight: 500;
     color: #171a1fff;
   }
-  &__info {
-    width: 228px;
-    font-family: Inter;
-    font-size: 12px;
-    line-height: 20px;
-    color: #171a1fff;
-  }
+
   &__endInfo {
+    padding-top: 15px;
     display: flex;
-    gap: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
   }
-}
-.publict {
-  display: flex;
-  align-items: center;
-  font-size: large;
-  width: 140px;
-  height: 29px;
-  border-radius: 5px;
-  background: #f8f7f7;
-  border-radius: 3px;
 }
 .duration {
+  justify-content: center;
   display: flex;
   align-items: center;
-  width: 65px;
-  height: 29px;
+  padding: 10px;
   border-radius: 5px;
-  background: #f8f7f7;
+  background-color: #eaeaea;
   border-radius: 3px;
+  cursor: pointer;
+}
+
+.duration:hover {
+  box-shadow: 0px 0px 5px #ea8501, 0px 0px 3px #ea8501;
 }

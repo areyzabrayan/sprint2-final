@@ -2,22 +2,20 @@ import React from "react";
 import Navbar from "../../banner/navbar/Navbar";
 import Carrusel from "../../banner/carrusel/Carrusel";
 import "./home.scss";
-import Movie from "../../movie/Movie";
-import Cinema from "../../cinema/Cinema";
 import Login from "../login/Login";
+import { Outlet } from "react-router";
 
 import Cards from '../../cards/cards.jsx';
 
-const Home = ({ signIn, show, showV}) => {
+
+const Home = ({ signIn, show, showV, category, setCategory }) => {
   return (
     <>
       <div>
-        <Navbar show={show}/>
+        <Navbar show={show} category={category} setCategory={setCategory} />
         <Carrusel />
-        <Login signIn={signIn} showV={showV} show={show}  />
-        <Cards />
-        {/* <Cinema /> */}
-        {/* <Movie /> */}
+        <Login signIn={signIn} showV={showV} show={show} />
+        <Outlet category={category} />
       </div>
     </>
   );

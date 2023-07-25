@@ -1,8 +1,9 @@
-.navbar{
-    background-color: black;
-    position: relative;
-    display: flex;
-    gap:90px;
+.navbar {
+  background-color: black;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .logo{
     display: flex;
@@ -55,70 +56,108 @@
         cursor: pointer;
     }
 
-}
-.person { 
-    display: flex;
+  &__figure {
     margin: 0px;
-    margin-top: 30px;
-    
-    
- }
-.person img{ 
+  }
+  & h2 {
+    width: 120px;
+    height: auto;
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 22px;
+    color: #bdc1caff;
+  }
+}
+.diary {
+  display: flex;
+  text-align: center;
+  gap: 20px;
+  &__containers {
+    padding-top: 23px;
+  }
+  & p {
+    color: #bdc1caff;
+    margin: 0px;
     display: flex;
-    background-color: #1C508DFF;
+    text-align: left;
+    font-size: 15px;
+  }
+
+  &__options {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 30px;
+    margin: 0px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: 1px solid #bdc1caff;
+    justify-content: space-between;
+    border-radius: 6px;
+  }
+  &__options img {
     cursor: pointer;
-    border-radius: 18px;
-    padding: 4px;  
-    height: 36px;
-    width: 36px;
-    margin-right: 20px;
-    display: flex; 
-    text-align: center;
- }
- .cines{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 700px;
-    z-index: 2;
+  }
+}
+.person {
+  display: flex;
+  margin: 0px;
+  margin-top: 30px;
+}
+.person img {
+  display: flex;
+  background-color: #1c508dff;
+  cursor: pointer;
+  border-radius: 18px;
+  padding: 4px;
+  height: 36px;
+  width: 36px;
+  margin-right: 20px;
+  display: flex;
+  text-align: center;
+}
+.cines {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  left: 700px;
+  z-index: 2;
+  background-color: black;
+  width: 200px;
+  padding: 8px;
+  display: none;
+  & label {
+    width: 400px;
     background-color: black;
-    width: 200px;
-    padding: 8px;
-    display: none;
-    & label{
-        width: 400px;
-        background-color:black;
-        color: #fff;
-        font-size: 15px;
-        padding-left: 5px;
-        
-       
-    }
- }
- .cines.open{
-    display: block;
- }
- .fechas{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 920px;
-    z-index: 2;
+    color: #fff;
+    font-size: 15px;
+    padding-left: 5px;
+  }
+}
+.cines.open {
+  display: block;
+}
+.fechas {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  left: 920px;
+  z-index: 2;
+  background-color: black;
+  width: 200px;
+  padding: 8px;
+  display: none;
+  & label {
+    width: 400px;
     background-color: black;
-    width: 200px;
-    padding: 8px;
-    display: none;
-    & label{
-        width: 400px;
-        background-color:black;
-        color: #fff;
-        font-size: 15px;
-        padding: 3px;
-        padding-left: 8px;
-    }
- }
- .fechas.openF{   
-        display: block;
- }
+    color: #fff;
+    font-size: 15px;
+    padding: 3px;
+    padding-left: 8px;
+  }
+}
+.fechas.openF {
+  display: block;
+}

@@ -43,7 +43,7 @@
       gap: 5%;
       .b1 {
         width: 36px;
-        height: 44px;
+        height: auto;
         padding: 0 12px;
         display: flex;
         align-items: center;
@@ -59,7 +59,7 @@
         cursor: pointer;
       }
       .b2 {
-        height: 44px;
+        height: auto;
         padding: 0 16px;
         display: flex;
         align-items: center;
@@ -75,7 +75,7 @@
         cursor: pointer;
       }
       .b3 {
-        height: 44px;
+        height: auto;
         padding: 0 16px;
         display: flex;
         align-items: center;

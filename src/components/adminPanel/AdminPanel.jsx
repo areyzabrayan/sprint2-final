@@ -5,6 +5,7 @@ import Categories from "../banner/categories/Categories";
 import Cards from "../cards/cards";
 import './adminPanel.scss'
 import AdminEdit from "../adminEdit/adminEdit";
+import Boletos from "../boletos/boletos";
 
 const AdminPanel = ({ signIn }) => {
   return (
@@ -23,7 +24,9 @@ const AdminPanel = ({ signIn }) => {
     </div>
       <button onClick={() => signIn(false)}>Cerrar sesion</button>;
       {/* <Cards/> */}
-      <AdminEdit/>
+      {/* <AdminEdit/> */}
+      <Boletos/>
+      {/* <BuyTikecks/> */}
     </>
   );
 };

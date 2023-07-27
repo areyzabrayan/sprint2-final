@@ -24,7 +24,7 @@ const Cine = () => {
 
   return (
     <div>
-      <h2 className="nameCinemas">Cines cercanos</h2>
+      <h1 className="nameCinemas">Cines cercanos</h1>
 
       <Form.Select
         className="cinemas"

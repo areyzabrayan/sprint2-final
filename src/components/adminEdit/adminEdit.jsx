@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./adminEdit.scss";
 import dowm from "../../assets/down.svg";
 import add from "../../assets/add.svg";
-import calendar from '../../assets/calendar.svg'
+import calendar from "../../assets/calendar.svg";
 
-const AdminEdit = ({data}) => {
-  const [isOpen, setIsOpen] = useState(false)
+const AdminEdit = ({ data }) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
       <div className="container__media">
@@ -45,83 +45,82 @@ const AdminEdit = ({data}) => {
           <p>coco</p>
         </div>
         <div>
-            <div className="dateE">
-          <h2>jul </h2>
-          <div className="fechasE">
-          <div className="showDate">
-            <button>
-              11 <br />
-              MAR
-            </button>
-            <button>
-              12 <br />
-              MIE
-            </button>
-            <button>
-              13 <br />
-              JUE
-            </button>
-            <button>
-              14 <br />
-              SAB
-            </button>
-            <button>
-              15 <br />
-              DOM
-            </button>                          
-          </div>
-          <p className="calender">
-            <figure  >
-                <img src={calendar} alt="calendario" />
-              </figure>
-            </p> 
-          </div> 
+          <div className="dateE">
+            <h2>jul </h2>
+            <div className="fechasE">
+              <div className="showDate">
+                <button>
+                  11 <br />
+                  MAR
+                </button>
+                <button>
+                  12 <br />
+                  MIE
+                </button>
+                <button>
+                  13 <br />
+                  JUE
+                </button>
+                <button>
+                  14 <br />
+                  SAB
+                </button>
+                <button>
+                  15 <br />
+                  DOM
+                </button>
+              </div>
+              <p className="calender">
+                <figure>
+                  <img src={calendar} alt="calendario" />
+                </figure>
+              </p>
+            </div>
           </div>
           <div className="funtionE">
             <div className="funtionE__title">
-            <h2>Funciones por Teatros</h2>
-            <figure className="funtionE__newTeatro" >
-            <figcaption>
-              <p>Nuevo Teatro</p>
-            </figcaption>
-            <img  src={add} alt="logo" />
-          </figure>
+              <h2>Funciones por Teatros</h2>
+              <figure className="funtionE__newTeatro">
+                <figcaption>
+                  <p>Nuevo Teatro</p>
+                </figcaption>
+                <img src={add} alt="logo" />
+              </figure>
             </div>
             <div className="teatrosE">
               <p>Jose Antonio</p>
               <figure>
-                <img onClick={ () => setIsOpen(!isOpen)} src={dowm} alt="" />
+                <img onClick={() => setIsOpen(!isOpen)} src={dowm} alt="" />
               </figure>
+            </div>
+            <div className={`edit-salas ${isOpen && "open"}`}>
+              <h1>Sala 1</h1>
+              <div>
+                <input type="text" value={"1:30 pm"} />
+                <input type="text" value={"1:30 pm"} />
+                <input type="text" value={"1:30 pm"} />
               </div>
-              <div className={`edit-salas ${isOpen && "open"}`}>
-                <h1>Sala 1</h1>
-                <div>
-                  <input type="text" value={'1:30 pm'}/>
-                  <input type="text" value={'1:30 pm'}/>
-                  <input type="text" value={'1:30 pm'}/>
-                </div>
+            </div>
+            <div className={`edit-salas ${isOpen && "open"}`}>
+              <h1>Sala 2</h1>
+              <div>
+                <input type="text" value={"1:30 pm"} />
+                <input type="text" value={"1:30 pm"} />
+                <input type="text" value={"1:30 pm"} />
               </div>
-              <div className={`edit-salas ${isOpen && "open"}`}>
-                <h1>Sala 2</h1>
-                <div>
-                <input type="text" value={'1:30 pm'}/>
-                  <input type="text" value={'1:30 pm'}/>
-                  <input type="text" value={'1:30 pm'}/>
-                </div>
-              </div>
-              <div className="teatrosE">
-                <p>Estelar</p>
-                <figure>
-                  <img src={dowm} alt="" />
-                </figure>
-              </div>
-              <div className="teatrosE">
-                <p>Puerta del Norte</p>
-                <figure>
-                  <img src={dowm} alt="" />
-                </figure>
-              </div>
-            
+            </div>
+            <div className="teatrosE">
+              <p>Estelar</p>
+              <figure>
+                <img src={dowm} alt="" />
+              </figure>
+            </div>
+            <div className="teatrosE">
+              <p>Puerta del Norte</p>
+              <figure>
+                <img src={dowm} alt="" />
+              </figure>
+            </div>
           </div>
         </div>
       </div>

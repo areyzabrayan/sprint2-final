@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
 import "./fecha.scss"; // Importamos los estilos personalizados
 import { AppContext } from "../../router/router";
+import es from "date-fns/locale/es";
 
 const Fecha = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -62,7 +62,7 @@ const Fecha = () => {
   };
 
   return (
-    <div className="calendar-container">
+    <div className="calendar-container fechas-container">
       <h1>Fecha</h1>
       <DatePicker
         selected={selectedDate}
@@ -70,6 +70,9 @@ const Fecha = () => {
         filterDate={isDateDisabled}
         highlightDates={adjustedDates.map((dateStr) => new Date(dateStr))}
         calendarClassName="custom-datepicker"
+        dateFormat="d 'de' MMMM"
+        locale={es}
+        placeholderText="Selecciona una fecha"
       />
     </div>
   );

@@ -47,7 +47,7 @@ const Router = () => {
               </Route>
             </Route>
             <Route element={<PrivateRouter />}>
-              <Route index element={<AdminPanel />} />
+              <Route path="private" element={<AdminPanel />} />
             </Route>
           </Route>
         </Routes>

@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import "./navbar.scss";
 import Categories from "../categories/Categories";
 import logo from "../../../assets/logo.jpg";
-import iconD from "../../../assets/icon-arrow-down.svg";
 import person from "../../../assets/person.svg";
-
 import Fecha from "../fecha/fecha";
 import { useLocation } from "react-router-dom";
 import { AppContext } from "../../router/router";
@@ -14,7 +12,7 @@ const Navbar = () => {
   const { setShow } = useContext(AppContext);
   const location = useLocation();
   const pathname = location.pathname;
-  const shouldShowCategories = pathname === "/home";
+  const shouldShowCategories = pathname === "/private";
 
   return (
     <div className="navbar">
@@ -24,13 +22,16 @@ const Navbar = () => {
         </figure>
         <h2>CINE COLOMBIA</h2>
       </div>
-      {shouldShowCategories && <Categories />}
+      {pathname === "/home" || pathname === "/private" ? <Categories /> : null}
 
       <div className="diary">
-        <div className="api__local">
-          <Cine />
-          <Fecha />
-        </div>
+        {!shouldShowCategories && (
+          <div className="api__local">
+            <Cine />
+            <Fecha />
+          </div>
+        )}
+
         <figure className="person" onClick={() => setShow(true)}>
           <img src={person} alt="" />
         </figure>

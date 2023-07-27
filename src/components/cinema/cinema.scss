@@ -1,38 +1,38 @@
-.sala-cine {
-  text-align: center;
-  margin-top: 20px;
-}
+// .sala-cine {
+//   text-align: center;
+//   margin-top: 20px;
+// }
 
-.filas-container {
-  display: flex;
-  align-items: flex-start;
-}
+// .filas-container {
+//   display: flex;
+//   align-items: flex-start;
+// }
 
-.fila {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 40px;
-  font-size: 14px;
-  font-weight: bold;
-  margin-right: 8px; /* Espacio entre el alfabeto y las sillas */
-}
+// .fila {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 30px;
+//   height: 40px;
+//   font-size: 14px;
+//   font-weight: bold;
+//   margin-right: 8px; /* Espacio entre el alfabeto y las sillas */
+// }
 
-.sillas-container {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 600px;
-  margin: 0 auto;
-}
+// .sillas-container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   max-width: 600px;
+//   margin: 0 auto;
+// }
 
-.silla {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #ccc;
-  margin-bottom: 8px;
-  font-size: 12px;
-}
+// .silla {
+//   width: 40px;
+//   height: 40px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border: 1px solid #ccc;
+//   margin-bottom: 8px;
+//   font-size: 12px;
+// }

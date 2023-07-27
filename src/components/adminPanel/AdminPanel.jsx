@@ -7,23 +7,13 @@ import Cards from "../cards/cards";
 import "./adminPanel.scss";
 import AdminEdit from "../adminEdit/adminEdit";
 import Boletos from "../boletos/boletos";
+import Navbar from "../banner/navbar/Navbar";
 
 const AdminPanel = () => {
   const { setIsLogin } = useContext(AppContext);
   return (
     <>
-      <div className="navbar">
-        <div className="logo">
-          <figure className="logo__figure">
-            <img src={logo} alt="logo" />
-          </figure>
-          <h2>CINE COLOMBIA</h2>
-        </div>
-        <Categories />
-        <figure className="person" onClick={() => show(true)}>
-          <img src={person} alt="" />
-        </figure>
-      </div>
+      <Navbar />
       <button onClick={() => setIsLogin(false)}>Cerrar sesion</button>;
       {/* <Cards/> */}
       {/* <AdminEdit/> */}

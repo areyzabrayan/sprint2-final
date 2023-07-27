@@ -24,7 +24,7 @@ const AdminPanel = () => {
           <img src={person} alt="" />
         </figure>
       </div>
-      <button onClick={() => signIn(false)}>Cerrar sesion</button>;
+      <button onClick={() => setIsLogin(false)}>Cerrar sesion</button>;
       {/* <Cards/> */}
       {/* <AdminEdit/> */}
       <Boletos />

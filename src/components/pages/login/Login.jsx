@@ -41,6 +41,8 @@ const Login = () => {
           <figure className="container__close" onClick={() => setShow(false)}>
             <img src={close} alt="" />
           </figure>
+          <h1>Bienvenido</h1>
+          <p>Inicia Sesion</p>
           <label>Correo electrónico:</label>
           <input
             onChange={handleChange}

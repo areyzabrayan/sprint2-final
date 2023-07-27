@@ -1,5 +1,8 @@
 .container__media{
     display: flex;
+    padding-left: 28px;
+    gap: 10px;
+    background-color: #171a1fc0;
     
 }
 .container__media img{
@@ -11,6 +14,7 @@
   height: 596px;
 }
 .descriptionE{
+    padding-left: 4%;
     width: 398px;
     font-size: large;
 }
@@ -47,6 +51,51 @@
     display: flex;
     gap: 15px;
 }
+.containerHours{
+    display: flex;
+    gap: 8px;
+}
+.hoursE{
+    
+    display: flex;
+    padding-left: 15px;
+    width: 150px; 
+  height: 50px;
+  gap: 35px; 
+  background: #FFFFFFFF; 
+  border-radius: 20px; 
+  border-width: 1px; 
+  border-color: #4C69A1FF; 
+  border-style: solid; 
+  box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f; 
+  & figure{
+   display: flex;
+   align-items: center; 
+  }
+  &__cancel{
+    display: none;
+    cursor: pointer;
+    width: 20px; 
+    height: 20px;
+  }
+  &__edit{
+    display: none;
+    cursor: pointer;
+    width: 20px; 
+    height: 20px;
+  }
+  .showE{
+    display: block;
+    align-items: center;
+    height: auto;
+    
+  }
+  
+    &__contienerE{
+        display: flex;
+        
+    }
+}
 .showDate button{
     
     width: 59px; 
@@ -75,6 +124,7 @@
         padding-bottom: 10px;
     }
     &__newTeatro{
+        justify-content: center;
         display: flex;
         align-items: center;
         gap: 5px;
@@ -128,16 +178,19 @@
     padding-bottom: 15px;
     display: none;
 }
+.newSala{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 15px;
+    padding-top: 5px;
+}
+
 .open{
 display: block;
 }
 .edit-salas input{
-  width: 80px; 
-  height: 40px; 
-  background: #FFFFFFFF; 
-  border-radius: 20px; 
-  border-width: 1px; 
-  border-color: #4C69A1FF; 
-  border-style: solid; 
-  box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+    padding-top: 15px;
+    width: 80px; 
+    height: 40px; 
+    border: none;
 }

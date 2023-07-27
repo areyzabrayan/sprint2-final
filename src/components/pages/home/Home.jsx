@@ -4,8 +4,10 @@ import Carrusel from "../../banner/carrusel/Carrusel";
 import "./home.scss";
 import Login from "../login/Login";
 import { Outlet } from "react-router";
-
 import Cards from '../../cards/cards.jsx';
+import FinalPurchase from "../../finalPurchase/finalPurchase";
+import QrTikecks from "../../QR-tikecks/QrTikecks";
+import Boletos from "../../boletos/boletos";
 
 
 const Home = ({ signIn, show, showV, category, setCategory }) => {
@@ -16,6 +18,9 @@ const Home = ({ signIn, show, showV, category, setCategory }) => {
         <Carrusel />
         <Login signIn={signIn} showV={showV} show={show} />
         <Outlet category={category} />
+        {/* <FinalPurchase/> */}
+        {/* <Boletos/> */}
+        {/* <QrTikecks/> */}
       </div>
     </>
   );

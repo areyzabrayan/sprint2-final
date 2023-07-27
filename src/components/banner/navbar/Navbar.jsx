@@ -36,7 +36,7 @@ const Navbar = ({ show, category, setCategory }) => {
   const [isOpen, setIsOpenCine] = useState(false);
   const [isOpenF, setIsOpenFFecha] = useState(false);
 
-  const shouldShowCategories = key === "ss2fhyc1";
+  const shouldShowCategories = key === "00smiv58";
 
   return (
     <div className="navbar">

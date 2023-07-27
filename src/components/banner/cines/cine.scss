@@ -1,0 +1,30 @@
+.nameCinemas {
+  color: #a9adb6;
+  font-size: 14px;
+  font-weight: 500;
+  padding-top: 15px;
+}
+
+.cinemas {
+  height: 35px;
+  border: 1px solid #587ff1;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 16px;
+  color: #333;
+  background-color: #000000;
+  color: #fff;
+}
+
+/* Estilos para las opciones */
+.cinemas option {
+  background-color: #000000;
+  color: #fff;
+  border: 1px solid #587ff1;
+}
+
+/* Estilos para la opción seleccionada */
+.cinemas option:checked {
+  background-color: #007bff;
+  color: #fff;
+}

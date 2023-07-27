@@ -1,40 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./navbar.scss";
 import Categories from "../categories/Categories";
 import logo from "../../../assets/logo.jpg";
 import iconD from "../../../assets/icon-arrow-down.svg";
 import person from "../../../assets/person.svg";
-import Cine from "../cines/cine";
-import { getFechas, getTeatros } from "../../../data/data";
+
 import Fecha from "../fecha/fecha";
 import { useLocation } from "react-router-dom";
 import { AppContext } from "../../router/router";
+import Cine from "../cines/cine";
 
 const Navbar = () => {
   const { setShow } = useContext(AppContext);
-  const [cines, setCines] = useState([]);
-  const [fechas, setFechas] = useState([]);
-  const [isOpen, setIsOpenCine] = useState(false);
-  const [isOpenF, setIsOpenFFecha] = useState(false);
-
   const location = useLocation();
   const pathname = location.pathname;
-
-  useEffect(() => {
-    getTeatros2();
-    getFechas2();
-  }, []);
-
-  const getTeatros2 = async () => {
-    const data = await getTeatros();
-    setCines(data);
-  };
-
-  const getFechas2 = async () => {
-    const data = await getFechas();
-    setFechas(data);
-  };
-
   const shouldShowCategories = pathname === "/home";
 
   return (
@@ -46,8 +25,16 @@ const Navbar = () => {
         <h2>CINE COLOMBIA</h2>
       </div>
       {shouldShowCategories && <Categories />}
+      <div className="api__local">
+        <Cine />
+        <Fecha />
+      </div>
       <div className="diary">
-        <div className="diary__containers">
+        <figure className="person" onClick={() => setShow(true)}>
+          <img src={person} alt="" />
+        </figure>
+
+        {/* <div className="diary__containers">
           <p>Cines cercanos</p>
           <figure
             className="diary__options"
@@ -75,16 +62,12 @@ const Navbar = () => {
         <figure className="person" onClick={() => setShow(true)}>
           <img src={person} alt="" />
         </figure>
-        <div className={`cines ${isOpen && "open"}`}>
-          {cines.map((nombre, index) => (
-            <Cine key={index} data={nombre} />
-          ))}
-        </div>
-        <div className={`fechas ${isOpenF && "openF"}`}>
-          {fechas.map((daily, index) => (
-            <Fecha key={index} data={daily} />
-          ))}
-        </div>
+        {/* <div className={`cines ${isOpen && "open"}`}>
+          <Cine />
+        </div> */}
+        {/* <div className={`fechas ${isOpenF && "openF"}`}>
+          <Fecha />
+        </div> */}
       </div>
     </div>
   );

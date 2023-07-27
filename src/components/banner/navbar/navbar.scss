@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 2;
 }
 .logo {
   display: flex;
@@ -23,8 +24,16 @@
     color: #bdc1caff;
   }
 }
+.api__local {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
 .diary {
   display: flex;
+  align-content: center;
   text-align: center;
   gap: 20px;
   &__containers {
@@ -70,49 +79,4 @@
   margin-right: 20px;
   display: flex;
   text-align: center;
-}
-.cines {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 70px;
-  left: 700px;
-  z-index: 2;
-  background-color: black;
-  width: 200px;
-  padding: 8px;
-  display: none;
-  & label {
-    width: 400px;
-    background-color: black;
-    color: #fff;
-    font-size: 15px;
-    padding-left: 5px;
-  }
-}
-.cines.open {
-  display: block;
-}
-.fechas {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 70px;
-  left: 920px;
-  z-index: 2;
-  background-color: black;
-  width: 200px;
-  padding: 8px;
-  display: none;
-  & label {
-    width: 400px;
-    background-color: black;
-    color: #fff;
-    font-size: 15px;
-    padding: 3px;
-    padding-left: 8px;
-  }
-}
-.fechas.openF {
-  display: block;
 }

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../router/router";
 
 const AdminPanel = () => {
   const { setIsLogin } = useContext(AppContext);

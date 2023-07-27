@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import "./card.scss";
 import { Link } from "react-router-dom";
 import { AppContext } from "../router/router";
+import "./card.scss";
 
 const Card = () => {
   const { cards } = useContext(AppContext);

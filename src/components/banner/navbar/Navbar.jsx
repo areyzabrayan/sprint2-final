@@ -25,11 +25,12 @@ const Navbar = () => {
         <h2>CINE COLOMBIA</h2>
       </div>
       {shouldShowCategories && <Categories />}
-      <div className="api__local">
-        <Cine />
-        <Fecha />
-      </div>
+
       <div className="diary">
+        <div className="api__local">
+          <Cine />
+          <Fecha />
+        </div>
         <figure className="person" onClick={() => setShow(true)}>
           <img src={person} alt="" />
         </figure>

@@ -15,6 +15,8 @@ const Router = () => {
   const [category, setCategory] = useState("");
   const [cards, setCards] = useState([]);
   const [seletDay, setseletDay] = useState("");
+  const [cinemas, setCinemas] = useState([]);
+  const [selectedCinema, setSelectedCinema] = useState("");
   return (
     <AppContext.Provider
       value={{
@@ -28,6 +30,10 @@ const Router = () => {
         setCards,
         seletDay,
         setseletDay,
+        cinemas,
+        setCinemas,
+        selectedCinema,
+        setSelectedCinema,
       }}
     >
       <BrowserRouter>

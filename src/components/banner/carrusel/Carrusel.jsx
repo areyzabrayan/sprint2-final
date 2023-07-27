@@ -6,18 +6,15 @@ import {
   Pagination,
   Navigation,
 } from "swiper/modules";
-
 import "swiper/scss";
 import "swiper/scss/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { getMovies } from "../../../services/getMovies";
-import { AppContext } from "../../router/router";
 import { getMovie } from "../../../services/getMovie";
 
 const Carrusel = () => {
   const [movies, setMovies] = useState([]);
-  const { cards } = useContext(AppContext);
 
   useEffect(() => {
     getData();

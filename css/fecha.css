@@ -1,0 +1,45 @@
+.calendar-container {
+  position: relative;
+}
+.calendar-container h1 {
+  color: #a9adb6;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.custom-datepicker .react-datepicker {
+  font-family: Arial, sans-serif;
+}
+
+.react-datepicker-ignore-onclickoutside {
+  background-color: #000000;
+  border-color: #565d6d;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.react-datepicker__input-container {
+  align-items: center;
+  height: 20px;
+}
+
+.react-datepicker__input-container input {
+  background-color: #000;
+  color: #a9adb6;
+}
+
+.custom-datepicker .react-datepicker__day {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+}
+
+.react-datepicker__day-name {
+  width: 30px;
+  font-size: 13px;
+}
+
+.react-datepicker__current-month {
+  font-size: 13px;
+}/*# sourceMappingURL=fecha.css.map */

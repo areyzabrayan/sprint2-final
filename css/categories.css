@@ -1,0 +1,16 @@
+.buttons {
+  display: flex;
+  padding-top: 41px;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.buttons button {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 19px;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 22px;
+  background: #1c508d;
+  color: white;
+}/*# sourceMappingURL=categories.css.map */

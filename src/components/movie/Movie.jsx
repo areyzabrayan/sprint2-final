@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import { getMovie } from "../../services/getMovie";
 import { useLocation } from "react-router";
-import { endPoints } from "../../services/data";
+import { endPoints } from "../../data/data";
 import { getVideoMovie } from "../../services/getVideoMovie";
 
 const Movie = () => {

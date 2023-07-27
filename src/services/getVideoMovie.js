@@ -1,5 +1,5 @@
 import axios from "axios";
-import { endPoints } from "./data";
+import { endPoints } from "../data/data";
 
 export const getVideoMovie = async (idMovie) => {
   try {

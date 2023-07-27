@@ -1,63 +1,17 @@
-import axios from "axios";
-export const URL_API = "https://api.themoviedb.org/3/movie/now_playing";
-export const API_KEY = "807505542806c3df770aac06fd82fe04";
-export const URL_CONSULTA = `${URL_API}?api_key=${API_KEY}&language=es-ES`;
-export const API_PATH = "https://image.tmdb.org/t/p/w500/";
+const URL_API_MOVIES = "https://api.themoviedb.org/3/movie/now_playing";
+const URL_API_MOVIE = "https://api.themoviedb.org/3/movie/";
+const API_KEY = "f9f10c64c7bfff66c78009f93441364c";
+const URL_IMG = "https://image.tmdb.org/t/p/w500/";
+const URL_SERVER = "http://localhost:5000/";
 
-const genreAPI = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
-export const dataCines = "https://back-sprint2.onrender.com/teatros";
-export const dataFechas = "https://back-sprint2.onrender.com/fechas";
-const userLogin = "https://back-sprint2.onrender.com/usuarios";
-
-// export const getGender = async (id) => {
-//     try {
-//       const response = await axios.get(genreAPI);
-//       const genres = response.data.genres;
-//       const selectedGenre = genres.find((genre) => genre.id === id);
-//       return selectedGenre?.name || "Desconocido";
-//     } catch (error) {
-//       console.error(error);
-//       return "Desconocido";
-//     }
-//   };
-
-// export const getPelis = async () => {
-//   try {
-//     const { data } = await axios.get(URL_CONSULTA);
-//     return data.results;
-//   } catch (error) {
-//     return error;
-//   }
-// };
-
-export const getTeatros = async () => {
-  try {
-    const result = await axios.get(dataCines);
-    return result.data;
-  } catch (error) {
-    return error;
-  }
+export const endPoints = {
+  urlCinemas: `${URL_SERVER}cines`,
+  urlFunctions: `${URL_SERVER}funciones`,
+  urlTickect: `${URL_SERVER}tiquetes`,
+  urlAdmin: `${URL_SERVER}usuarios`,
+  urlMovies: `${URL_API_MOVIES}?api_key=${API_KEY}&language=es-ES`,
+  urlMovie: (id) => `${URL_API_MOVIE}${id}?api_key=${API_KEY}&language=es-ES`,
+  urlImage: `${URL_IMG}`,
+  urlVideo: (id) =>
+    `${URL_API_MOVIE}${id}/videos?api_key=${API_KEY}&languaje=es-ES`,
 };
-
-export const getFechas = async () => {
-  try {
-    const result = await axios.get(dataFechas);
-    return result.data;
-  } catch (error) {
-    return error;
-  }
-};
-// export const getUsers = async (formData) => {
-//   try {
-//     const result = await axios.get(userLogin);
-//     const users = result.data;
-//     const loggedUser = users.find(
-//       (user) =>
-//         user.email === formData.email && user.password === formData.password
-//     );
-//     return loggedUser;
-//   } catch (error) {
-//     console.error("Error fetching users:", error);
-//     return null;
-//   }
-// };

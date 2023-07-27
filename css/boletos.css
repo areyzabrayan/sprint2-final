@@ -1,0 +1,141 @@
+.selection {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 300px;
+}
+
+.boletos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 10%;
+}
+.boletos h4 {
+  font-size: 25px;
+}
+.boletos p {
+  font-size: 15px;
+}
+
+.bContainer {
+  display: flex;
+  align-items: center;
+  padding-left: 150px;
+}
+.bContainer label {
+  font-size: 20px;
+}
+.bContainer__amount {
+  width: 10px;
+}
+
+.edadTikect {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonsT {
+  display: flex;
+  height: auto;
+  margin-left: 20px;
+  width: 84%;
+  background: white; /* white */
+  border-radius: 6px; /* border-m */
+  border-width: 1px;
+  border-color: #171a1f; /* neutral-900 */
+  border-style: solid;
+  box-shadow: 0px 4px 9px #171a1f, 0px 0px 2px #171a1f;
+  padding: 5px;
+}
+.buttonsT__plus {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #565d6d;
+}
+.buttonsT__plus:hover {
+  color: white; /* white */
+  background: #000667;
+}
+.buttonsT__minus {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #565d6d;
+}
+.buttonsT__minus:hover {
+  color: #565d6d; /* neutral-600 */
+  background: #dee1e6; /* neutral-300 */
+}
+
+.resumen {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 40%;
+  padding: 20px;
+  margin-right: 20px;
+  background: #f4f4f4;
+  border-radius: 6px; /* border-m */
+  box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+}
+.resumen h2 {
+  font-size: large;
+}
+.resumen p {
+  flex-wrap: wrap;
+  font-size: large;
+}
+.resumen__datos {
+  display: flex;
+  gap: 15px;
+}
+.resumen__img img {
+  width: 92px;
+  height: 129px;
+  border-radius: 6px;
+}
+.resumen__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.resumen__titles p {
+  font-size: large;
+  font-weight: bolder;
+}
+.resumen__value {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 40px;
+}
+.resumen__value p {
+  font-size: large;
+  font-weight: bolder;
+}
+.resumen__button:disabled {
+  width: 465px;
+  height: 55px;
+  cursor: pointer;
+  background: #c2c3d0;
+  border-radius: 28px;
+  box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+}
+.resumen__button:enabled {
+  width: 465px;
+  height: 55px;
+  cursor: pointer;
+  background: rgb(61, 74, 252);
+  color: #fff;
+  border-radius: 28px;
+  box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+}/*# sourceMappingURL=boletos.css.map */

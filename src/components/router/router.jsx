@@ -15,9 +15,11 @@ const Router = () => {
   const [show, setShow] = useState(false);
   const [category, setCategory] = useState("");
   const [cards, setCards] = useState([]);
-  const [seletDay, setseletDay] = useState("");
   const [cinemas, setCinemas] = useState([]);
   const [selectedCinema, setSelectedCinema] = useState("");
+  const [seletDay, setseletDay] = useState("");
+  const [date, setdate] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
   return (
     <AppContext.Provider
       value={{
@@ -35,6 +37,10 @@ const Router = () => {
         setCinemas,
         selectedCinema,
         setSelectedCinema,
+        date,
+        setdate,
+        selectedDate,
+        setSelectedDate,
       }}
     >
       <BrowserRouter>

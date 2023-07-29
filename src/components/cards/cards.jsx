@@ -6,37 +6,18 @@ import { useEffect } from "react";
 import { getMovie } from "../../services/getMovie";
 import { getMovies } from "../../services/getMovies";
 import { AppContext } from "../router/router";
+import { getData } from "../../services/getData";
 
 const Cards = () => {
-  const { category, cards, setCards } = useContext(AppContext);
-
-  const list = [];
+  const { category, setCards } = useContext(AppContext);
 
   useEffect(() => {
-    getData();
-  }, [category]);
-
-  const getData = async () => {
-    const data = await getMovies();
-
-    for (let i = 0; i < data.length; i++) {
-      const detailMovie = await getMovie(data[i].id);
-      list.push(detailMovie);
-    }
-    if (category === "") {
-      setCards(list);
-    } else {
-      const filterGenders = list.filter((item) =>
-        item.gender.find((gender) => gender === category)
-      );
-      setCards(filterGenders);
-    }
-  };
+    getData(category, setCards);
+  }, [category, setCards]);
 
   return (
     <>
       <h1 className="title__cards">EN CARTELERA</h1>
-
       <section className="cards__container">
         <Card />
       </section>

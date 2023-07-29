@@ -19,7 +19,6 @@ const Cine = () => {
 
   const handleChange = (event) => {
     setSelectedCinema(event.target.value);
-    console.log("Cinema selected:", event.target.value);
   };
 
   return (

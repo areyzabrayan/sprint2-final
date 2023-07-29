@@ -5,8 +5,8 @@ const URL_IMG = "https://image.tmdb.org/t/p/w500/";
 const URL_SERVER = "http://localhost:5000/";
 
 export const endPoints = {
-  urlCinemas: `${URL_SERVER}cines`,
-  urlFunctions: `${URL_SERVER}funciones`,
+  urlCinemas: `${URL_SERVER}cinemas`,
+  urlFunctions: (id) => `${URL_SERVER}funciones/${id}`,
   urlTickect: `${URL_SERVER}tiquetes`,
   urlAdmin: `${URL_SERVER}usuarios`,
   urlMovies: `${URL_API_MOVIES}?api_key=${API_KEY}&language=es-ES`,

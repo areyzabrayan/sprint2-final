@@ -57,6 +57,10 @@ const Navbar = () => {
         <figure className="person" onClick={() => setShow(true)}>
           <img src={person} alt="" />
         </figure>
+        <figure className="hamburger" onClick={() => setShow(true)}>
+          <img src={hamburguer} alt="" />
+        </figure>
+
       </div>
     </div>
   );

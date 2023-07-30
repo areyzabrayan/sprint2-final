@@ -1,17 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./movie.scss";
 import { getMovie } from "../../services/getMovie";
 import { useLocation } from "react-router";
 import { endPoints } from "../../data/data";
 import { getVideoMovie } from "../../services/getVideoMovie";
+import { AppContext } from "../router/router";
+import { getFunctions } from "../../services/getFunctions";
+import { format } from "date-fns";
+import esLocale from "date-fns/locale/es";
+import { useNavigate } from "react-router-dom";
 
 const Movie = () => {
   const [videoMovie, setVideoMovie] = useState("");
   const [movie, setMovie] = useState([]);
+  const [newFormatted, setNewFormatted] = useState("");
+
   const location = useLocation();
+  const {
+    selectedCinema,
+    selectedId,
+    date,
+    seletDay,
+    selectedButton,
+    setSelectedButton,
+    selectedCinemaName,
+    selectedMovieId,
+  } = useContext(AppContext);
   const pathname = location.pathname;
   const segments = pathname.split("/");
   const id = segments[segments.length - 1];
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("total mundo", selectedMovieId);
+    setSelectedButton(null);
+  }, [selectedCinema]);
 
   useEffect(() => {
     getMovie(id).then((response) => {
@@ -27,6 +50,26 @@ const Movie = () => {
     const date = new Date(dateStr);
     return date.getFullYear();
   };
+
+  const formattedDate = (dateStr) => {
+    const date = new Date(dateStr);
+    return format(date, "d 'de' MMMM", { locale: esLocale });
+  };
+
+  useEffect(() => {
+    if (seletDay) {
+      const date = new Date(seletDay);
+      date.setDate(date.getDate() + 1); // Sumar un día
+      const formatted = formattedDate(date);
+      setNewFormatted(formatted);
+      console.log(formatted);
+    }
+  }, [seletDay]);
+
+  const handleButtonClick = (hora) => {
+    setSelectedButton(hora);
+  };
+
   return (
     <>
       <div className="container__Movie">
@@ -63,15 +106,31 @@ const Movie = () => {
           </div>
         </div>
         <div className="container__showTime">
-          <h2>Horarios disponibles - 07 de julio </h2>
+          <h2>Horarios disponibles - {newFormatted}</h2>
           <span className="span1">Elije el horario que prefieras</span>
-          <span className="span2">Marco plaza del Mar</span>
-          <div>
-            <button>18:00</button>
-            <button>19:30</button>
-            <button>21:05</button>
-          </div>
-          <button>Selecionar boletos</button>
+          <span className="span2">{selectedCinemaName}</span>
+          {date.horaFuncion && date.horaFuncion.length > 0 ? (
+            <div>
+              {date.horaFuncion.map((hora, index) => (
+                <button
+                  className={hora === selectedButton ? "colorcito" : ""}
+                  key={index}
+                  onClick={() => handleButtonClick(hora)}
+                >
+                  {hora}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p>No hay horarios disponibles.</p>
+          )}
+          <button
+            className={selectedButton ? "onselec" : ""}
+            onClick={() => navigate(`/home/movie/${selectedMovieId}/boletos`)}
+            disabled={!selectedButton}
+          >
+            Seleccionar boletos
+          </button>
         </div>
       </div>
     </>

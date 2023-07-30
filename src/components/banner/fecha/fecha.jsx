@@ -15,6 +15,7 @@ const Fecha = () => {
     setdate,
     selectedDate,
     setSelectedDate,
+    setSelectedId,
   } = useContext(AppContext);
 
   const adjustedDates =
@@ -44,6 +45,7 @@ const Fecha = () => {
       setseletDay(dataIdeal);
 
       const dateFound = adjustedDates.includes(dataIdeal);
+
       if (dateFound) {
       } else {
         Swal.fire({
@@ -58,8 +60,8 @@ const Fecha = () => {
     }
   }, [selectedDate, adjustedDates]);
 
-  const handleClick = (data) => {
-    setSelectedDate(data);
+  const handleClick = (date) => {
+    setSelectedDate(date);
   };
 
   const isDateDisabled = (date) => {
@@ -71,7 +73,7 @@ const Fecha = () => {
       <h1>Fecha</h1>
       <DatePicker
         selected={selectedDate}
-        onChange={(data) => handleClick(data)}
+        onChange={(date) => handleClick(date)}
         filterDate={isDateDisabled}
         highlightDates={adjustedDate.map((dateStr) => new Date(dateStr))}
         calendarClassName="custom-datepicker"

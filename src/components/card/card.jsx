@@ -6,17 +6,20 @@ import Swal from "sweetalert2";
 import "sweetalert2/src/sweetalert2.scss";
 
 const Card = () => {
-  const { cards, seletDay } = useContext(AppContext);
+  const { cards, seletDay, setSelectedMovieId } = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleClick = (id) => {
-    seletDay
-      ? navigate(`/home/movie/${id}`)
-      : Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Dinos cuando quieres ver la pelicula",
-        });
+    setSelectedMovieId(id);
+    if (seletDay) {
+      navigate(`/home/movie/${id}`);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Dinos cuando quieres ver la pelicula",
+      });
+    }
   };
 
   return (

@@ -139,9 +139,12 @@
   .person img{
     display: none;
   }
-  .burguer img {
+  .hamburger img {
     display: block;
-    margin-top: 14px;
+    background-color: #fff;
+    height: 26px;
+    width: 26px;
+    margin-top: 40px;
     margin-left: 85px;
     cursor: pointer;
   }

@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 import "./boletos.scss";
-
 import ResumeTiket from "../resumenTiket/resumeTiket";
 
 const Boletos = () => {

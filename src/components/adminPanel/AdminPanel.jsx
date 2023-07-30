@@ -6,8 +6,8 @@ import Categories from "../banner/categories/Categories";
 import Cards from "../cards/cards";
 import "./adminPanel.scss";
 import AdminEdit from "../adminEdit/adminEdit";
+import Boletos from "../boletos/boletos";
 import Navbar from "../banner/navbar/Navbar";
-
 
 const AdminPanel = () => {
   const { setIsLogin } = useContext(AppContext);

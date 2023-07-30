@@ -1,9 +1,13 @@
 .calendar-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
   h1 {
     color: #a9adb6;
     font-size: 14px;
     font-weight: 500;
+    padding: 2px;
+    display: flex;
   }
 }
 
@@ -23,8 +27,14 @@
   height: 20px;
 }
 .react-datepicker__input-container input {
-  background-color: #000;
-  color: #a9adb6;
+  background-color: #000000;
+  height: 35px;
+  width: 150px;
+  border: 1px solid #587ff1;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 16px;
+  color: #fff;
 }
 
 .custom-datepicker .react-datepicker__day {

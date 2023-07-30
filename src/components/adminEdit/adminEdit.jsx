@@ -72,14 +72,14 @@
 //             <button>
 //               15 <br />
 //               DOM
-//             </button>                          
+//             </button>
 //           </div>
 //           <p className="calender">
 //             <figure  >
 //                 <img src={calendar} alt="calendario" />
 //               </figure>
-//             </p> 
-//           </div> 
+//             </p>
+//           </div>
 //           </div>
 //           <div className="funtionE">
 //             <div className="funtionE__title">
@@ -171,7 +171,7 @@
 //                   </figure>
 //                   </div>
 //                 </div>
-                
+
 //                 </div>
 //               </div>
 //               <div className={`edit-salas ${isOpen && "open"}`}>
@@ -180,7 +180,7 @@
 //                 <input type="text" value={'1:30 pm'}/>
 //                   <input type="text" value={'1:30 pm'}/>
 //                   <input type="text" value={'1:30 pm'}/>
-                  
+
 //                 </div>
 //               </div>
 //               <div className="teatrosE">
@@ -195,7 +195,7 @@
 //                   <img src={dowm} alt="" />
 //                 </figure>
 //               </div>
-            
+
 //           </div>
 //         </div>
 //       </div>
@@ -205,14 +205,13 @@
 
 // export default AdminEdit;
 
-
 import React, { useState } from "react";
 import "./adminEdit.scss";
 import dowm from "../../assets/down.svg";
 import add from "../../assets/add.svg";
-import calendar from '../../assets/calendar.svg';
-import editB from '../../assets/edit.svg';
-import cancel from '../../assets/cancel.svg';
+import calendar from "../../assets/calendar.svg";
+import editB from "../../assets/edit.svg";
+import cancel from "../../assets/cancel.svg";
 
 const AdminEdit = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -306,106 +305,136 @@ const AdminEdit = ({ data }) => {
               </figure>
             </div>
             <div className={`edit-salas ${isOpen && "open"}`}>
-              <div className="newSala">
-                <h1>Sala 1</h1>
-                <figure className="funtionE__newTeatro">
-                  <figcaption>
-                    <p>Nueva Hora</p>
-                  </figcaption>
-                  <img src={add} alt="logo" />
+              <h1>Sala 1</h1>
+              <div>
+                <input type="text" value={"1:30 pm"} />
+                <input type="text" value={"1:30 pm"} />
+                <input type="text" value={"1:30 pm"} />
+                <div className="newSala">
+                  <h1>Sala 1</h1>
+                  <figure className="funtionE__newTeatro">
+                    <figcaption>
+                      <p>Nueva Hora</p>
+                    </figcaption>
+                    <img src={add} alt="logo" />
+                  </figure>
+                </div>
+                <div className="containerHours">
+                  <div className="hoursE">
+                    <div
+                      className="hoursE__contienerE"
+                      onMouseEnter={() => setHoveredIndex(0)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                    >
+                      <input
+                        type="text"
+                        defaultValue={"1:30 pm"}
+                        onChange={(e) => {}}
+                      />
+                      <div className="iconContainer">
+                        <img
+                          className={`hoursE__edit ${
+                            hoveredIndex === 0 ? "showE" : ""
+                          }`}
+                          src={editB}
+                          alt="edit"
+                        />
+                        <img
+                          className={`hoursE__cancel ${
+                            hoveredIndex === 0 ? "showE" : ""
+                          }`}
+                          src={cancel}
+                          alt="cancel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hoursE">
+                    <div
+                      className="hoursE__contienerE"
+                      onMouseEnter={() => setHoveredIndex(1)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                    >
+                      <input
+                        type="text"
+                        defaultValue={"1:30 pm"}
+                        onChange={(e) => {}}
+                      />
+                      <div className="iconContainer">
+                        <img
+                          className={`hoursE__edit ${
+                            hoveredIndex === 1 ? "showE" : ""
+                          }`}
+                          src={editB}
+                          alt="edit"
+                        />
+                        <img
+                          className={`hoursE__cancel ${
+                            hoveredIndex === 1 ? "showE" : ""
+                          }`}
+                          src={cancel}
+                          alt="cancel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hoursE">
+                    <div
+                      className="hoursE__contienerE"
+                      onMouseEnter={() => setHoveredIndex(2)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                    >
+                      <input
+                        type="text"
+                        defaultValue={"1:30 pm"}
+                        onChange={(e) => {}}
+                      />
+                      <div className="iconContainer">
+                        <img
+                          className={`hoursE__edit ${
+                            hoveredIndex === 2 ? "showE" : ""
+                          }`}
+                          src={editB}
+                          alt="edit"
+                        />
+                        <img
+                          className={`hoursE__cancel ${
+                            hoveredIndex === 2 ? "showE" : ""
+                          }`}
+                          src={cancel}
+                          alt="cancel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={`edit-salas ${isOpen && "open"}`}>
+                <h1>Sala 2</h1>
+                <div>
+                  <input type="text" value={"1:30 pm"} />
+                  <input type="text" value={"1:30 pm"} />
+                  <input type="text" value={"1:30 pm"} />
+                </div>
+              </div>
+              <div className="teatrosE">
+                <p>Estelar</p>
+                <figure>
+                  <img src={dowm} alt="" />
                 </figure>
               </div>
-              <div className="containerHours">
-                <div className="hoursE">
-                  <div
-                    className="hoursE__contienerE"
-                    onMouseEnter={() => setHoveredIndex(0)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                    <input
-                      type="text"
-                      defaultValue={'1:30 pm'}
-                      onChange={(e) => {
-                      }}
-                    />
-                    <div className="iconContainer">
-                      <img
-                        className={`hoursE__edit ${hoveredIndex === 0 ? "showE" : ""}`}
-                        src={editB}
-                        alt="edit"
-                      />
-                      <img
-                        className={`hoursE__cancel ${hoveredIndex === 0 ? "showE" : ""}`}
-                        src={cancel}
-                        alt="cancel"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="hoursE">
-                  <div
-                    className="hoursE__contienerE"
-                    onMouseEnter={() => setHoveredIndex(1)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                    <input
-                      type="text"
-                      defaultValue={'1:30 pm'}
-                      onChange={(e) => {
-                      }}
-                    />
-                    <div className="iconContainer">
-                      <img
-                        className={`hoursE__edit ${hoveredIndex === 1 ? "showE" : ""}`}
-                        src={editB}
-                        alt="edit"
-                      />
-                      <img
-                        className={`hoursE__cancel ${hoveredIndex === 1 ? "showE" : ""}`}
-                        src={cancel}
-                        alt="cancel"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="hoursE">
-                  <div
-                    className="hoursE__contienerE"
-                    onMouseEnter={() => setHoveredIndex(2)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                    <input
-                      type="text"
-                      defaultValue={'1:30 pm'}
-                      onChange={(e) => {
-                      }}
-                    />
-                    <div className="iconContainer">
-                      <img
-                        className={`hoursE__edit ${hoveredIndex === 2 ? "showE" : ""}`}
-                        src={editB}
-                        alt="edit"
-                      />
-                      <img
-                        className={`hoursE__cancel ${hoveredIndex === 2 ? "showE" : ""}`}
-                        src={cancel}
-                        alt="cancel"
-                      />
-                    </div>
-                  </div>
-                </div>
+              <div className="teatrosE">
+                <p>Puerta del Norte</p>
+                <figure>
+                  <img src={dowm} alt="" />
+                </figure>
               </div>
+              <input type="text" defaultValue={"1:30 pm"} />
+              <input type="text" defaultValue={"1:30 pm"} />
+              <input type="text" defaultValue={"1:30 pm"} />
             </div>
-            <div className={`edit-salas ${isOpen && "open"}`}>
-              <h1>Sala 2</h1>
-              <div>
-                <input type="text" defaultValue={'1:30 pm'} />
-                <input type="text" defaultValue={'1:30 pm'} />
-                <input type="text" defaultValue={'1:30 pm'} />
-              </div>
-            </div>
-            {/* Otros elementos */}
           </div>
+          {/* Otros elementos */}
         </div>
       </div>
     </div>
@@ -413,4 +442,3 @@ const AdminEdit = ({ data }) => {
 };
 
 export default AdminEdit;
-

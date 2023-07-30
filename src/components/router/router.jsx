@@ -1,12 +1,12 @@
 import React, { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/home/Home";
-
 import PublicRouter from "./publicRouter";
 import PrivateRouter from "./privateRouter";
 import Cards from "../cards/cards";
 import Movie from "../movie/Movie";
 import AdminPanel from "../adminPanel/AdminPanel";
+import Boletos from "../boletos/boletos";
 
 export const AppContext = createContext({});
 
@@ -15,9 +15,15 @@ const Router = () => {
   const [show, setShow] = useState(false);
   const [category, setCategory] = useState("");
   const [cards, setCards] = useState([]);
-  const [seletDay, setseletDay] = useState("");
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [cinemas, setCinemas] = useState([]);
   const [selectedCinema, setSelectedCinema] = useState("");
+  const [selectedCinemaName, setSelectedCinemaName] = useState(null);
+  const [seletDay, setseletDay] = useState("");
+  const [date, setdate] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedId, setSelectedId] = useState({});
+  const [selectedButton, setSelectedButton] = useState(null);
   return (
     <AppContext.Provider
       value={{
@@ -35,6 +41,18 @@ const Router = () => {
         setCinemas,
         selectedCinema,
         setSelectedCinema,
+        date,
+        setdate,
+        selectedDate,
+        setSelectedDate,
+        selectedId,
+        setSelectedId,
+        selectedButton,
+        setSelectedButton,
+        selectedCinemaName,
+        setSelectedCinemaName,
+        selectedMovieId,
+        setSelectedMovieId,
       }}
     >
       <BrowserRouter>
@@ -44,10 +62,11 @@ const Router = () => {
               <Route path="home" element={<Home />}>
                 <Route index element={<Cards />} />
                 <Route path="movie/:movieId" element={<Movie />} />
+                <Route path="movie/:movieId/boletos" element={<Boletos />} />
               </Route>
             </Route>
             <Route element={<PrivateRouter />}>
-              <Route index element={<AdminPanel />} />
+              <Route path="private" element={<AdminPanel />} />
             </Route>
           </Route>
         </Routes>

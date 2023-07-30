@@ -6,8 +6,13 @@ import { AppContext } from "../../router/router";
 import { getCinema } from "../../../services/getCinema";
 
 const Cine = () => {
-  const { cinemas, setCinemas, selectedCinema, setSelectedCinema } =
-    useContext(AppContext);
+  const {
+    cinemas,
+    setCinemas,
+    selectedCinema,
+    setSelectedCinema,
+    setSelectedCinemaName,
+  } = useContext(AppContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,13 +23,21 @@ const Cine = () => {
   }, []);
 
   const handleChange = (event) => {
-    setSelectedCinema(event.target.value);
-    console.log("Cinema selected:", event.target.value);
+    const selectedId = event.target.value;
+    setSelectedCinema(selectedId);
+    // Buscar la película seleccionada por su id en la lista de cines
+    const selectedCinema = cinemas.find((cinema) => cinema.id == selectedId);
+    // Si se encuentra el cine, actualizar el estado con su nombre
+    if (selectedCinema) {
+      setSelectedCinemaName(selectedCinema.name);
+    } else {
+      setSelectedCinemaName("");
+    }
   };
 
   return (
     <div>
-      <h2 className="nameCinemas">Cines cercanos</h2>
+      <h1 className="nameCinemas">Cines cercanos</h1>
 
       <Form.Select
         className="cinemas"
@@ -33,7 +46,7 @@ const Cine = () => {
       >
         <option>Seleccione uno</option>
         {cinemas.map((cinema, index) => (
-          <option key={index} value={cinema.id}>
+          <option key={index} value={cinema.id} id={cinema.name}>
             {cinema.name}
           </option>
         ))}

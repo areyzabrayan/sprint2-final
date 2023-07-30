@@ -2,76 +2,61 @@ import React, { useContext } from "react";
 import "./navbar.scss";
 import Categories from "../categories/Categories";
 import logo from "../../../assets/logo.jpg";
-import iconD from "../../../assets/icon-arrow-down.svg";
 import person from "../../../assets/person.svg";
 import hamburguer from '../../../assets/hamburguer.svg'
 import Fecha from "../fecha/fecha";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "../../router/router";
 import Cine from "../cines/cine";
+import { getData } from "../../../services/getData";
+import { useEffect } from "react";
 
 const Navbar = () => {
-  const { setShow } = useContext(AppContext);
+  const {
+    setShow,
+    setSelectedDate,
+    setseletDay,
+    setCategory,
+    category,
+    setCards,
+  } = useContext(AppContext);
   const location = useLocation();
   const pathname = location.pathname;
-  const shouldShowCategories = pathname === "/home";
+  const shouldShowCategories = pathname === "/private";
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    setSelectedDate(null);
+    setseletDay("");
+    setCategory("");
+    navigate("/home");
+  };
+
+  useEffect(() => {
+    getData(category, setCards);
+  }, [category, setCards]);
 
   return (
     <div className="navbar">
-      <div className="logo">
+      <div className="logo" onClick={handleClick}>
         <figure className="logo__figure">
           <img src={logo} alt="logo" />
         </figure>
         <h2>CINE COLOMBIA</h2>
       </div>
-      {shouldShowCategories && <Categories />}
+      {pathname === "/home" || pathname === "/private" ? <Categories /> : null}
 
       <div className="diary">
-        <div className="api__local">
-          <Cine />
-          <Fecha />
-        </div>
-        <figure className="burguer">
-          <img src={hamburguer} alt="" />
-        </figure>
-        <figure className="person" onClick={() => setShow(true)}>
-          <img src={person} alt="" />
-        </figure>
-
-        {/* <div className="diary__containers">
-          <p>Cines cercanos</p>
-          <figure
-            className="diary__options"
-            onClick={() => setIsOpenCine(!isOpen)}
-          >
-            <figcaption>
-              <p>seleccione un cine</p>
-            </figcaption>
-            <img src={iconD} alt="logo" />
-          </figure>
-        </div>
-        <div className="diary__containers">
-          <p>Fecha</p>
-          <figure
-            className="diary__options"
-            onClick={() => setIsOpenFFecha(!isOpenF)}
-          >
-            <figcaption>
-              <p>Seleccione una Fecha</p>
-            </figcaption>
-            <img src={iconD} alt="logo" />
-          </figure>
-        </div>
+        {!shouldShowCategories && (
+          <div className="api__local">
+            <Cine />
+            <Fecha />
+          </div>
+        )}
 
         <figure className="person" onClick={() => setShow(true)}>
           <img src={person} alt="" />
         </figure>
-        {/* <div className={`cines ${isOpen && "open"}`}>
-          <Cine />
-        </div> */}
-        {/* <div className={`fechas ${isOpenF && "openF"}`}>
-          <Fecha />
-        </div> */}
       </div>
     </div>
   );

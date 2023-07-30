@@ -1,18 +1,35 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../router/router";
 import "./card.scss";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 const Card = () => {
-  const { cards } = useContext(AppContext);
+  const { cards, seletDay, setSelectedMovieId } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    setSelectedMovieId(id);
+    if (seletDay) {
+      navigate(`/home/movie/${id}`);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Dinos cuando quieres ver la pelicula",
+      });
+    }
+  };
+
   return (
     <>
       {cards.map((data, index) => (
         <div className="principal" key={index}>
           <article className="principal__card">
-            <Link to={`/home/movie/${data.id}`}>
+            <span onClick={() => handleClick(data.id)}>
               <img className="image" src={data.image} />
-            </Link>
+            </span>
             <div className="card">
               <h2 className="card__title">{data.name}</h2>
               <span className="card__Etitle">

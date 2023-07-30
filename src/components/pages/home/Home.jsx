@@ -15,10 +15,10 @@ const Home = () => {
       <div>
         <Navbar />
         <Carrusel />
-        {/* <Login />
-        <Outlet /> */}
+        <Login />
+        <Outlet />
         {/* <FinalPurchase/> */}
-        <Boletos/>
+        {/* <Boletos/> */}
         {/* <BuyTikecks/> */}
         {/* <QrTikecks/> */}
       </div>

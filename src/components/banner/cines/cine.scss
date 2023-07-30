@@ -28,3 +28,18 @@
   background-color: #007bff;
   color: #fff;
 }
+
+@media (max-width:408px){
+  .nameCinemas{
+    position: absolute;
+    
+    top: 60px;
+    left:210px;
+  }
+  .cinemas{
+    position: absolute;
+    width: 150px;
+    top: 95px;
+    left:210px;
+  }
+}

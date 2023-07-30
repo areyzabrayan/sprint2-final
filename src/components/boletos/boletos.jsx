@@ -74,7 +74,7 @@ const Boletos = () => {
           </div>
         </div>
         <div className="edadTikect">
-          <h3>NIÑOS</h3>
+          <h3 className="edadTikect__mobileN">NIÑOS</h3>
           <div className="bContainer">
             <label>$</label>
             <input
@@ -106,7 +106,7 @@ const Boletos = () => {
           </div>
         </div>
         <div className="edadTikect">
-          <h3>3ra EDAD</h3>
+          <h3 className="edadTikect__mobile3">3ra EDAD</h3>
           <div className="bContainer">
             <label>$</label>
             <input

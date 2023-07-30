@@ -108,3 +108,43 @@
   
 }
 
+@media (max-width: 408px){
+  .buyT{
+    flex-direction: column;
+}
+.info {
+  padding-left: 6px;
+}
+.email {
+  & input {
+    width: 380px;
+  }
+}
+.emailN{
+  &__tarjet{
+    width: 380px;
+    height: 50px;
+  }
+  & input {
+    width: 270px;
+    height: 41px;    
+  }
+  &__img{
+    width: 34px; 
+  height: 12px; 
+  border-radius: 0px;
+  }
+}
+.emailN__number{
+  margin-bottom: 0;
+}
+.infoT__tarjet{
+  width: 180px;
+  & input{
+    width: 145px;
+  }
+}
+.infoT__number{
+  margin-bottom: 0;
+}
+}

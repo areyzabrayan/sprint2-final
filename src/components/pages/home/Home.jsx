@@ -5,6 +5,9 @@ import "./home.scss";
 import Login from "../login/Login";
 import { Outlet } from "react-router";
 import Boletos from "../../boletos/boletos";
+import FinalPurchase from "../../finalPurchase/finalPurchase";
+import QrTikecks from "../../QR-tikecks/QrTikecks";
+import BuyTikecks from "../../buyTikecks/buyTikecks";
 
 const Home = () => {
   return (
@@ -12,10 +15,11 @@ const Home = () => {
       <div>
         <Navbar />
         <Carrusel />
-        <Login />
-        <Outlet />
+        {/* <Login />
+        <Outlet /> */}
         {/* <FinalPurchase/> */}
-        {/* <Boletos/> */}
+        <Boletos/>
+        {/* <BuyTikecks/> */}
         {/* <QrTikecks/> */}
       </div>
     </>

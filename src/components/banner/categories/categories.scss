@@ -17,3 +17,8 @@
     color: #ffffffff;
   }
 }
+@media (max-width:408px){
+  .buttons{
+    display: none;
+  }
+}

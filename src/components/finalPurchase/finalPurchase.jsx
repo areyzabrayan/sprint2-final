@@ -53,7 +53,7 @@ const FinalPurchase = () => {
             <p>Asientos:</p>
           </div>
         </div>
-        <button>
+        <button className='finalPur'>
           Descargar boletos
         </button>
       </article>

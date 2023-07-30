@@ -42,3 +42,10 @@
 .react-datepicker__current-month {
   font-size: 13px;
 }
+@media (max-width:408px){
+  .calendar-container{
+    position: absolute;
+    top: 80px;
+    left: 30px;
+  }
+}

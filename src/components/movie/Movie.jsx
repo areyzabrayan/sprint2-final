@@ -29,6 +29,7 @@ const Movie = () => {
   };
   return (
     <>
+    <div>
       <div className="container__Movie">
         <div className="container__detail">
           <figure>
@@ -39,10 +40,10 @@ const Movie = () => {
             <span>
               {movie.originalTitle} ({getYearFromDate(movie.releaseDate)})
             </span>
-            <div>
-              <button className="b1">{movie.adult ? "Adultos" : "A"}</button>
-              <button className="b2">{movie.runTime} min</button>
-              <button className="b3">
+            <div className="buttonsContainer">
+              <button className="b1 mobile-button1">{movie.adult ? "Adultos" : "A"}</button>
+              <button className="b2 mobile-button">{movie.runTime} min</button>
+              <button className="b3 ">
                 {movie.gender ? movie.gender.join(", ") : ""}
               </button>
             </div>
@@ -73,6 +74,7 @@ const Movie = () => {
           </div>
           <button>Selecionar boletos</button>
         </div>
+      </div>
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import Categories from "../categories/Categories";
 import logo from "../../../assets/logo.jpg";
 import iconD from "../../../assets/icon-arrow-down.svg";
 import person from "../../../assets/person.svg";
-
+import hamburguer from '../../../assets/hamburguer.svg'
 import Fecha from "../fecha/fecha";
 import { useLocation } from "react-router-dom";
 import { AppContext } from "../../router/router";
@@ -31,6 +31,9 @@ const Navbar = () => {
           <Cine />
           <Fecha />
         </div>
+        <figure className="burguer">
+          <img src={hamburguer} alt="" />
+        </figure>
         <figure className="person" onClick={() => setShow(true)}>
           <img src={person} alt="" />
         </figure>

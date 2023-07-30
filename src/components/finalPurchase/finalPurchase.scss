@@ -28,11 +28,11 @@
   display: flex; 
   align-items: center; 
   justify-content: center; 
-  font-family: Roboto; /* Body */
+  font-family: Roboto;
   font-size: 14px; 
   line-height: 22px; 
-  color: #19508AFF; /* primary-500 */
-  background: #F2F7FDFF; /* primary-100 */
+  color: #19508AFF; 
+  background: #F2F7FDFF;
   opacity: 1; 
   border: none; 
   border-radius: 6px;
@@ -64,4 +64,50 @@
 .boxFinal{
    padding-left: 35%;
    padding-bottom: 50px;
+}
+@media (max-width: 408px){
+  .finalResumen {
+    &__text {
+      margin-left: 5px;
+      width: 380px;
+      height: 70px;
+      & p {
+        font-size: large;
+        font-weight: bolder;
+      }
+    }
+    &__infoBuy {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 7px 10px 7px;
+    }
+    &__target {
+      padding-left: 15px;
+      gap: 24px;
+      margin-bottom: 10px;
+      
+    }
+    &__items {
+      display: flex;
+      flex-direction: column;
+      
+      & label { 
+        font-size: 14px;
+      }
+      & span {
+        font-size: 14px;
+      }
+    }
+  }
+  .finalPur{
+    margin-left: 15%;
+    width: 250px;
+    height: 60px ;
+    background-color: #19508AFF;
+  }
+  .boxFinal{
+    padding-left: 2px;
+    padding-bottom: 50px;
+ }
 }

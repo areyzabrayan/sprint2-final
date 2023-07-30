@@ -75,3 +75,18 @@
        font-size: large;
     }
 }
+
+@media (max-width: 408px){
+    .resumen{
+        margin-top: 25px;
+        margin-left: 5px;
+        width: 385px;
+        &__button:disabled{
+            width: 350px;  
+        }
+        &__button:enabled{
+            width: 350px;  
+        }
+    }
+    
+}

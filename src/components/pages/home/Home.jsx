@@ -4,6 +4,7 @@ import Carrusel from "../../banner/carrusel/Carrusel";
 import "./home.scss";
 import Login from "../login/Login";
 import { Outlet } from "react-router";
+import Boletos from "../../boletos/boletos";
 
 const Home = () => {
   return (
@@ -13,6 +14,9 @@ const Home = () => {
         <Carrusel />
         <Login />
         <Outlet />
+        {/* <FinalPurchase/> */}
+        {/* <Boletos/> */}
+        {/* <QrTikecks/> */}
       </div>
     </>
   );

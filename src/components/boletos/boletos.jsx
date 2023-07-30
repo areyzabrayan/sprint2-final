@@ -1,16 +1,41 @@
+
 import React, { useState } from "react";
 import "./boletos.scss";
-import imagen from "../../assets/Rapidos.jpg";
+
+import ResumeTiket from "../resumenTiket/resumeTiket";
+
 const Boletos = () => {
-  const [disabled, setDisabled] = useState(true);
-  const handleInput = (e) => {
-    const value = e.target.value
+  const adultPrice = 15;
+  const childrenPrice = 10;
+  const seniorPrice = 12;
+
+  const [adultAmount, setAdultAmount] = useState(0);
+  const [childrenAmount, setChildrenAmount] = useState(0);
+  const [seniorAmount, setSeniorAmount] = useState(0);
+
+  const handleInput = (e, setterFunction) => {
+    const value = e.target.value;
     if (/^\d+(\.\d+)?$/.test(value)) {
-        setDisabled(false);
-      } else {
-        setDisabled(true);
-      }
-    };
+      setterFunction(parseInt(value));
+    }
+  };
+
+  const handlePlus = (setterFunction) => {
+    setterFunction((prevValue) => prevValue + 1);
+  };
+
+  const handleMinus = (setterFunction) => {
+    setterFunction((prevValue) => prevValue - 1);
+  };
+
+  const calculateTotal = () => {
+    const total =
+      adultAmount * adultPrice +
+      childrenAmount * childrenPrice +
+      seniorAmount * seniorPrice;
+    return total;
+  };
+
   return (
     <div className="selection">
       <article className="boletos">
@@ -20,11 +45,31 @@ const Boletos = () => {
           <h3>ADULTOS</h3>
           <div className="bContainer">
             <label>$</label>
-            <input className="bContainer__amount" type="number"  />
+            <input
+              type="number"
+              className="bContainer__amount"
+              value={adultPrice}
+              readOnly
+            />
             <div className="buttonsT">
-              <button className="buttonsT__minus">-</button>
-              <input type="number" onInput={handleInput} />
-              <button className="buttonsT__plus">+</button>
+              <button
+                className="buttonsT__minus"
+                onClick={() => handleMinus(setAdultAmount)}
+              >
+                -
+              </button>
+              <input
+                type="number"
+                onInput={(e) => handleInput(e, setAdultAmount)}
+                placeholder="0"
+                value={adultAmount}
+              />
+              <button
+                className="buttonsT__plus"
+                onClick={() => handlePlus(setAdultAmount)}
+              >
+                +
+              </button>
             </div>
           </div>
         </div>
@@ -32,11 +77,31 @@ const Boletos = () => {
           <h3>NIÑOS</h3>
           <div className="bContainer">
             <label>$</label>
-            <input className="bContainer__amount" type="number" />
+            <input
+              className="bContainer__amount"
+              type="number"
+              value={childrenPrice}
+              readOnly
+            />
             <div className="buttonsT">
-              <button className="buttonsT__minus">-</button>
-              <input type="number" onInput={handleInput}/>
-              <button className="buttonsT__plus">+</button>
+              <button
+                className="buttonsT__minus"
+                onClick={() => handleMinus(setChildrenAmount)}
+              >
+                -
+              </button>
+              <input
+                type="number"
+                onInput={(e) => handleInput(e, setChildrenAmount)}
+                placeholder="0"
+                value={childrenAmount}
+              />
+              <button
+                className="buttonsT__plus"
+                onClick={() => handlePlus(setChildrenAmount)}
+              >
+                +
+              </button>
             </div>
           </div>
         </div>
@@ -44,44 +109,39 @@ const Boletos = () => {
           <h3>3ra EDAD</h3>
           <div className="bContainer">
             <label>$</label>
-            <input className="bContainer__amount" type="number" />
+            <input
+              className="bContainer__amount"
+              type="number"
+              value={seniorPrice}
+              readOnly
+            />
             <div className="buttonsT">
-              <button className="buttonsT__minus">-</button>
-              <input type="number" onInput={handleInput}/>
-              <button className="buttonsT__plus">+</button>
+              <button
+                className="buttonsT__minus"
+                onClick={() => handleMinus(setSeniorAmount)}
+              >
+                -
+              </button>
+              <input
+                type="number"
+                onInput={(e) => handleInput(e, setSeniorAmount)}
+                placeholder="0"
+                value={seniorAmount}
+              />
+              <button
+                className="buttonsT__plus"
+                onClick={() => handlePlus(setSeniorAmount)}
+              >
+                +
+              </button>
             </div>
           </div>
         </div>
       </article>
-      <article className="resumen">
-        <h2>Resumen de la compra</h2>
-        <div className="resumen__datos">
-          <figure className="resumen__img">
-            <img src={imagen} alt="imagen" />
-          </figure>
-          <div className="resumen__titles">
-            <p>Pelicula:</p>
-            <p>Teatro:</p>
-            <p>Fecha:</p>
-            <p>Funcion:</p>
-          </div>
-        </div>
-        <p>
-          Se realizara un cargo por servicio por cada boleto dentro de la orden
-        </p>
-        <div className="resumen__value">
-          <p>Total(ivaincluido)</p>
-          <div>
-            <label>$</label>
-            <input className="bContainer__amount" type="number" />
-          </div>
-        </div>
-        <button className="resumen__button" disabled={disabled}>
-          Continuar
-        </button>
-      </article>
+      <ResumeTiket calculateTotal={calculateTotal} />
     </div>
   );
 };
 
 export default Boletos;
+

@@ -1,0 +1,77 @@
+
+.resumen{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 40%; 
+    padding: 20px;
+    margin-right: 20px;
+    background: #F4F4F4FF; 
+    border-radius: 6px; /* border-m */
+    box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+    & h2{
+        font-size: large;
+    }
+    & p{
+        flex-wrap: wrap;
+        font-size: large;
+    }
+    &__datos{
+        display: flex;
+        gap: 15px;
+    }
+    &__img img{
+        width: 92px; 
+        height: 129px; 
+        border-radius: 6px;
+    }
+    &__titles{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    &__titles p{
+        font-size: large;
+        font-weight:bolder;
+    }
+    &__value{
+        display: flex;
+        justify-content: space-between;
+        padding-right: 40px;
+    }
+    &__value p{
+        font-size: large;
+        font-weight:bolder;
+    }
+    &__button:disabled{
+        width: 465px; 
+        height: 55px; 
+        cursor: pointer;
+        background: #C2C3D0FF; 
+        border-radius: 28px; 
+        box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f; 
+    }
+    &__button:enabled{
+        width: 465px; 
+        height: 55px; 
+        cursor: pointer;
+        background: rgb(61, 74, 252);
+        color: #fff; 
+        border-radius: 28px; 
+        box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f; 
+    }
+
+}
+.totalPrice{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    & label{
+        font-size: large;
+    }
+    & input{
+        
+       background-color:#F4F4F4FF; ;
+       font-size: large;
+    }
+}

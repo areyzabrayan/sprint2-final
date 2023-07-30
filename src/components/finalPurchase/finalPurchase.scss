@@ -1,0 +1,67 @@
+.finalResumen {
+  &__text {
+    display: flex;
+    align-items: center;
+    margin-left: 70px;
+    padding-left: 34px;
+    gap: 10px;
+    width: 1180px;
+    height: 111px;
+    background: #fbfaf4ff; 
+    border-radius: 6px; 
+    border-width: 1px;
+    border-color: #3b3416ff; 
+    border-style: solid;
+    & p {
+      font-size: large;
+      font-weight: bolder;
+    }
+  }
+  &__infoBuy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 27px 99px 10px 75px;
+    & span{
+        height: 36px; 
+  padding: 0 12px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-family: Roboto; /* Body */
+  font-size: 14px; 
+  line-height: 22px; 
+  color: #19508AFF; /* primary-500 */
+  background: #F2F7FDFF; /* primary-100 */
+  opacity: 1; 
+  border: none; 
+  border-radius: 6px;
+    }
+  }
+  &__target {
+    display: flex;
+    padding-left: 80px;
+    gap: 100px;
+    margin-bottom: 80px;
+  }
+  &__items {
+    display: flex;
+    flex-direction: column;
+    & label {
+      font-family: Roboto; 
+      font-size: 16px;
+      line-height: 26px;
+      color: #6f7787ff;
+    }
+    & span {
+      font-family: Roboto; 
+      font-size: 16px;
+      line-height: 26px;
+      color: #171a1fff; 
+    }
+  }
+}
+.boxFinal{
+   padding-left: 35%;
+   padding-bottom: 50px;
+}

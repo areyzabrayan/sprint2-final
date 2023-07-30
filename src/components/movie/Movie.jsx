@@ -138,3 +138,4 @@ const Movie = () => {
 };
 
 export default Movie;
+//updae

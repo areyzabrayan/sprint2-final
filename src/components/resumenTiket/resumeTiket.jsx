@@ -28,7 +28,7 @@ const ResumeTiket = () => {
     console.log(path);
   }, [totalAmount, seatsSelection, path]);
 
-  const [isButtonEnabled, setIsButtonEnabled] = useState(true); // habilita y desabilita el boton
+  const [isButtonEnabled, setIsButtonEnabled] = useState(true); // habilita y desabilita el boton.
 
   useEffect(() => {
     if (

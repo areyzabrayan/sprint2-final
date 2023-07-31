@@ -1,0 +1,142 @@
+.seatSelecion__container {
+  display: flex;
+  padding: 50px;
+  justify-content: space-around;
+}
+
+// .seat-map {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// .seat-row {
+//   display: flex;
+// }
+
+// .seat {
+//   padding: 5px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .seat-icon {
+//   width: 20px;
+//   height: 20px;
+// }
+
+// .reserved .seat-icon {
+//   filter: grayscale(100%);
+//   opacity: 0.5;
+// }
+.screens {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  h2 {
+    font-family: Roboto;
+    font-size: 24px;
+    line-height: 36px;
+    color: #171a1fff;
+  }
+  p {
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 28px;
+    color: #303236ff;
+  }
+}
+.screens::after {
+  content: "";
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 4px;
+  background: #9095a1ff;
+  border-radius: 2px;
+  box-shadow: 0px 17px 35px #171a1f, 0px 0px 2px #171a1f;
+}
+
+.divDipo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  span {
+    position: relative;
+    padding-left: 25px;
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 22px;
+    color: #323743ff;
+  }
+  span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid;
+  }
+  .seleccionado::before {
+    border-color: #fcb831;
+    border-radius: 8px 8px 0 0;
+    background-color: #fcb831;
+  }
+
+  .ocupado::before {
+    border-color: #f55555;
+    border-radius: 8px 8px 0 0;
+    background-color: #f55555;
+  }
+
+  .disponible::before {
+    border-color: #2679d1;
+    border-radius: 10px 10px 0 0;
+    background: #2679d1;
+  }
+}
+
+.seat {
+  background: #2679d1 !important;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  height: 40px;
+  width: 40px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seat:hover {
+  background-color: #e08a10 !important;
+  border-color: #e08a10 !important;
+  border-width: 3px;
+}
+
+.seat--selected {
+  background-color: #fcb831 !important;
+}
+
+.seat--reserved {
+  background-color: #f55555 !important;
+}
+
+.seat-picker {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin-bottom: 4px;
+  background: transparent;
+}
+
+.seat__number {
+  font-style: bold !important;
+  font-size: 20px;
+}

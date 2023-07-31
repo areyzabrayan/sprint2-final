@@ -12,8 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 const Movie = () => {
   const [videoMovie, setVideoMovie] = useState("");
-  const [movie, setMovie] = useState([]);
-  const [newFormatted, setNewFormatted] = useState("");
+  //const [movie, setMovie] = useState([]);
 
   const location = useLocation();
   const {
@@ -25,6 +24,11 @@ const Movie = () => {
     setSelectedButton,
     selectedCinemaName,
     selectedMovieId,
+    movie,
+    setMovie,
+    newFormatted,
+    setNewFormatted,
+    setTotalAmount,
   } = useContext(AppContext);
   const pathname = location.pathname;
   const segments = pathname.split("/");
@@ -72,68 +76,72 @@ const Movie = () => {
 
   return (
     <>
-    <div>
-      <div className="container__Movie">
-        <div className="container__detail">
-          <figure>
-            <img src={movie.image} alt="" />
-          </figure>
-          <div className="description">
-            <h2>{movie.name}</h2>
-            <span>
-              {movie.originalTitle} ({getYearFromDate(movie.releaseDate)})
-            </span>
-            <div className="buttonsContainer">
-              <button className="b1 mobile-button1">{movie.adult ? "Adultos" : "A"}</button>
-              <button className="b2 mobile-button">{movie.runTime} min</button>
-              <button className="b3 ">
-                {movie.gender ? movie.gender.join(", ") : ""}
-              </button>
-            </div>
-            <div className="trailer">
-              <h2>Trailer</h2>
-              <iframe
-                width="560"
-                height="315"
-                src={`https://www.youtube.com/embed/${videoMovie}`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-              <h2>Sinopsis</h2>
-              <p>{movie.overview}</p>
+      <div>
+        <div className="container__Movie">
+          <div className="container__detail">
+            <figure>
+              <img src={movie.image} alt="" />
+            </figure>
+            <div className="description">
+              <h2>{movie.name}</h2>
+              <span>
+                {movie.originalTitle} ({getYearFromDate(movie.releaseDate)})
+              </span>
+              <div className="buttonsContainer">
+                <button className="b1 mobile-button1">
+                  {movie.adult ? "Adultos" : "A"}
+                </button>
+                <button className="b2 mobile-button">
+                  {movie.runTime} min
+                </button>
+                <button className="b3 ">
+                  {movie.gender ? movie.gender.join(", ") : ""}
+                </button>
+              </div>
+              <div className="trailer">
+                <h2>Trailer</h2>
+                <iframe
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${videoMovie}`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                <h2>Sinopsis</h2>
+                <p>{movie.overview}</p>
+              </div>
             </div>
           </div>
+          <div className="container__showTime">
+            <h2>Horarios disponibles - {newFormatted}</h2>
+            <span className="span1">Elije el horario que prefieras</span>
+            <span className="span2">{selectedCinemaName}</span>
+            {date.horaFuncion && date.horaFuncion.length > 0 ? (
+              <div>
+                {date.horaFuncion.map((hora, index) => (
+                  <button
+                    className={hora === selectedButton ? "colorcito" : ""}
+                    key={index}
+                    onClick={() => handleButtonClick(hora)}
+                  >
+                    {hora}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <p>No hay horarios disponibles.</p>
+            )}
+            <button
+              className={selectedButton ? "onselec" : ""}
+              onClick={() => navigate(`/home/movie/${selectedMovieId}/boletos`)}
+              disabled={!selectedButton}
+            >
+              Seleccionar boletos
+            </button>
+          </div>
         </div>
-        <div className="container__showTime">
-          <h2>Horarios disponibles - {newFormatted}</h2>
-          <span className="span1">Elije el horario que prefieras</span>
-          <span className="span2">{selectedCinemaName}</span>
-          {date.horaFuncion && date.horaFuncion.length > 0 ? (
-            <div>
-              {date.horaFuncion.map((hora, index) => (
-                <button
-                  className={hora === selectedButton ? "colorcito" : ""}
-                  key={index}
-                  onClick={() => handleButtonClick(hora)}
-                >
-                  {hora}
-                </button>
-              ))}
-            </div>
-          ) : (
-            <p>No hay horarios disponibles.</p>
-          )}
-          <button
-            className={selectedButton ? "onselec" : ""}
-            onClick={() => navigate(`/home/movie/${selectedMovieId}/boletos`)}
-            disabled={!selectedButton}
-          >
-            Seleccionar boletos
-          </button>
-        </div>
-      </div>
       </div>
     </>
   );

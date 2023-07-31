@@ -7,6 +7,7 @@ import Cards from "../cards/cards";
 import Movie from "../movie/Movie";
 import AdminPanel from "../adminPanel/AdminPanel";
 import Boletos from "../boletos/boletos";
+import SeatSelection from "../seatSelection/SeatSelection";
 
 export const AppContext = createContext({});
 
@@ -15,15 +16,18 @@ const Router = () => {
   const [show, setShow] = useState(false);
   const [category, setCategory] = useState("");
   const [cards, setCards] = useState([]);
+  const [movie, setMovie] = useState([]);
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [cinemas, setCinemas] = useState([]);
   const [selectedCinema, setSelectedCinema] = useState("");
   const [selectedCinemaName, setSelectedCinemaName] = useState(null);
   const [seletDay, setseletDay] = useState("");
+  const [newFormatted, setNewFormatted] = useState(""); //Fecha selecionada
   const [date, setdate] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedId, setSelectedId] = useState({});
   const [selectedButton, setSelectedButton] = useState(null);
+  const [totalAmount, setTotalAmount] = useState(null); //Total valor compra
   return (
     <AppContext.Provider
       value={{
@@ -53,6 +57,12 @@ const Router = () => {
         setSelectedCinemaName,
         selectedMovieId,
         setSelectedMovieId,
+        movie,
+        setMovie,
+        newFormatted,
+        setNewFormatted,
+        totalAmount,
+        setTotalAmount,
       }}
     >
       <BrowserRouter>
@@ -63,6 +73,10 @@ const Router = () => {
                 <Route index element={<Cards />} />
                 <Route path="movie/:movieId" element={<Movie />} />
                 <Route path="movie/:movieId/boletos" element={<Boletos />} />
+                <Route
+                  path="movie/:movieId/boletos/seating"
+                  element={<SeatSelection />}
+                />
               </Route>
             </Route>
             <Route element={<PrivateRouter />}>

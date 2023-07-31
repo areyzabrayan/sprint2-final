@@ -33,9 +33,12 @@
   &__titles p {
     font-size: large;
     font-weight: bolder;
+    display: flex;
+    gap: 10px;
+
     span {
       font-size: 18px;
-      line-height: 28px;
+      //line-height: 28px;
       color: #303236ff;
       font-weight: 100;
     }

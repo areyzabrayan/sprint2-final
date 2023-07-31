@@ -8,6 +8,9 @@ import Movie from "../movie/Movie";
 import AdminPanel from "../adminPanel/AdminPanel";
 import Boletos from "../boletos/boletos";
 import SeatSelection from "../seatSelection/SeatSelection";
+import BuyTikecks from "../buyTikecks/buyTikecks";
+import FinalPurchase from "../finalPurchase/finalPurchase";
+import QrTikecks from "../QR-tikecks/QrTikecks";
 
 export const AppContext = createContext({});
 
@@ -28,6 +31,7 @@ const Router = () => {
   const [selectedId, setSelectedId] = useState({});
   const [selectedButton, setSelectedButton] = useState(null);
   const [totalAmount, setTotalAmount] = useState(null); //Total valor compra
+  const [seatsSelection, setSeatsSelection] = useState([]); //Asientos seleccionados
   return (
     <AppContext.Provider
       value={{
@@ -63,6 +67,8 @@ const Router = () => {
         setNewFormatted,
         totalAmount,
         setTotalAmount,
+        seatsSelection,
+        setSeatsSelection,
       }}
     >
       <BrowserRouter>
@@ -76,6 +82,18 @@ const Router = () => {
                 <Route
                   path="movie/:movieId/boletos/seating"
                   element={<SeatSelection />}
+                />{" "}
+                <Route
+                  path="movie/:movieId/boletos/seating/form"
+                  element={<BuyTikecks />}
+                />
+                <Route
+                  path="movie/:movieId/boletos/seating/form/purchase"
+                  element={<FinalPurchase />}
+                />
+                <Route
+                  path="movie/:movieId/boletos/seating/form/purchase/QRTickets"
+                  element={<QrTikecks />}
                 />
               </Route>
             </Route>

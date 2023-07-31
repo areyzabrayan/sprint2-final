@@ -3,9 +3,14 @@ import "./resumenTiket.scss";
 import imagen from "../../assets/Rapidos.jpg";
 import { useContext } from "react";
 import { AppContext } from "../router/router";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ResumeTiket = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
+  const segments = pathname.split("/");
+  const path = segments[segments.length - 1];
   const {
     movie,
     selectedCinemaName,
@@ -13,13 +18,31 @@ const ResumeTiket = () => {
     selectedButton,
     selectedMovieId,
     totalAmount,
+    seatsSelection,
   } = useContext(AppContext);
 
   useEffect(() => {
     console.log(totalAmount);
-  }, [totalAmount]);
+    console.log(seatsSelection);
+    console.log(path);
+  }, [totalAmount, seatsSelection, path]);
 
-  const navigate = useNavigate();
+  const handleClick = () => {
+    if (path === "boletos") {
+      navigate(`/home/movie/${selectedMovieId}/boletos/seating`);
+    }
+    if (path === "seating") {
+      navigate(`/home/movie/${selectedMovieId}/boletos/seating/form`);
+    }
+    if (path === "form") {
+      navigate(`/home/movie/${selectedMovieId}/boletos/seating/form/purchase`);
+    }
+    if (path === "purchase") {
+      navigate(
+        `/home/movie/${selectedMovieId}/boletos/seating/form/purchase/QRTickets`
+      );
+    }
+  };
 
   return (
     <article className="resumen">
@@ -41,25 +64,43 @@ const ResumeTiket = () => {
           <p>
             Función: <span>{selectedButton}</span>
           </p>
+          <p>
+            Número de sala: <span>1</span>
+          </p>
+          {seatsSelection?.length > 0 ? (
+            <p>
+              Asientos:
+              {seatsSelection.map((seats, index) => (
+                <span key={index}>{seats},</span>
+              ))}
+            </p>
+          ) : (
+            ""
+          )}
         </div>
       </div>
-      <p>
-        Se realizará un cargo por servicio por cada boleto dentro de la orden.
-      </p>
-      <div className="resumen__value">
-        <p>Total (IVA incluido)</p>
-        <div className="totalPrice">
-          <label>${totalAmount}.000</label>
+      {path !== "purchase" && (
+        <p>
+          Se realizará un cargo por servicio por cada boleto dentro de la orden.
+        </p>
+      )}
+      {path !== "purchase" ? (
+        <div className="resumen__value">
+          <p>Total (IVA incluido)</p>
+          <div className="totalPrice">
+            <label>${totalAmount}.000</label>
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
+
       <button
-        onClick={() =>
-          navigate(`/home/movie/${selectedMovieId}/boletos/seating`)
-        }
+        onClick={handleClick}
         className="resumen__button"
         disabled={!totalAmount}
       >
-        Continuar
+        {path === "purchase" ? "Descargar ahora" : "Continuar"}
       </button>
     </article>
   );

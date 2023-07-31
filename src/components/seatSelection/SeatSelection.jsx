@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 //import React from "react";
 import ResumeTiket from "../resumenTiket/resumeTiket";
 import SeatPicker from "react-seat-picker";
 import "./SeatSelection.scss";
 import sillaIcon from "../../assets/chair.svg";
+import { AppContext } from "../router/router";
 
 const SeatSelection = () => {
+  const { seatsSelection, setSeatsSelection } = useContext(AppContext);
   const [selected, setSelected] = useState([]);
   const [time, setTime] = useState(0);
   let navigate = useNavigate();
@@ -166,14 +168,20 @@ const SeatSelection = () => {
   const price = 30;
   const totalprice = price * selected.length;
   const addSeatCallback = ({ row, number, id }, addCb) => {
+    setSeatsSelection((prevItems) => [...prevItems, number]);
     setSelected((prevItems) => [...prevItems, number]);
     const newTooltip = `tooltip for id-${id} added by callback`;
     addCb(row, number, id, newTooltip);
   };
 
   const removeSeatCallback = ({ row, number, id }, removeCb) => {
+    setSeatsSelection((list) => list.filter((item) => item !== number));
     setSelected((list) => list.filter((item) => item !== number));
     removeCb(row, number);
+  };
+
+  const selecSeats = () => {
+    setSeatsSelection(selected);
   };
 
   return (

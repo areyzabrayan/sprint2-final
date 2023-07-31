@@ -6,6 +6,8 @@ import amex from "../../assets/amex.svg";
 import down from "../../assets/down.svg";
 import info from "../../assets/info.svg";
 import imagen from "../../assets/Rapidos.jpg";
+import ResumeTiket from "../resumenTiket/resumeTiket";
+
 const BuyTikecks = () => {
   const [disabled, setDisabled] = useState(true);
 
@@ -32,7 +34,11 @@ const BuyTikecks = () => {
         <div className="emailN">
           <label>Numero de la tarjeta</label>
           <div className="emailN__tarjet">
-            <input className="emailN__number" type="text" onChange={handleChange}/>
+            <input
+              className="emailN__number"
+              type="text"
+              onChange={handleChange}
+            />
             <figure className="">
               <img className="emailN__img" src={visa} alt="logo" />
               <img className="emailN__img" src={master} alt="logo" />
@@ -44,7 +50,11 @@ const BuyTikecks = () => {
           <div>
             <label>Fecha de caducidad</label>
             <div className="infoT__tarjet">
-              <input className="infoT__number" type="text" onChange={handleChange}/>
+              <input
+                className="infoT__number"
+                type="text"
+                onChange={handleChange}
+              />
               <figure className="">
                 <img className="infoT__img" src={down} alt="logo" />
               </figure>
@@ -53,7 +63,11 @@ const BuyTikecks = () => {
           <div>
             <label>CVV</label>
             <div className="infoT__tarjet">
-              <input className="infoT__number" type="text" onChange={handleChange}/>
+              <input
+                className="infoT__number"
+                type="text"
+                onChange={handleChange}
+              />
               <figure className="">
                 <img className="infoT__img" src={info} alt="logo" />
               </figure>
@@ -61,7 +75,7 @@ const BuyTikecks = () => {
           </div>
         </div>
       </article>
-      <article className="resumen">
+      {/* <article className="resumen">
         <h2>Resumen de la compra</h2>
         <div className="resumen__datos">
           <figure className="resumen__img">
@@ -90,7 +104,8 @@ const BuyTikecks = () => {
         <button className="resumen__button" disabled={disabled}>
           Continuar
         </button>
-      </article>
+      </article> */}
+      <ResumeTiket />
     </div>
   );
 };

@@ -5,10 +5,7 @@
   flex-wrap: wrap;
   & button {
     cursor: pointer;
-    // gap: 14px;
     padding: 5px 10px;
-    // width: 95px;
-    // height: 37px;
     border-radius: 19px;
     font-family: Inter;
     font-size: 14px;
@@ -16,9 +13,45 @@
     background: #1c508dff;
     color: #ffffffff;
   }
+  &__title{
+    color: #fff;
+    display: none;
+  }
 }
 @media (max-width:408px){
-  .buttons{
-    display: none;
+  .buttons {
+     position: absolute;
+     z-index: 2;
+     top: 0;
+     left: 0;
+     padding-top: 130px;
+     padding-left: 0px;
+     background: black;
+     display: flex;
+     flex-direction: column;
+     transform: translateX(-100%);
+     width: 54%;
+     height: 655px;  
+     transition: 0.3s ease all;
+     & button {
+      border-radius: 0;
+      text-align: right;
+      font-family: Inter;
+      font-size: 14px;
+      line-height: 22px;
+      background: rgb(7, 7, 7);
+      color: #ffffffff;
+    }
+    & button:hover{
+      border-bottom: 1px solid #fff;
+      background-color: black;
+    }
+    &__title{
+      display: block;
+      text-align: center;
+    }
+  }
+  .buttons.open{
+    transform: translateX(85%);
   }
 }

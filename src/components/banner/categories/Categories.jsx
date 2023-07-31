@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./categories.scss";
 import { AppContext } from "../../router/router";
 
-const Categories = () => {
+const Categories = ({isOpen}) => {
   const { setCategory } = useContext(AppContext);
 
   const handleClick = (itemCategory) => {
@@ -10,7 +10,8 @@ const Categories = () => {
   };
 
   return (
-    <div className="buttons">
+    <div className={`buttons ${isOpen && "open"}`}>
+      <h1 className="buttons__title">Categorias</h1>
       <button onClick={() => handleClick("Acción")}>Accion</button>
       <button onClick={() => handleClick("Terror")}>Terror</button>
       <button

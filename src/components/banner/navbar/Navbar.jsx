@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./navbar.scss";
 import Categories from "../categories/Categories";
 import logo from "../../../assets/logo.jpg";
@@ -24,12 +24,13 @@ const Navbar = () => {
   const pathname = location.pathname;
   const shouldShowCategories = pathname === "/private";
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setSelectedDate(null);
     setseletDay("");
     setCategory("");
-    navigate("/home");
+    navigate("/home"); 
   };
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const Navbar = () => {
         </figure>
         <h2>CINE COLOMBIA</h2>
       </div>
-      {pathname === "/home" || pathname === "/private" ? <Categories /> : null}
+      {pathname === "/home" || pathname === "/private" ? <Categories isOpen={isOpen} setIsOpen={setIsOpen}/> : null}
 
       <div className="diary">
         {!shouldShowCategories && (
@@ -57,7 +58,7 @@ const Navbar = () => {
         <figure className="person" onClick={() => setShow(true)}>
           <img src={person} alt="" />
         </figure>
-        <figure className="hamburger" onClick={() => setShow(true)}>
+        <figure className="hamburger" onClick={ () => setIsOpen(!isOpen)}>
           <img src={hamburguer} alt="" />
         </figure>
 

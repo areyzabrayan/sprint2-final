@@ -134,12 +134,15 @@
 }
 @media (max-width:408px){
   .navbar{
-    padding-bottom: 50px;
+    padding-bottom: 180px;
+    
   }
   .person img{
     display: none;
   }
   .hamburger img {
+    position: relative;
+    z-index: 2;
     display: block;
     background-color: #fff;
     height: 26px;

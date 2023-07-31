@@ -4,6 +4,7 @@ import imagen from "../../assets/Rapidos.jpg";
 import { useContext } from "react";
 import { AppContext } from "../router/router";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const ResumeTiket = () => {
   const navigate = useNavigate();
@@ -26,6 +27,19 @@ const ResumeTiket = () => {
     console.log(seatsSelection);
     console.log(path);
   }, [totalAmount, seatsSelection, path]);
+
+  const [isButtonEnabled, setIsButtonEnabled] = useState(true); // habilita y desabilita el boton
+
+  useEffect(() => {
+    if (
+      (path === "boletos" && !totalAmount) ||
+      (path === "seating" && seatsSelection.length === 0)
+    ) {
+      setIsButtonEnabled(false);
+    } else {
+      setIsButtonEnabled(true);
+    }
+  }, [path, totalAmount, seatsSelection]);
 
   const handleClick = () => {
     if (path === "boletos") {
@@ -98,7 +112,7 @@ const ResumeTiket = () => {
       <button
         onClick={handleClick}
         className="resumen__button"
-        disabled={!totalAmount}
+        disabled={!isButtonEnabled}
       >
         {path === "purchase" ? "Descargar ahora" : "Continuar"}
       </button>

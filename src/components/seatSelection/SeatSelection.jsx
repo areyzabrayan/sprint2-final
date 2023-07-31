@@ -205,7 +205,7 @@ const SeatSelection = () => {
           maxReservableSeats={10}
           visible
         />
-        {selected.length !== 0 ? (
+        {/* {selected.length !== 0 ? (
           <>
             <div className="seat-price">
               <div className="seat-select">
@@ -225,7 +225,7 @@ const SeatSelection = () => {
               continue
             </button>
           </>
-        ) : null}
+        ) : null} */}
       </div>
 
       <ResumeTiket className="resume__seats" />

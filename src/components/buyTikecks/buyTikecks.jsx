@@ -6,8 +6,10 @@ import amex from "../../assets/amex.svg";
 import down from "../../assets/down.svg";
 import info from "../../assets/info.svg";
 import imagen from "../../assets/Rapidos.jpg";
+import { useForm } from "react-hook-form";
 const BuyTikecks = () => {
   const [disabled, setDisabled] = useState(true);
+  const {register, handleSubmit, formState:{errors}} = useForm()
 
   const handleChange = (e) => {
     if (e.target.value.length >= 1) {
@@ -16,6 +18,9 @@ const BuyTikecks = () => {
       setDisabled(true);
     }
   };
+  const onSubmit = (data) =>{
+console.log(data);
+  }
   return (
     <div className="buyT">
       <article className="info">
@@ -23,16 +28,16 @@ const BuyTikecks = () => {
         <p>Completa los datos del formulario para realizar el pago.</p>
         <div className="email">
           <label>Correo electronico</label>
-          <input type="text" onChange={handleChange} />
+          <input type="text" onChange={handleChange} {...register("subject", {required: {message:"Este campo es obligatorio",value:true}, minLength:{message:"Se requiere minimo 5 caracteres", value: 5}})} />
         </div>
         <div className="email">
           <label>Nombre de la tarjeta</label>
-          <input type="text" onChange={handleChange} />
+          <input type="text" onChange={handleChange} {...register("message")}/>
         </div>
         <div className="emailN">
           <label>Numero de la tarjeta</label>
           <div className="emailN__tarjet">
-            <input className="emailN__number" type="text" onChange={handleChange}/>
+            <input className="emailN__number" type="text" onChange={handleChange} {...register("email")}/>
             <figure className="">
               <img className="emailN__img" src={visa} alt="logo" />
               <img className="emailN__img" src={master} alt="logo" />

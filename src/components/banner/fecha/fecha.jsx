@@ -6,8 +6,14 @@ import { AppContext } from "../../router/router";
 import es from "date-fns/locale/es";
 import { getFunctions } from "../../../services/getFunctions";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 const Fecha = () => {
+  const location = useLocation();
+  const pathname = location.pathname;
+  const segments = pathname.split("/");
+  const path = segments[segments.length - 1];
+  const [isButtonEnabled, setIsButtonEnabled] = useState(true); // estado apra desabilitar fecha y cines
   const {
     setseletDay,
     selectedCinema,
@@ -30,6 +36,14 @@ const Fecha = () => {
       originalDate.setDate(originalDate.getDate() + 1);
       return originalDate.toISOString().slice(0, 10);
     }) || [];
+
+  useEffect(() => {
+    if (path !== "home") {
+      setIsButtonEnabled(false);
+    } else {
+      setIsButtonEnabled(true);
+    }
+  }, [path]);
 
   useEffect(() => {
     getFunctions(selectedCinema).then((response) => {
@@ -80,6 +94,7 @@ const Fecha = () => {
         dateFormat="d 'de' MMMM"
         locale={es}
         placeholderText="Selecciona una fecha"
+        disabled={!isButtonEnabled}
       />
     </div>
   );

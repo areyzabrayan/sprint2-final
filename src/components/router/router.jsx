@@ -11,6 +11,8 @@ import SeatSelection from "../seatSelection/SeatSelection";
 import BuyTikecks from "../buyTikecks/buyTikecks";
 import FinalPurchase from "../finalPurchase/finalPurchase";
 import QrTikecks from "../QR-tikecks/QrTikecks";
+import Navbar from "../banner/navbar/Navbar";
+import AdminEdit from "../adminEdit/adminEdit";
 
 export const AppContext = createContext({});
 
@@ -20,6 +22,7 @@ const Router = () => {
   const [category, setCategory] = useState("");
   const [cards, setCards] = useState([]);
   const [movie, setMovie] = useState([]);
+  const [videoMovie, setVideoMovie] = useState(""); // variable de estado del video
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [cinemas, setCinemas] = useState([]);
   const [selectedCinema, setSelectedCinema] = useState("");
@@ -29,9 +32,11 @@ const Router = () => {
   const [date, setdate] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedId, setSelectedId] = useState({});
+  const [totaltickets, setTotaltickets] = useState(""); // Cantidad de tiquetes que el cliente dese acomprar.
   const [selectedButton, setSelectedButton] = useState(null);
   const [totalAmount, setTotalAmount] = useState(null); //Total valor compra
   const [seatsSelection, setSeatsSelection] = useState([]); //Asientos seleccionados
+  const [selectedCinemaRooms, setSelectedCinemaRooms] = useState([]); // sala por cine seleccionado
   return (
     <AppContext.Provider
       value={{
@@ -69,6 +74,12 @@ const Router = () => {
         setTotalAmount,
         seatsSelection,
         setSeatsSelection,
+        selectedCinemaRooms,
+        setSelectedCinemaRooms,
+        totaltickets,
+        setTotaltickets,
+        videoMovie,
+        setVideoMovie,
       }}
     >
       <BrowserRouter>
@@ -98,7 +109,10 @@ const Router = () => {
               </Route>
             </Route>
             <Route element={<PrivateRouter />}>
-              <Route path="private" element={<AdminPanel />} />
+              <Route path="private" element={<AdminPanel />}>
+                <Route index element={<Cards />} />
+                <Route path="adminEdit" element={<AdminEdit />} />
+              </Route>
             </Route>
           </Route>
         </Routes>

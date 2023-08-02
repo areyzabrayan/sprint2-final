@@ -11,7 +11,6 @@ import esLocale from "date-fns/locale/es";
 import { useNavigate } from "react-router-dom";
 
 const Movie = () => {
-  const [videoMovie, setVideoMovie] = useState("");
   //const [movie, setMovie] = useState([]);
 
   const location = useLocation();
@@ -29,6 +28,8 @@ const Movie = () => {
     newFormatted,
     setNewFormatted,
     setTotalAmount,
+    videoMovie,
+    setVideoMovie,
   } = useContext(AppContext);
   const pathname = location.pathname;
   const segments = pathname.split("/");
@@ -36,7 +37,6 @@ const Movie = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("total mundo", selectedMovieId);
     setSelectedButton(null);
   }, [selectedCinema]);
 

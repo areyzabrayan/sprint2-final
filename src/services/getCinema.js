@@ -7,6 +7,7 @@ export const getCinema = async () => {
     const cinemasDetail = data.map((cinema) => ({
       id: cinema.id,
       name: cinema.name,
+      room: cinema.room,
     }));
     return cinemasDetail;
   } catch (error) {

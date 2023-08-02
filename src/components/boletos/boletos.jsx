@@ -4,9 +4,11 @@ import ResumeTiket from "../resumenTiket/resumeTiket";
 import { useContext } from "react";
 import { AppContext } from "../router/router";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 const Boletos = () => {
-  const { totalAmount, setTotalAmount } = useContext(AppContext);
+  const { totalAmount, setTotalAmount, totaltickets, setTotaltickets } =
+    useContext(AppContext);
   const adultPrice = 15;
   const childrenPrice = 10;
   const seniorPrice = 12;
@@ -39,14 +41,28 @@ const Boletos = () => {
     return total;
   };
 
+  const nuemeroTiquetes = () => {
+    const numero = adultAmount + childrenAmount + seniorAmount;
+    return numero;
+  };
+
   useEffect(() => {
     const sumaTotal = calculateTotal();
     setTotalAmount(sumaTotal);
-    console.log(totalAmount);
+    setTotaltickets(nuemeroTiquetes);
+    if (totaltickets === 9) {
+      Swal.fire({
+        icon: "warning",
+        title: "NO TE PASES DE LISTO",
+        text: "RECUERDA QUE SON MAXIMO 10 BOLETOS POR COMPRA!",
+      });
+    }
   }, [adultAmount, childrenAmount, seniorAmount]);
 
-  const handlePlus = (setterFunction) => {
-    setterFunction((prevValue) => prevValue + 1);
+  const handlePlus = (setterFunction, currentValue) => {
+    if (currentValue < 10) {
+      setterFunction((prevValue) => prevValue + 1);
+    }
   };
 
   const handleMinus = (setterFunction, currentValue) => {
@@ -86,7 +102,7 @@ const Boletos = () => {
               /> */}
               <button
                 className="buttonsT__plus"
-                onClick={() => handlePlus(setAdultAmount)}
+                onClick={() => handlePlus(setAdultAmount, totaltickets)}
               >
                 +
               </button>
@@ -119,7 +135,7 @@ const Boletos = () => {
               /> */}
               <button
                 className="buttonsT__plus"
-                onClick={() => handlePlus(setChildrenAmount)}
+                onClick={() => handlePlus(setChildrenAmount, totaltickets)}
               >
                 +
               </button>
@@ -139,7 +155,7 @@ const Boletos = () => {
             <div className="buttonsT">
               <button
                 className="buttonsT__minus"
-                onClick={() => handleMinus(setSeniorAmount, seniorAmount)}
+                onClick={() => handleMinus(setSeniorAmount, totaltickets)}
               >
                 -
               </button>
@@ -152,7 +168,7 @@ const Boletos = () => {
               /> */}
               <button
                 className="buttonsT__plus"
-                onClick={() => handlePlus(setSeniorAmount)}
+                onClick={() => handlePlus(setSeniorAmount, totaltickets)}
               >
                 +
               </button>

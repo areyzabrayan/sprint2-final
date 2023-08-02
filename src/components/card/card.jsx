@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "../router/router";
 import "./card.scss";
 import Swal from "sweetalert2";
@@ -8,17 +8,25 @@ import "sweetalert2/src/sweetalert2.scss";
 const Card = () => {
   const { cards, seletDay, setSelectedMovieId } = useContext(AppContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
+  const segments = pathname.split("/");
+  const path = segments[segments.length - 1];
 
   const handleClick = (id) => {
     setSelectedMovieId(id);
-    if (seletDay) {
+    if (path == "home" && seletDay) {
       navigate(`/home/movie/${id}`);
-    } else {
+    }
+    if (path == "home" && !seletDay) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Dinos cuando quieres ver la pelicula",
       });
+    }
+    if (path == "private") {
+      navigate(`/private/adminEdit`);
     }
   };
 

@@ -4,14 +4,21 @@ import "./cine.scss";
 import { useContext, useEffect } from "react";
 import { AppContext } from "../../router/router";
 import { getCinema } from "../../../services/getCinema";
+import { useLocation } from "react-router-dom";
 
 const Cine = () => {
+  const location = useLocation();
+  const pathname = location.pathname;
+  const segments = pathname.split("/");
+  const path = segments[segments.length - 1];
+  const [isButtonEnabled, setIsButtonEnabled] = useState(true); // estado apra desabilitar fecha y cines
   const {
     cinemas,
     setCinemas,
     selectedCinema,
     setSelectedCinema,
     setSelectedCinemaName,
+    setSelectedCinemaRooms,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -30,10 +37,20 @@ const Cine = () => {
     // Si se encuentra el cine, actualizar el estado con su nombre
     if (selectedCinema) {
       setSelectedCinemaName(selectedCinema.name);
+      setSelectedCinemaRooms(selectedCinema.room);
     } else {
       setSelectedCinemaName("");
+      setSelectedCinemaName([]);
     }
   };
+
+  useEffect(() => {
+    if (path !== "home") {
+      setIsButtonEnabled(false);
+    } else {
+      setIsButtonEnabled(true);
+    }
+  }, [path]);
 
   return (
     <div>
@@ -43,6 +60,7 @@ const Cine = () => {
         className="cinemas"
         value={selectedCinema}
         onChange={handleChange}
+        disabled={!isButtonEnabled}
       >
         <option>Seleccione uno</option>
         {cinemas.map((cinema, index) => (

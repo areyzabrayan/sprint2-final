@@ -20,6 +20,7 @@ const Navbar = () => {
     category,
     setCards,
     setSeatsSelection,
+    isLogin,
   } = useContext(AppContext);
   const location = useLocation();
   const pathname = location.pathname;
@@ -47,20 +48,22 @@ const Navbar = () => {
         </figure>
         <h2>CINE COLOMBIA</h2>
       </div>
-      {pathname === "/home" || pathname === "/private" ? <Categories isOpen={isOpen} setIsOpen={setIsOpen}/> : null}
+      {pathname === "/home" || pathname === "/private" ? (
+        <Categories isOpen={isOpen} setIsOpen={setIsOpen} />
+      ) : null}
 
       <div className="diary">
         {!shouldShowCategories && (
           <div className="api__local">
-            <Cine />
-            <Fecha />
+            {isLogin ? null : <Cine />}
+            {isLogin ? null : <Fecha />}
           </div>
         )}
 
         <figure className="person" onClick={() => setShow(true)}>
           <img src={person} alt="" />
         </figure>
-        <figure className="hamburger" onClick={ () => setIsOpen(!isOpen)}>
+        <figure className="hamburger" onClick={() => setIsOpen(!isOpen)}>
           <img src={hamburguer} alt="" />
         </figure>
       </div>

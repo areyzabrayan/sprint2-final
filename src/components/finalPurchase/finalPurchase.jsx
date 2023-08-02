@@ -11,9 +11,7 @@ const FinalPurchase = () => {
     <div className="finalResumen">
       <figure className="finalResumen__text">
         <img src={check} alt="logo" />
-        <figcaption>
-          <p>¡Transacción exitosa!</p>
-        </figcaption>
+        <p>¡Transacción exitosa!</p>
       </figure>
       <div className="finalResumen__infoBuy">
         <h1>Informacion de compra</h1>

@@ -8,17 +8,14 @@ import "./adminPanel.scss";
 import AdminEdit from "../adminEdit/adminEdit";
 import Boletos from "../boletos/boletos";
 import Navbar from "../banner/navbar/Navbar";
+import { Outlet } from "react-router-dom";
 
 const AdminPanel = () => {
   const { setIsLogin } = useContext(AppContext);
   return (
     <>
-      <Navbar/>
-    
-     
-      {/* <Cards/> */}
-      <AdminEdit/>
-      
+      <Navbar />
+      <Outlet />
     </>
   );
 };

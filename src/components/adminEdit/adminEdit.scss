@@ -1,26 +1,56 @@
-.container__media {
+.container__primary {
+  width: 100%;
+}
+
+.firstConainer {
+  position: relative;
+  width: 100%;
   display: flex;
-  padding-left: 28px;
-  gap: 10px;
-  background-color: #171a1fc0;
+  //padding: 20px;
+  background-color: #000000;
+  justify-content: flex-end;
+  padding-top: 0;
+
+  &__imgMovie {
+    position: absolute;
+    bottom: -30px;
+    left: 30px;
+    width: 30%;
+    height: auto;
+
+    img {
+      padding: 50px 20px 0 20px;
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__imgMovie2 {
+    width: 69%;
+    height: 550px;
+    padding: 20px 40px 0 40px;
+  }
 }
-.container__media img {
-  width: 394px;
-  height: 590px;
-}
-.trailerE img {
-  width: 912px;
-  height: 596px;
+
+// .container__media img {
+//   width: 394px;
+//   height: 590px;
+// }
+// .trailerE img {
+//   width: 912px;
+//   height: 596px;
+// }
+
+.editMain {
+  display: flex;
+  padding-bottom: 40px;
+  margin-top: 50px;
 }
 .descriptionE {
   padding-left: 4%;
   width: 398px;
   font-size: large;
 }
-.editMain {
-  display: flex;
-  padding-bottom: 40px;
-}
+
 .dateE {
   display: flex;
   flex-direction: column;

@@ -9,6 +9,7 @@ import { useState } from "react";
 const ResumeTiket = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [selectedSeatsCount, setSelectedSeatsCount] = useState(0); // Cantidad de asiento selecionados
   const pathname = location.pathname;
   const segments = pathname.split("/");
   const path = segments[segments.length - 1];
@@ -20,26 +21,25 @@ const ResumeTiket = () => {
     selectedMovieId,
     totalAmount,
     seatsSelection,
+    totaltickets,
   } = useContext(AppContext);
 
   useEffect(() => {
-    console.log(totalAmount);
-    console.log(seatsSelection);
-    console.log(path);
-  }, [totalAmount, seatsSelection, path]);
+    setSelectedSeatsCount(seatsSelection.length);
+  }, [totalAmount, seatsSelection, path, totaltickets]);
 
   const [isButtonEnabled, setIsButtonEnabled] = useState(true); // habilita y desabilita el boton.
 
   useEffect(() => {
     if (
       (path === "boletos" && !totalAmount) ||
-      (path === "seating" && seatsSelection.length === 0)
+      (path === "seating" && selectedSeatsCount !== totaltickets)
     ) {
       setIsButtonEnabled(false);
     } else {
       setIsButtonEnabled(true);
     }
-  }, [path, totalAmount, seatsSelection]);
+  }, [path, totalAmount, seatsSelection, totaltickets, selectedSeatsCount]);
 
   const handleClick = () => {
     if (path === "boletos") {

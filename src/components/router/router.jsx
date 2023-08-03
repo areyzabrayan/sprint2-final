@@ -7,6 +7,11 @@ import Cards from "../cards/cards";
 import Movie from "../movie/Movie";
 import AdminPanel from "../adminPanel/AdminPanel";
 import Boletos from "../boletos/boletos";
+import SeatSelection from "../seatSelection/SeatSelection";
+import BuyTikecks from "../buyTikecks/buyTikecks";
+import FinalPurchase from "../finalPurchase/finalPurchase";
+import QrTikecks from "../QR-tikecks/QrTikecks";
+import { useForm } from "react-hook-form";
 
 export const AppContext = createContext({});
 
@@ -15,18 +20,42 @@ const Router = () => {
   const [show, setShow] = useState(false);
   const [category, setCategory] = useState("");
   const [cards, setCards] = useState([]);
+  const [movie, setMovie] = useState([]);
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [cinemas, setCinemas] = useState([]);
   const [selectedCinema, setSelectedCinema] = useState("");
   const [selectedCinemaName, setSelectedCinemaName] = useState(null);
   const [seletDay, setseletDay] = useState("");
+  const [newFormatted, setNewFormatted] = useState(""); //Fecha selecionada
   const [date, setdate] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedId, setSelectedId] = useState({});
-  const [selectedButton, setSelectedButton] = useState(null);
+  const [selectedButton, setSelectedButton] = useState(null);//Hora seleccionada
+  const [totalAmount, setTotalAmount] = useState(null); //Total valor compra
+  const [seatsSelection, setSeatsSelection] = useState([]); //Asientos seleccionados
+  const [formData, setFormData] = useState(null);
+  const [disabled, setDisabled] = useState(false);
+  //estado del fomulario, captura cada elemento del formulario.
+  
+  const [formState, setFormState] = useState({
+    email: "",
+    cardName: "",
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
+
+  });
+   // formulario desactivado
+
   return (
     <AppContext.Provider
       value={{
+        formState,
+        setFormState,
+        disabled,
+        setDisabled,
+        formData,
+        setFormData,
         isLogin,
         setIsLogin,
         show,
@@ -53,6 +82,14 @@ const Router = () => {
         setSelectedCinemaName,
         selectedMovieId,
         setSelectedMovieId,
+        movie,
+        setMovie,
+        newFormatted,
+        setNewFormatted,
+        totalAmount,
+        setTotalAmount,
+        seatsSelection,
+        setSeatsSelection,
       }}
     >
       <BrowserRouter>
@@ -63,6 +100,22 @@ const Router = () => {
                 <Route index element={<Cards />} />
                 <Route path="movie/:movieId" element={<Movie />} />
                 <Route path="movie/:movieId/boletos" element={<Boletos />} />
+                <Route
+                  path="movie/:movieId/boletos/seating"
+                  element={<SeatSelection />}
+                />{" "}
+                <Route
+                  path="movie/:movieId/boletos/seating/form"
+                  element={<BuyTikecks />}
+                />
+                <Route
+                  path="movie/:movieId/boletos/seating/form/purchase"
+                  element={<FinalPurchase />}
+                />
+                <Route
+                  path="movie/:movieId/boletos/seating/form/purchase/QRTickets"
+                  element={<QrTikecks />}
+                />
               </Route>
             </Route>
             <Route element={<PrivateRouter />}>

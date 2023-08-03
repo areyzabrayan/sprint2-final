@@ -23,13 +23,13 @@
      position: absolute;
      z-index: 2;
      top: 0;
-     left: 0;
+     left: 182px;
      padding-top: 130px;
      padding-left: 0px;
      background: black;
      display: flex;
      flex-direction: column;
-     transform: translateX(-100%);
+     transform: translateY(-100%);
      width: 54%;
      height: 655px;  
      transition: 0.3s ease all;
@@ -52,6 +52,6 @@
     }
   }
   .buttons.open{
-    transform: translateX(85%);
+    transform: translateY(0%);
   }
 }

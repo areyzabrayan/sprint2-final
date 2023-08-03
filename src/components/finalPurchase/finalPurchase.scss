@@ -7,10 +7,10 @@
     gap: 10px;
     width: 1180px;
     height: 111px;
-    background: #fbfaf4ff; 
-    border-radius: 6px; 
+    background: #fbfaf4ff;
+    border-radius: 6px;
     border-width: 1px;
-    border-color: #3b3416ff; 
+    border-color: #3b3416ff;
     border-style: solid;
     & p {
       font-size: large;
@@ -22,20 +22,20 @@
     align-items: center;
     justify-content: space-between;
     padding: 27px 99px 10px 75px;
-    & span{
-        height: 36px; 
-  padding: 0 12px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  font-family: Roboto;
-  font-size: 14px; 
-  line-height: 22px; 
-  color: #19508AFF; 
-  background: #F2F7FDFF;
-  opacity: 1; 
-  border: none; 
-  border-radius: 6px;
+    & span {
+      height: 36px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Roboto;
+      font-size: 14px;
+      line-height: 22px;
+      color: #19508aff;
+      background: #f2f7fdff;
+      opacity: 1;
+      border: none;
+      border-radius: 6px;
     }
   }
   &__target {
@@ -48,24 +48,27 @@
     display: flex;
     flex-direction: column;
     & label {
-      font-family: Roboto; 
+      font-family: Roboto;
       font-size: 16px;
       line-height: 26px;
       color: #6f7787ff;
     }
     & span {
-      font-family: Roboto; 
+      font-family: Roboto;
       font-size: 16px;
       line-height: 26px;
-      color: #171a1fff; 
+      color: #171a1fff;
     }
   }
 }
-.boxFinal{
-   padding-left: 35%;
-   padding-bottom: 50px;
+.boxFinal {
+  padding-left: 0;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
 }
-@media (max-width: 408px){
+@media (max-width: 408px) {
   .finalResumen {
     &__text {
       margin-left: 5px;
@@ -86,13 +89,12 @@
       padding-left: 15px;
       gap: 24px;
       margin-bottom: 10px;
-      
     }
     &__items {
       display: flex;
       flex-direction: column;
-      
-      & label { 
+
+      & label {
         font-size: 14px;
       }
       & span {
@@ -100,14 +102,14 @@
       }
     }
   }
-  .finalPur{
+  .finalPur {
     margin-left: 15%;
     width: 250px;
-    height: 60px ;
-    background-color: #19508AFF;
+    height: 60px;
+    background-color: #19508aff;
   }
-  .boxFinal{
+  .boxFinal {
     padding-left: 2px;
     padding-bottom: 50px;
- }
+  }
 }

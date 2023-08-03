@@ -3,7 +3,7 @@ import "./navbar.scss";
 import Categories from "../categories/Categories";
 import logo from "../../../assets/logo.jpg";
 import person from "../../../assets/person.svg";
-import hamburguer from '../../../assets/hamburguer.svg'
+import hamburguer from "../../../assets/hamburguer.svg";
 import Fecha from "../fecha/fecha";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "../../router/router";
@@ -19,6 +19,7 @@ const Navbar = () => {
     setCategory,
     category,
     setCards,
+    setSeatsSelection,
   } = useContext(AppContext);
   const location = useLocation();
   const pathname = location.pathname;
@@ -30,7 +31,8 @@ const Navbar = () => {
     setSelectedDate(null);
     setseletDay("");
     setCategory("");
-    navigate("/home"); 
+    setSeatsSelection("");
+    navigate("/home");
   };
 
   useEffect(() => {
@@ -61,7 +63,6 @@ const Navbar = () => {
         <figure className="hamburger" onClick={ () => setIsOpen(!isOpen)}>
           <img src={hamburguer} alt="" />
         </figure>
-
       </div>
     </div>
   );

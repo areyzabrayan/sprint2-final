@@ -9,43 +9,6 @@ import imagen from "../../assets/Rapidos.jpg";
 import ResumeTiket from "../resumenTiket/resumeTiket";
 
 const BuyTikecks = () => {
-  const [disabled, setDisabled] = useState(false);
-
-  //estado del fomulario, captura cada elemento del formulario.
-  const [formState, setFormState] = useState({
-    email: "",
-    cardName: "",
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
-  });
-
-  //funcion que captura el evento dentro del formulario.
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  //esta funcion nos regresa verdadero si todos los campos estan llenos.
-  const isFormValid = () => {
-    return (
-      formState.email.trim() !== "" &&
-      formState.cardName.trim() !== "" &&
-      formState.cardNumber.trim() !== "" &&
-      formState.expiryDate.trim() !== "" &&
-      formState.cvv.trim() !== ""
-    );
-  };
-
-  useEffect(() => {
-    const disabledStatus = isFormValid();
-    setDisabled(disabledStatus);
-    console.log(disabled);
-  }, [formState]);
-
   return (
     <div className="buyT">
       <article className="info">
@@ -53,32 +16,16 @@ const BuyTikecks = () => {
         <p>Completa los datos del formulario para realizar el pago.</p>
         <div className="email">
           <label>Correo electronico</label>
-          <input
-            type="text"
-            name="email"
-            value={formState.email}
-            onChange={handleChange}
-          />
+          <input type="text" name="email" />
         </div>
         <div className="email">
           <label>Nombre de la tarjeta</label>
-          <input
-            type="text"
-            value={formState.cardName}
-            name="cardName"
-            onChange={handleChange}
-          />
+          <input type="text" />
         </div>
         <div className="emailN">
           <label>Numero de la tarjeta</label>
           <div className="emailN__tarjet">
-            <input
-              className="emailN__number"
-              type="text"
-              name="cardNumber"
-              value={formState.cardNumber}
-              onChange={handleChange}
-            />
+            <input className="emailN__number" type="text" />
             <figure className="">
               <img className="emailN__img" src={visa} alt="logo" />
               <img className="emailN__img" src={master} alt="logo" />
@@ -90,13 +37,7 @@ const BuyTikecks = () => {
           <div>
             <label>Fecha de caducidad</label>
             <div className="infoT__tarjet">
-              <input
-                className="infoT__number"
-                type="text"
-                name="expiryDate"
-                value={formState.expiryDate}
-                onChange={handleChange}
-              />
+              <input className="infoT__number" type="text" />
               <figure className="">
                 <img className="infoT__img" src={down} alt="logo" />
               </figure>
@@ -105,13 +46,7 @@ const BuyTikecks = () => {
           <div>
             <label>CVV</label>
             <div className="infoT__tarjet">
-              <input
-                className="infoT__number"
-                type="text"
-                name="cvv"
-                value={formState.cvv}
-                onChange={handleChange}
-              />
+              <input className="infoT__number" type="text" />
               <figure className="">
                 <img className="infoT__img" src={info} alt="logo" />
               </figure>
@@ -119,36 +54,6 @@ const BuyTikecks = () => {
           </div>
         </div>
       </article>
-      {/* <article className="resumen">
-        <h2>Resumen de la compra</h2>
-        <div className="resumen__datos">
-          <figure className="resumen__img">
-            <img src={imagen} alt="imagen" />
-          </figure>
-          <div className="resumen__titles">
-            <p>Pelicula:</p>
-            <p>Teatro:</p>
-            <p>Fecha:</p>
-            <p>Funcion:</p>
-            <p>Boletos:</p>
-            <p>Número de sala:</p>
-            <p>Asientos:</p>
-          </div>
-        </div>
-        <p>
-          Se realizara un cargo por servicio por cada boleto dentro de la orden
-        </p>
-        <div className="resumen__value">
-          <p>Total(ivaincluido)</p>
-          <div>
-            <label>$</label>
-            <input className="bContainer__amount" type="number" />
-          </div>
-        </div>
-        <button className="resumen__button" disabled={disabled}>
-          Continuar
-        </button>
-      </article> */}
       <ResumeTiket />
     </div>
   );

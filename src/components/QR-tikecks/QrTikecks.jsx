@@ -1,28 +1,29 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './QrTikecks.scss'
-import rapido from '../../assets/Rapidos.jpg'
 import qr from '../../assets/QR.svg'
+import { AppContext } from '../router/router'
 
 const QrTikecks = () => {
+    const { seletDay, selectedButton, movie,selectedCinemaName, seatsSelection  } = useContext(AppContext);
   return (
     <div className='containerQR'>
     <article className='containerQ'>
         <div className='containerQ__title'>
             <h1>Boletos</h1>
             <div className='containerQ__date'>
-            <p>07JUL</p>
-            <p>7:30PM</p>
+            <p>{seletDay}</p>
+            <p>{selectedButton}</p>
             </div>
         </div>
         <div className='containerQ__main'>
             <figure>
-                <img src={rapido} alt="" />
+                <img src={movie.image} alt="" />
             </figure>
             <div>
-                <p>pelicula:</p>
-                <p>Cine:</p>
-                <p>Asientos:</p>
-                <p>Sala:</p>
+                <p>{`Nombre: ${movie.name}`}</p>
+                <p>{`Cine: ${selectedCinemaName}`}</p>
+                <p>{`Sillas: ${seatsSelection}`}</p>
+                <p>Sala: 1</p>
             </div>
         </div>
         <div className='containerQ__QR'>

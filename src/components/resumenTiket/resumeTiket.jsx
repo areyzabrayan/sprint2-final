@@ -3,8 +3,11 @@ import "./resumenTiket.scss";
 import imagen from "../../assets/Rapidos.jpg";
 import { useContext } from "react";
 import { AppContext } from "../router/router";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { saveTicket } from "../../services/ticketsService";
+import Swal from "sweetalert2";
 
 const ResumeTiket = () => {
   const navigate = useNavigate();
@@ -22,24 +25,70 @@ const ResumeTiket = () => {
     totalAmount,
     seatsSelection,
     totaltickets,
+    register,
+    handleSubmit,
+    errors,
+    setValue,
+    getValues,
+    setFormData,
+    formData,
+    disabled,
+    setDisabled,
+    formState, 
+    setFormState,
+    movieId
+
   } = useContext(AppContext);
+
+  const tiket = async () =>{
+    const newTicket = {
+      email: formState.email,
+      movieId: Number(movieId),
+      name: formState.cardName,
+      number: formState.cardNumber,
+      dateTarjet: formState.expiryDate,
+      cvv: formState.cvv,
+      cine: selectedCinemaName,
+    }
+    const response = await saveTicket(newTicket)
+    if(response){
+      Swal.fire(
+        'Bien Hecho!',
+        'Compra exitosa',
+        'success'
+      ).then(()=>{
+        navigate(`/home/movie/${selectedMovieId}/boletos/seating/form/purchase`)
+      })
+    } else{
+      Swal.fire(
+        'Ooops!',
+        'Compra no procesada',
+        'error'
+      )
+    }
+  
+  }
 
   useEffect(() => {
     setSelectedSeatsCount(seatsSelection.length);
-  }, [totalAmount, seatsSelection, path, totaltickets]);
+    console.log(disabled);
+  }, [totalAmount, seatsSelection, path, totaltickets,disabled]);
+  
 
   const [isButtonEnabled, setIsButtonEnabled] = useState(true); // habilita y desabilita el boton.
 
   useEffect(() => {
     if (
       (path === "boletos" && !totalAmount) ||
-      (path === "seating" && selectedSeatsCount !== totaltickets)
+      (path === "seating" && seatsSelection.length === 0) ||
+      (path === "form" && disabled == false)
+      
     ) {
       setIsButtonEnabled(false);
     } else {
       setIsButtonEnabled(true);
     }
-  }, [path, totalAmount, seatsSelection, totaltickets, selectedSeatsCount]);
+  }, [path, totalAmount, seatsSelection,register, handleSubmit, errors, setValue, getValues, setFormData, disabled ]);
 
   const handleClick = () => {
     if (path === "boletos") {
@@ -48,14 +97,21 @@ const ResumeTiket = () => {
     if (path === "seating") {
       navigate(`/home/movie/${selectedMovieId}/boletos/seating/form`);
     }
-    if (path === "form") {
-      navigate(`/home/movie/${selectedMovieId}/boletos/seating/form/purchase`);
+    if (path === "form" && disabled == true) {
+      tiket()
+      
+      // navigate(`/home/movie/${selectedMovieId}/boletos/seating/form/purchase`);
+
     }
     if (path === "purchase") {
       navigate(
         `/home/movie/${selectedMovieId}/boletos/seating/form/purchase/QRTickets`
       );
     }
+    // if (typeof saveFormData === "function") {
+    //   saveFormData(formData);
+
+    // }
   };
 
   return (
@@ -116,6 +172,12 @@ const ResumeTiket = () => {
       >
         {path === "purchase" ? "Descargar ahora" : "Continuar"}
       </button>
+      {formData && (
+        <div>
+          <h3>Datos del formulario enviado:</h3>
+          <pre>{JSON.stringify(formData, null, 2)}</pre>
+        </div>
+      )}
     </article>
   );
 };

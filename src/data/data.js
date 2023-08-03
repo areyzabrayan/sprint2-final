@@ -14,4 +14,5 @@ export const endPoints = {
   urlImage: `${URL_IMG}`,
   urlVideo: (id) =>
     `${URL_API_MOVIE}${id}/videos?api_key=${API_KEY}&languaje=es-ES`,
+    tiquetes: `${URL_SERVER}tiquetes`
 };

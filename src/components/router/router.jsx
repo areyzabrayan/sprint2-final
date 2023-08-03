@@ -13,6 +13,7 @@ import FinalPurchase from "../finalPurchase/finalPurchase";
 import QrTikecks from "../QR-tikecks/QrTikecks";
 import Navbar from "../banner/navbar/Navbar";
 import AdminEdit from "../adminEdit/adminEdit";
+import { useForm } from "react-hook-form";
 
 export const AppContext = createContext({});
 
@@ -33,13 +34,33 @@ const Router = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedId, setSelectedId] = useState({});
   const [totaltickets, setTotaltickets] = useState(""); // Cantidad de tiquetes que el cliente dese acomprar.
-  const [selectedButton, setSelectedButton] = useState(null);
+  const [selectedCinemaRooms, setSelectedCinemaRooms] = useState([]); // sala por cine seleccionado
+  const [selectedButton, setSelectedButton] = useState(null);//Hora seleccionada
   const [totalAmount, setTotalAmount] = useState(null); //Total valor compra
   const [seatsSelection, setSeatsSelection] = useState([]); //Asientos seleccionados
-  const [selectedCinemaRooms, setSelectedCinemaRooms] = useState([]); // sala por cine seleccionado
+  const [formData, setFormData] = useState(null);
+  const [disabled, setDisabled] = useState(false);
+  //estado del fomulario, captura cada elemento del formulario.
+  
+  const [formState, setFormState] = useState({
+    email: "",
+    cardName: "",
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
+
+  });
+   // formulario desactivado
+
   return (
     <AppContext.Provider
       value={{
+        formState,
+        setFormState,
+        disabled,
+        setDisabled,
+        formData,
+        setFormData,
         isLogin,
         setIsLogin,
         show,

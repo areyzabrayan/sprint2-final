@@ -1,45 +1,45 @@
 .nameCinemas {
-  color: #a9adb6;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 2px;
-  display: flex;
+  color: #a9adb6 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  padding: 2px !important;
+  display: flex !important;
 }
 
 .cinemas {
-  height: 35px;
-  border: 1px solid #587ff1;
-  border-radius: 4px;
-  padding: 8px;
-  font-size: 16px;
-  color: #333;
-  background-color: #000000;
-  color: #fff;
+  height: 35px !important;
+  border: 1px solid #587ff1 !important;
+  border-radius: 4px !important;
+  padding: 5px !important;
+  font-size: 16px !important;
+  color: #333 !important;
+  background-color: #000000 !important;
+  color: #fff !important;
 }
 
 /* Estilos para las opciones */
 .cinemas option {
-  background-color: #000000;
-  color: #fff;
-  border: 1px solid #587ff1;
+  background-color: #000000 !important;
+  color: #fff !important;
+  border: 1px solid #587ff1 !important;
 }
 
 .cinemas option:checked {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #007bff !important;
+  color: #fff !important;
 }
 
-@media (max-width:408px){
-  .nameCinemas{
+@media (max-width: 408px) {
+  .nameCinemas {
     position: absolute;
-    
+
     top: 69px;
-    left:130px;
+    left: 130px;
   }
-  .cinemas{
+  .cinemas {
     position: absolute;
     width: 150px;
     top: 95px;
-    left:130px;
+    left: 130px;
   }
 }

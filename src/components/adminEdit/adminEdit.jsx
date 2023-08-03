@@ -9,12 +9,20 @@ import { AppContext } from "../router/router";
 import { getMovie } from "../../services/getMovie";
 import { getVideoMovie } from "../../services/getVideoMovie";
 import { useEffect } from "react";
+import MenuAcordeon from "../menuAcordeon/MenuAcordeon";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const AdminEdit = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const { movie, setMovie, videoMovie, setVideoMovie, selectedMovieId } =
-    useContext(AppContext);
+  const {
+    movie,
+    setMovie,
+    videoMovie,
+    setVideoMovie,
+    selectedMovieId,
+    cinemas,
+  } = useContext(AppContext);
 
   useEffect(() => {
     console.log("total mundo", selectedMovieId);
@@ -57,18 +65,18 @@ const AdminEdit = () => {
       <div className="editMain">
         <div className="descriptionE">
           <p>{movie.overview}</p>
+          <h4>Titulo</h4>
+          <p>{movie.name}</p>
           <h4>Titulo original</h4>
-          <p>coco</p>
-          <h4>Pais de origen</h4>
-          <p>coco</p>
-          <h4>Director</h4>
-          <p>coco</p>
-          <h4>Actores</h4>
-          <p>coco</p>
-          <h4>Lenduaje</h4>
-          <p>coco</p>
+          <p>{movie.originalTitle}</p>
+          <h4>Estreno</h4>
+          <p>{movie.releaseDate}</p>
+          <h4>Generos</h4>
+          <p> {movie.gender} </p>
+          <h4>Duración</h4>
+          <p>{movie.runTime} minutos</p>
         </div>
-        <div>
+        <div className="container__izquierda">
           <div className="dateE">
             <h2>jul </h2>
             <div className="fechasE">
@@ -109,13 +117,39 @@ const AdminEdit = () => {
                 <img src={add} alt="logo" />
               </figure>
             </div>
-            <div className="teatrosE">
+            {/* {cinemas.map((cinema, index) => (
+              <div className="teatrosE" key={index}>
+                <p>{cinema.name}</p>
+                <figure>
+                  <img onClick={() => setIsOpen(!isOpen)} src={dowm} alt="" />
+                </figure>
+              </div>
+            ))} */}
+            {/* <div className="teatrosE">
               <p>Jose Antonio</p>
               <figure>
                 <img onClick={() => setIsOpen(!isOpen)} src={dowm} alt="" />
               </figure>
             </div>
-            <div className={`edit-salas ${isOpen && "open"}`}>
+            <div className="teatrosE">
+              <p>Estelar</p>
+              <figure>
+                <img src={dowm} alt="" />
+              </figure>
+            </div>
+            <div className="teatrosE">
+              <p>Puerta del Norte</p>
+              <figure>
+                <img src={dowm} alt="" />
+              </figure>
+            </div>
+            <div className="teatrosE">
+              <p>Puerta del Norte</p>
+              <figure>
+                <img src={dowm} alt="" />
+              </figure>
+            </div> */}
+            {/* <div className={`edit-salas ${isOpen && "open"}`}>
               <h1>Sala 1</h1>
               <div>
                 <input type="text" value={"1:30 pm"} />
@@ -228,22 +262,23 @@ const AdminEdit = () => {
                   <input type="text" value={"1:30 pm"} />
                 </div>
               </div>
-              <div className="teatrosE">
+               <div className="teatrosE">
                 <p>Estelar</p>
                 <figure>
                   <img src={dowm} alt="" />
                 </figure>
-              </div>
-              <div className="teatrosE">
+              </div> 
+             <div className="teatrosE">
                 <p>Puerta del Norte</p>
                 <figure>
                   <img src={dowm} alt="" />
                 </figure>
-              </div>
+              </div> 
               <input type="text" defaultValue={"1:30 pm"} />
               <input type="text" defaultValue={"1:30 pm"} />
               <input type="text" defaultValue={"1:30 pm"} />
-            </div>
+            </div> */}
+            <MenuAcordeon />
           </div>
           {/* Otros elementos */}
         </div>

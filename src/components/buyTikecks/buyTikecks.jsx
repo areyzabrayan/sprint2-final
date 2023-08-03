@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./buyTikecks.scss";
 import visa from "../../assets/visa.svg";
 import master from "../../assets/master.svg";
@@ -9,15 +9,43 @@ import imagen from "../../assets/Rapidos.jpg";
 import ResumeTiket from "../resumenTiket/resumeTiket";
 
 const BuyTikecks = () => {
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
+  //estado del fomulario, captura cada elemento del formulario.
+  const [formState, setFormState] = useState({
+    email: "",
+    cardName: "",
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
+  });
+
+  //funcion que captura el evento dentro del formulario.
   const handleChange = (e) => {
-    if (e.target.value.length >= 1) {
-      setDisabled(false);
-    } else {
-      setDisabled(true);
-    }
+    const { name, value } = e.target;
+    setFormState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
+
+  //esta funcion nos regresa verdadero si todos los campos estan llenos.
+  const isFormValid = () => {
+    return (
+      formState.email.trim() !== "" &&
+      formState.cardName.trim() !== "" &&
+      formState.cardNumber.trim() !== "" &&
+      formState.expiryDate.trim() !== "" &&
+      formState.cvv.trim() !== ""
+    );
+  };
+
+  useEffect(() => {
+    const disabledStatus = isFormValid();
+    setDisabled(disabledStatus);
+    console.log(disabled);
+  }, [formState]);
+
   return (
     <div className="buyT">
       <article className="info">
@@ -25,11 +53,21 @@ const BuyTikecks = () => {
         <p>Completa los datos del formulario para realizar el pago.</p>
         <div className="email">
           <label>Correo electronico</label>
-          <input type="text" onChange={handleChange} />
+          <input
+            type="text"
+            name="email"
+            value={formState.email}
+            onChange={handleChange}
+          />
         </div>
         <div className="email">
           <label>Nombre de la tarjeta</label>
-          <input type="text" onChange={handleChange} />
+          <input
+            type="text"
+            value={formState.cardName}
+            name="cardName"
+            onChange={handleChange}
+          />
         </div>
         <div className="emailN">
           <label>Numero de la tarjeta</label>
@@ -37,6 +75,8 @@ const BuyTikecks = () => {
             <input
               className="emailN__number"
               type="text"
+              name="cardNumber"
+              value={formState.cardNumber}
               onChange={handleChange}
             />
             <figure className="">
@@ -53,6 +93,8 @@ const BuyTikecks = () => {
               <input
                 className="infoT__number"
                 type="text"
+                name="expiryDate"
+                value={formState.expiryDate}
                 onChange={handleChange}
               />
               <figure className="">
@@ -66,6 +108,8 @@ const BuyTikecks = () => {
               <input
                 className="infoT__number"
                 type="text"
+                name="cvv"
+                value={formState.cvv}
                 onChange={handleChange}
               />
               <figure className="">

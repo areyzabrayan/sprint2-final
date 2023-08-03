@@ -34,13 +34,12 @@ const ResumeTiket = () => {
     formData,
     disabled,
     setDisabled,
-    formState, 
+    formState,
     setFormState,
-    movieId
-
+    movieId,
   } = useContext(AppContext);
 
-  const tiket = async () =>{
+  const tiket = async () => {
     const newTicket = {
       email: formState.email,
       movieId: Number(movieId),
@@ -49,46 +48,48 @@ const ResumeTiket = () => {
       dateTarjet: formState.expiryDate,
       cvv: formState.cvv,
       cine: selectedCinemaName,
+    };
+    const response = await saveTicket(newTicket);
+    if (response) {
+      Swal.fire("Bien Hecho!", "Compra exitosa", "success").then(() => {
+        navigate(
+          `/home/movie/${selectedMovieId}/boletos/seating/form/purchase`
+        );
+      });
+    } else {
+      Swal.fire("Ooops!", "Compra no procesada", "error");
     }
-    const response = await saveTicket(newTicket)
-    if(response){
-      Swal.fire(
-        'Bien Hecho!',
-        'Compra exitosa',
-        'success'
-      ).then(()=>{
-        navigate(`/home/movie/${selectedMovieId}/boletos/seating/form/purchase`)
-      })
-    } else{
-      Swal.fire(
-        'Ooops!',
-        'Compra no procesada',
-        'error'
-      )
-    }
-  
-  }
+  };
 
   useEffect(() => {
     setSelectedSeatsCount(seatsSelection.length);
     console.log(disabled);
-  }, [totalAmount, seatsSelection, path, totaltickets,disabled]);
-  
+  }, [totalAmount, seatsSelection, path, totaltickets, disabled]);
 
   const [isButtonEnabled, setIsButtonEnabled] = useState(true); // habilita y desabilita el boton.
 
   useEffect(() => {
     if (
       (path === "boletos" && !totalAmount) ||
-      (path === "seating" && seatsSelection.length === 0) ||
+      (path === "seating" && seatsSelection.length < totaltickets) ||
       (path === "form" && disabled == false)
-      
     ) {
       setIsButtonEnabled(false);
     } else {
       setIsButtonEnabled(true);
     }
-  }, [path, totalAmount, seatsSelection,register, handleSubmit, errors, setValue, getValues, setFormData, disabled ]);
+  }, [
+    path,
+    totalAmount,
+    seatsSelection,
+    register,
+    handleSubmit,
+    errors,
+    setValue,
+    getValues,
+    setFormData,
+    disabled,
+  ]);
 
   const handleClick = () => {
     if (path === "boletos") {
@@ -98,10 +99,9 @@ const ResumeTiket = () => {
       navigate(`/home/movie/${selectedMovieId}/boletos/seating/form`);
     }
     if (path === "form" && disabled == true) {
-      tiket()
-      
-      // navigate(`/home/movie/${selectedMovieId}/boletos/seating/form/purchase`);
+      tiket();
 
+      // navigate(`/home/movie/${selectedMovieId}/boletos/seating/form/purchase`);
     }
     if (path === "purchase") {
       navigate(

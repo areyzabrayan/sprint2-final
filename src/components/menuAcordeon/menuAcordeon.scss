@@ -23,21 +23,61 @@
   display: flex;
   justify-content: space-between;
   padding: 30px 20px 30px 20px;
+  &__salasEdit {
+    display: flex;
+    padding: 0;
+
+    &__title {
+      margin: 0;
+      padding: 5px;
+      background-color: aqua;
+    }
+
+    .iconEditS {
+      width: 20px;
+      height: 20px;
+      background-color: yellow;
+      cursor: pointer;
+    }
+    .iconCloseS {
+      width: 20px;
+      height: 20px;
+      background-color: rgb(255, 0, 0);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
   &__hoursEdit {
     display: flex;
     gap: 10px;
+  }
+  &__oneHourEdit {
+    border: 1px solid #7d8db2;
+    border-radius: 20px;
+    padding: 5px;
+    .iconEdit {
+      width: 20px;
+      height: 20px;
+      background-color: rgb(37, 169, 37);
+    }
+    .iconClose {
+      width: 20px;
+      height: 20px;
+      background-color: rgb(255, 0, 0);
+      border-radius: 50%;
+    }
   }
   &__Edit {
     width: 80px;
     height: 40px;
     background: #ffffffff;
-    border-radius: 20px;
+    border: none;
     border-width: 1px;
-    border-color: #7d8db2;
+
     color: #7d8db2;
-    border-style: solid;
-    box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
-    padding: 2px;
+    border-style: none;
+    //box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+    padding: 0;
     font-size: 15px;
     text-align: center;
   }
@@ -54,7 +94,8 @@
     font-size: 15px;
   }
 }
-@media (max-width: 408px){
+
+@media (max-width: 408px) {
   .acordeon {
     display: flex;
     align-items: center;

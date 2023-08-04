@@ -135,7 +135,7 @@ const Movie = () => {
             )}
             <button
               className={selectedButton ? "onselec" : ""}
-              onClick={() => navigate(`/home/movie/${selectedMovieId}/boletos`)}
+              onClick={() => navigate(`/movie/${selectedMovieId}/boletos`)}
               disabled={!selectedButton}
             >
               Seleccionar boletos

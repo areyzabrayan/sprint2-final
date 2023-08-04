@@ -33,7 +33,6 @@ const MenuAcordeon = () => {
               </div>
             </Accordion.Body>
           </Accordion.Item>
-          {/* Aquí puedes agregar más items de acuerdo a tus necesidades */}
         </Accordion>
       ))}
     </div>

@@ -60,7 +60,9 @@ const Navbar = () => {
           </div>
         )}
 
-        <figure className="person" onClick={() => setShow(true)}>
+        <figure className={`person ${isOpen && "open"}`} onClick={() => {
+          setShow(true)
+          }}>
           <img src={person} alt="" />
         </figure>
         <figure className="hamburger" onClick={() => setIsOpen(!isOpen)}>

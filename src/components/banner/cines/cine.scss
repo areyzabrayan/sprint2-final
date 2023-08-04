@@ -8,6 +8,7 @@
 
 .cinemas {
   height: 35px !important;
+  width: 150PX !important;
   border: 1px solid #587ff1 !important;
   border-radius: 4px !important;
   padding: 5px !important;
@@ -33,13 +34,13 @@
   .nameCinemas {
     position: absolute;
 
-    top: 69px;
+    top: 80px;
     left: 130px;
   }
   .cinemas {
     position: absolute;
     width: 150px;
-    top: 95px;
+    top: 105px;
     left: 130px;
   }
 }

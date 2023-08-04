@@ -51,6 +51,7 @@ const SeatSelection = () => {
         </div>
 
         <SeatPicker
+          
           addSeatCallback={addSeatCallback}
           removeSeatCallback={removeSeatCallback}
           rows={selectedCinemaRooms}
@@ -58,27 +59,6 @@ const SeatSelection = () => {
           maxReservableSeats={totaltickets}
           visible
         />
-        {/* {selected.length !== 0 ? (
-          <>
-            <div className="seat-price">
-              <div className="seat-select">
-                <h1 className="seats-select">SEAT:{selected.toString()}</h1>
-              </div>
-              <div className="totalprice">
-                <h1 className="price">
-                  price:{"$"}
-                  {totalprice}
-                </h1>
-              </div>
-            </div>
-            <button
-              className="continue"
-              onClick={() => navigate(`/Final/${selected}/${totalprice}`)}
-            >
-              continue
-            </button>
-          </>
-        ) : null} */}
       </div>
 
       <ResumeTiket className="resume__seats" />

@@ -118,18 +118,32 @@
 @media (max-width: 408px) {
   .selection {
     flex-direction: column;
+    margin-left: 10px;
+  }
+  .boletos h4{
+    width: 280px;
+    height: auto;
+    padding-left: 10px;
+  }
+  .boletos p{
+    width: 280px;
+    height: auto;
+    padding-left: 10px;
+  
   }
   .bContainer {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 50px;
+    gap: 20px;
   }
   .edadTikect {
     &__mobileN {
-      margin-right: 19px;
+      margin-right: 22px;
+      
     }
     &__mobile3 {
-      margin-right: 14px;
+      margin-right: 30px;
     }
   }
   .buttonsT {

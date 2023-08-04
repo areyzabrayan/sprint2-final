@@ -50,3 +50,36 @@
     font-size: 15px;
   }
 }
+@media (max-width: 408px){
+  .acordeon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px 0 0px;
+    &__hoursEdit {
+      display: flex;
+      gap: 10px;
+    }
+    &__Edit {
+      width: 70px;
+      height: 40px;
+      background: #ffffffff;
+      border-radius: 20px;
+      border-width: 1px;
+      border-color: #7d8db2;
+      color: #7d8db2;
+      border-style: solid;
+      box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
+      padding: 2px;
+      font-size: 15px;
+      text-align: center;
+    }
+    &__nuevaFuncion {
+      margin-top: 26px;
+      padding-top: 0;
+      width: 180px;
+      height: 44px;
+      font-size: 12px;
+    }
+  }
+}

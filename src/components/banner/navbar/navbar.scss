@@ -134,12 +134,13 @@
 }
 @media (max-width:408px){
   .navbar{
-    padding-bottom: 180px;
+    position: relative !important;
+    padding-bottom: 220px !important;
+    padding-right: 20PX !important;
+    padding-left: 12PX !important;
     
   }
-  .person img{
-    display: none;
-  }
+  
   .hamburger img {
     position: relative;
     z-index: 2;
@@ -150,5 +151,15 @@
     margin-top: 40px;
     margin-left: 85px;
     cursor: pointer;
+  }
+  .person img{
+    display: none;
+    
+  }
+  .person.open img{
+    left: 190px;
+    position: absolute;
+    display: block;
+    z-index: 3;
   }
 }

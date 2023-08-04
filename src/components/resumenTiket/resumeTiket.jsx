@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AppContext } from "../router/router";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useFormContext } from "react-hook-form";
+// import { useFormContext } from "react-hook-form";
 import { saveTicket } from "../../services/ticketsService";
 import Swal from "sweetalert2";
 
@@ -80,7 +80,7 @@ const ResumeTiket = () => {
   useEffect(() => {
     if (
       (path === "boletos" && !totalAmount) ||
-      (path === "seating" && seatsSelection.length === 0) ||
+      (path === "seating" && seatsSelection.length < totaltickets ) ||
       (path === "form" && disabled == false)
       
     ) {

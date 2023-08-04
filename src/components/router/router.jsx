@@ -13,7 +13,7 @@ import FinalPurchase from "../finalPurchase/finalPurchase";
 import QrTikecks from "../QR-tikecks/QrTikecks";
 import Navbar from "../banner/navbar/Navbar";
 import AdminEdit from "../adminEdit/adminEdit";
-import { useForm } from "react-hook-form";
+
 
 export const AppContext = createContext({});
 

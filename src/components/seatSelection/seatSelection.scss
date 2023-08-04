@@ -141,3 +141,76 @@
   font-style: bold !important;
   font-size: 20px;
 }
+
+@media (max-width: 408px){
+  .seatSelecion__container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    padding-left: 10px;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    
+  }
+  
+  .seat{
+    background: #2679d1 !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    height: 20px !important;
+    width: 20px !important;
+    color: #fff;
+    font-weight: 2px !important;
+    display: flex;
+    justify-content: left ;
+    align-items: baseline ;
+  }
+  .seat-picker{
+    background-color: #2679d1;
+  }
+  .seat-content{
+    position: absolute;
+    top: 0px;
+    left: -40px;
+    width: 400px;
+    height: 275px;
+    margin: 0 !important;
+
+  }
+  .seat-picker{
+    align-items: center;
+  }
+  .seat:hover {
+    background-color: #e08a10 !important;
+    border-color: #e08a10 !important;
+    border-width: 3px;
+  }
+  
+  
+  .seat--selected {
+    background-color: #fcb831 !important;
+  }
+  
+  .seat--reserved {
+    background-color: #f55555 !important;
+  }
+  
+  .seat-picker {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    margin-bottom: 4px;
+    background: transparent;
+  }
+  
+  .seat__number {
+    font-style: bold !important;
+    font-size: 20px;
+  }
+  .containerSeat{
+   background-color: #f55555;
+    
+  }
+  
+}

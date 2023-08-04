@@ -15,6 +15,7 @@ const ResumeTiket = () => {
   const [selectedSeatsCount, setSelectedSeatsCount] = useState(0); // Cantidad de asiento selecionados
   const pathname = location.pathname;
   const segments = pathname.split("/");
+  // const path = pathname;
   const path = segments[segments.length - 1];
   const {
     movie,
@@ -52,9 +53,7 @@ const ResumeTiket = () => {
     const response = await saveTicket(newTicket);
     if (response) {
       Swal.fire("Bien Hecho!", "Compra exitosa", "success").then(() => {
-        navigate(
-          `/home/movie/${selectedMovieId}/boletos/seating/form/purchase`
-        );
+        navigate(`/movie/${selectedMovieId}/purchase`);
       });
     } else {
       Swal.fire("Ooops!", "Compra no procesada", "error");
@@ -93,25 +92,17 @@ const ResumeTiket = () => {
 
   const handleClick = () => {
     if (path === "boletos") {
-      navigate(`/home/movie/${selectedMovieId}/boletos/seating`);
+      navigate(`/movie/${selectedMovieId}/seating`);
     }
     if (path === "seating") {
-      navigate(`/home/movie/${selectedMovieId}/boletos/seating/form`);
+      navigate(`/movie/${selectedMovieId}/form`);
     }
     if (path === "form" && disabled == true) {
       tiket();
-
-      // navigate(`/home/movie/${selectedMovieId}/boletos/seating/form/purchase`);
     }
     if (path === "purchase") {
-      navigate(
-        `/home/movie/${selectedMovieId}/boletos/seating/form/purchase/QRTickets`
-      );
+      navigate(`/movie/${selectedMovieId}/QRTickets`);
     }
-    // if (typeof saveFormData === "function") {
-    //   saveFormData(formData);
-
-    // }
   };
 
   return (

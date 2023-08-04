@@ -35,22 +35,21 @@ const Router = () => {
   const [selectedId, setSelectedId] = useState({});
   const [totaltickets, setTotaltickets] = useState(""); // Cantidad de tiquetes que el cliente dese acomprar.
   const [selectedCinemaRooms, setSelectedCinemaRooms] = useState([]); // sala por cine seleccionado
-  const [selectedButton, setSelectedButton] = useState(null);//Hora seleccionada
+  const [selectedButton, setSelectedButton] = useState(null); //Hora seleccionada
   const [totalAmount, setTotalAmount] = useState(null); //Total valor compra
   const [seatsSelection, setSeatsSelection] = useState([]); //Asientos seleccionados
   const [formData, setFormData] = useState(null);
   const [disabled, setDisabled] = useState(false);
   //estado del fomulario, captura cada elemento del formulario.
-  
+
   const [formState, setFormState] = useState({
     email: "",
     cardName: "",
     cardNumber: "",
     expiryDate: "",
     cvv: "",
-
   });
-   // formulario desactivado
+  // formulario desactivado
 
   return (
     <AppContext.Provider
@@ -107,26 +106,16 @@ const Router = () => {
         <Routes>
           <Route path="/">
             <Route element={<PublicRouter />}>
-              <Route path="home" element={<Home />}>
-                <Route index element={<Cards />} />
-                <Route path="movie/:movieId" element={<Movie />} />
-                <Route path="movie/:movieId/boletos" element={<Boletos />} />
-                <Route
-                  path="movie/:movieId/boletos/seating"
-                  element={<SeatSelection />}
-                />{" "}
-                <Route
-                  path="movie/:movieId/boletos/seating/form"
-                  element={<BuyTikecks />}
-                />
-                <Route
-                  path="movie/:movieId/boletos/seating/form/purchase"
-                  element={<FinalPurchase />}
-                />
-                <Route
-                  path="movie/:movieId/boletos/seating/form/purchase/QRTickets"
-                  element={<QrTikecks />}
-                />
+              <Route element={<Home />}>
+                <Route path="home" element={<Cards />} />
+                <Route path="/movie/:movieId/">
+                  <Route index element={<Movie />} />
+                  <Route path="boletos" element={<Boletos />} />
+                  <Route path="seating" element={<SeatSelection />} />
+                  <Route path="form" element={<BuyTikecks />} />
+                  <Route path="purchase" element={<FinalPurchase />} />
+                  <Route path="QRTickets" element={<QrTikecks />} />
+                </Route>
               </Route>
             </Route>
             <Route element={<PrivateRouter />}>

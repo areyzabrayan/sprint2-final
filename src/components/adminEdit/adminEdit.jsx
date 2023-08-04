@@ -54,13 +54,6 @@ const AdminEdit = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
-
-        {/* <figure className="firstConainer__imgMovie2">
-          <img
-            src="https://isopixel.net/wp-content/uploads/2017/09/Coco-Movie-2017-Trailer-Disney-Pixar.jpg"
-            alt=""
-          />
-        </figure> */}
       </div>
       <div className="editMain">
         <div className="descriptionE">

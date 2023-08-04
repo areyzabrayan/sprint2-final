@@ -16,7 +16,7 @@ const Card = () => {
   const handleClick = (id) => {
     setSelectedMovieId(id);
     if (path == "home" && seletDay) {
-      navigate(`/home/movie/${id}`);
+      navigate(`/movie/${id}`);
     }
     if (path == "home" && !seletDay) {
       Swal.fire({

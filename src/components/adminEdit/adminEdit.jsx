@@ -59,7 +59,7 @@ const AdminEdit = () => {
     const newCinemaData = { ...newTheaterData, room: [...cinemas[0].room] };
     
     try {
-      // Enviar el nuevo teatro al servidor usando el servicio postCinema
+      // Enviar el nuevo teatro al servidor usando servicio postCinema
       const isCinemaAdded = await postCinema(newCinemaData);
 
       if (isCinemaAdded) {

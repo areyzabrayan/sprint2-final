@@ -3,6 +3,8 @@ import { useContext } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import { AppContext } from "../router/router";
 import "./menuAcordeon.scss";
+import iconEdit from "../../assets/edit-icon.svg";
+import closeEdit from "../../assets/close-icon.svg";
 
 const MenuAcordeon = () => {
   const { cinemas } = useContext(AppContext);
@@ -17,14 +19,52 @@ const MenuAcordeon = () => {
             <Accordion.Body>
               <div className="acordeon">
                 <section>
-                  <h3>Sala 1</h3>
+                  <div className="acordeon__salasEdit">
+                    <h3 className="acordeon__title">Sala 1</h3>
+                    <img className="iconEditS" src={iconEdit} alt="iconEdit" />
+                    <img
+                      className="iconCloseS "
+                      src={closeEdit}
+                      alt="iconEdit"
+                    />
+                  </div>
                   <div className="acordeon__hoursEdit">
-                    <input className="acordeon__Edit" placeholder="1:30 pm"></input>
-                    <input
-                      className="acordeon__Edit"
-                      placeholder="5:00 pm"
-                    ></input>
-                    <input className="acordeon__Edit" value={"8:45 pm"}></input>
+                    <div className="acordeon__oneHourEdit">
+                      <input
+                        className="acordeon__Edit"
+                        value={"1:30 pm"}
+                      ></input>
+                      <img className="iconEdit" src={iconEdit} alt="iconEdit" />
+                      <img
+                        className="iconClose"
+                        src={closeEdit}
+                        alt="iconEdit"
+                      />
+                    </div>
+                    <div className="acordeon__oneHourEdit">
+                      <input
+                        className="acordeon__Edit"
+                        value={" 5:00 pm"}
+                      ></input>
+                      <img className="iconEdit" src={iconEdit} alt="iconEdit" />
+                      <img
+                        className="iconClose"
+                        src={closeEdit}
+                        alt="iconEdit"
+                      />
+                    </div>
+                    <div className="acordeon__oneHourEdit">
+                      <input
+                        className="acordeon__Edit"
+                        value={"8:45 pm"}
+                      ></input>
+                      <img className="iconEdit" src={iconEdit} alt="iconEdit" />
+                      <img
+                        className="iconClose"
+                        src={closeEdit}
+                        alt="iconEdit"
+                      />
+                    </div>
                   </div>
                 </section>
                 <button className="acordeon__nuevaFuncion">

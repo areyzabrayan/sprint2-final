@@ -14,7 +14,6 @@ import QrTikecks from "../QR-tikecks/QrTikecks";
 import Navbar from "../banner/navbar/Navbar";
 import AdminEdit from "../adminEdit/adminEdit";
 
-
 export const AppContext = createContext({});
 
 const Router = () => {

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import check from "../../assets/check.svg";
 import imagen from "../../assets/Rapidos.jpg";
 import "./finalPurchase.scss";
@@ -11,8 +11,21 @@ const FinalPurchase = () => {
   const date = new Date()
   const printDate = formateDate(date)
   const { totalAmount, selectedMovieId, newFormatted,  } = useContext(AppContext);
+
+  const [codigo, setCodigo] = useState()
+
+  useEffect(()=>{
+    codigoCompra()
+  },[])
   
-  
+  const codigoCompra = () => {
+    let codigo = "";
+    const total = 10;
+    for (let i = 0; i < total; i++) {
+      codigo += Math.floor(Math.random() * 10);
+    }
+    setCodigo(codigo);
+  };
   
   return (
     <div className="finalResumen">
@@ -27,7 +40,7 @@ const FinalPurchase = () => {
       <div className="finalResumen__target">
         <div className="finalResumen__items">
           <label>Código</label>
-          <span>#{selectedMovieId}</span>
+          <span>#{codigo}</span>
         </div>
         <div className="finalResumen__items">
           <label>Fecha</label>

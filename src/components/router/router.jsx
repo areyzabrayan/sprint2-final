@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/home/Home";
 import PublicRouter from "./publicRouter";
@@ -51,6 +51,15 @@ const Router = () => {
   });
   // formulario desactivado
 
+  const userLogge = JSON.parse(sessionStorage.getItem('user'))
+  
+  useEffect(() => {
+    if(userLogge?.name){
+      setIsLogin(true)
+    }else{
+      setIsLogin(false)
+    }
+  },[isLogin])
   return (
     <AppContext.Provider
       value={{

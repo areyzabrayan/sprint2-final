@@ -2,11 +2,15 @@ import React, { useContext, useState } from "react";
 import "./categories.scss";
 import { AppContext } from "../../router/router";
 
-const Categories = ({isOpen}) => {
-  const { setCategory } = useContext(AppContext);
+const Categories = ({isOpen, setIsOpen}) => {
+  const { setCategory, } = useContext(AppContext);
 
   const handleClick = (itemCategory) => {
     setCategory(itemCategory);
+    setIsOpen(false);
+
+    const scrollDistance = 690;
+    window.scrollTo(0, scrollDistance);
   };
 
   return (

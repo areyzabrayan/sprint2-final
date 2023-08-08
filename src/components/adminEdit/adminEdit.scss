@@ -45,6 +45,7 @@
   padding: 70px 20px 40px 20px;
   //margin-top: 50px;
   justify-content: space-between;
+  position: relative;
 }
 .descriptionE {
   //padding-left: 4%;
@@ -72,8 +73,40 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  .form-addC{
+    position: absolute;
+    top: 250px;
+    left: 60%;
+    z-index: 2;
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    background-color: rgb(188, 243, 247) ;
+    display: none;
+    label{
+      font-size: large;
+      font-weight: bolder;
+    }
+    button{
+      border-color: cadetblue;
+      background-color: cadetblue;
+      width: 80px;
+      margin-left: 35%;
+      height: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #171a1f;
+    }
+    button:hover{
+      background-color: #326098ff;
+      color: aliceblue;
+    }
+  }
+  
 }
-
+.form-addC.viewF{
+  display: block;
+}
 .dateE {
   display: flex;
   flex-direction: column;
@@ -186,11 +219,13 @@
     box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f;
   }
   &__newTeatro p {
-    font-family: Roboto; /* Body */
+    cursor: pointer;
+    font-family: Roboto; 
     font-size: 12px;
     line-height: 20px;
     color: #4c69a1ff;
     padding-left: 35px;
+    padding-top: 10px;
   }
   &__newTeatro img {
     cursor: pointer;
@@ -295,5 +330,13 @@
       display: flex;
       flex-direction: column;
       padding: 20px;
+      .form-addC{
+        top: 1130px;
+        left: 12%;
+      }
     }
+    .form-addC.viewF{
+      display: block;
+    }
+    
 }

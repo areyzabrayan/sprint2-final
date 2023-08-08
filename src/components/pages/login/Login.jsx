@@ -11,7 +11,9 @@ const Login = () => {
 
   const [dataForm, handleChange, resetForm] = useForm();
 
-  const handleSubmit = async (event) => {
+
+
+    const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(dataForm);
     const loggedUser = await getUser(dataForm);
@@ -31,6 +33,7 @@ const Login = () => {
       );
     }
     console.log(loggedUser);
+    sessionStorage.setItem('user',JSON.stringify(loggedUser));
     resetForm();
   };
 
@@ -57,7 +60,7 @@ const Login = () => {
             value={dataForm?.password || ""}
             type="password"
           />
-          <button type="submit">Iniciar sesión</button>
+          <button className="buttom-Form" type="submit">Iniciar sesión</button>
         </form>
       </div>
     </>

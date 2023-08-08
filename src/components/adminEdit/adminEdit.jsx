@@ -8,9 +8,11 @@ import cancel from "../../assets/cancel.svg";
 import { AppContext } from "../router/router";
 import { getMovie } from "../../services/getMovie";
 import { getVideoMovie } from "../../services/getVideoMovie";
+import { postCinema } from "../../services/postCinemas"; // Import the postCinema service
 import { useEffect } from "react";
 import MenuAcordeon from "../menuAcordeon/MenuAcordeon";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Swal from "sweetalert2";
 
 const AdminEdit = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +24,11 @@ const AdminEdit = () => {
     setVideoMovie,
     selectedMovieId,
     cinemas,
+    setCinemas
   } = useContext(AppContext);
+
+  const[view, setView] = useState(false)
+
 
   useEffect(() => {
     console.log("total mundo", selectedMovieId);
@@ -37,6 +43,47 @@ const AdminEdit = () => {
       setVideoMovie(response.key);
     });
   }, [selectedMovieId, setMovie]);
+
+  const [newTheaterData, setNewTheaterData] = useState({
+    name: "",
+    numberOfRooms: 0,
+  });
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    // Crear una copia del objeto cinemas
+    const updatedCinemas = [...cinemas];
+
+    // Agregar una nueva propiedad "numberOfRooms" con el valor ingresado en el formulario
+    const newCinemaData = { ...newTheaterData, room: [...cinemas[0].room] };
+    
+    try {
+      // Enviar el nuevo teatro al servidor usando el servicio postCinema
+      const isCinemaAdded = await postCinema(newCinemaData);
+
+      if (isCinemaAdded) {
+        Swal.fire(
+          'Bien Hecho',
+          'Nuevo teatro agregado',
+          'success'
+        )
+        // Actualizar el estado con el nuevo objeto cinemas si se agregó correctamente
+        updatedCinemas.push(newCinemaData);
+        setCinemas(updatedCinemas);
+        setNewTheaterData({ name: "", numberOfRooms: 0 });
+         // Limpiar el formulario
+      } else {
+        Swal.fire(
+          'Ooops',
+          'No se pudo realizar la modificación',
+          'error'
+        )
+      }
+    } catch (error) {
+      console.log("Error al comunicarse con el servidor", error);
+    }
+  };
 
   return (
     <div className="container__primary">
@@ -103,8 +150,8 @@ const AdminEdit = () => {
           <div className="funtionE">
             <div className="funtionE__title">
               <h2>Funciones por Teatros</h2>
-              <figure className="funtionE__newTeatro">
-                <figcaption>
+              <figure className="funtionE__newTeatro" onClick={() => setView(!view)}>
+                <figcaption >
                   <p>Nuevo Teatro</p>
                 </figcaption>
                 <img src={add} alt="logo" />
@@ -112,6 +159,42 @@ const AdminEdit = () => {
             </div>
             <MenuAcordeon />
           </div>
+          <form className={`form-addC ${!view && 'viewF' } p-5`} onSubmit={handleFormSubmit}>
+            <div className="mb-3">
+              <label htmlFor="theaterName" className="form-label">
+                Nombre del teatro
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="theaterName"
+                value={newTheaterData.name}
+                onChange={(e) =>
+                  setNewTheaterData({ ...newTheaterData, name: e.target.value })
+                }
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="numberOfRooms" className="form-label">
+                Numero de salas
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                id="numberOfRooms"
+                value={newTheaterData.numberOfRooms}
+                onChange={(e) =>
+                  setNewTheaterData({
+                    ...newTheaterData,
+                    numberOfRooms: parseInt(e.target.value),
+                  })
+                }
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Agregar
+            </button>
+          </form>
         </div>
       </div>
     </div>

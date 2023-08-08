@@ -19,10 +19,10 @@ const MenuAcordeon = () => {
                 <section>
                   <h3>Sala 1</h3>
                   <div className="acordeon__hoursEdit">
-                    <input className="acordeon__Edit" value={"1:30 pm"}></input>
+                    <input className="acordeon__Edit" placeholder="1:30 pm"></input>
                     <input
                       className="acordeon__Edit"
-                      value={" 5:00 pm"}
+                      placeholder="5:00 pm"
                     ></input>
                     <input className="acordeon__Edit" value={"8:45 pm"}></input>
                   </div>

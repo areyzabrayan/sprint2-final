@@ -5,7 +5,6 @@ import { useLocation } from "react-router";
 import { endPoints } from "../../data/data";
 import { getVideoMovie } from "../../services/getVideoMovie";
 import { AppContext } from "../router/router";
-import { getFunctions } from "../../services/getFunctions";
 import { format } from "date-fns";
 import esLocale from "date-fns/locale/es";
 import { useNavigate } from "react-router-dom";
@@ -118,7 +117,7 @@ const Movie = () => {
             <h2>Horarios disponibles - {newFormatted}</h2>
             <span className="span1">Elije el horario que prefieras</span>
             <span className="span2">{selectedCinemaName}</span>
-            {date.horaFuncion && date.horaFuncion.length > 0 ? (
+            {/* {date.horaFuncion && date.horaFuncion.length > 0 ? (
               <div>
                 {date.horaFuncion.map((hora, index) => (
                   <button
@@ -132,7 +131,34 @@ const Movie = () => {
               </div>
             ) : (
               <p>No hay horarios disponibles.</p>
-            )}
+            )} */}
+            <div>
+              <button
+                className={
+                  date.horaFuncion1 === selectedButton ? "colorcito" : ""
+                }
+                onClick={() => handleButtonClick(date.horaFuncion1)}
+              >
+                {date.horaFuncion1}
+              </button>
+              <button
+                className={
+                  date.horaFuncion2 === selectedButton ? "colorcito" : ""
+                }
+                onClick={() => handleButtonClick(date.horaFuncion1)}
+              >
+                {date.horaFuncion2}
+              </button>
+              <button
+                className={
+                  date.horaFuncion3 === selectedButton ? "colorcito" : ""
+                }
+                onClick={() => handleButtonClick(date.horaFuncion1)}
+              >
+                {date.horaFuncion3}
+              </button>
+            </div>
+
             <button
               className={selectedButton ? "onselec" : ""}
               onClick={() => navigate(`/movie/${selectedMovieId}/boletos`)}

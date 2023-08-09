@@ -11,11 +11,23 @@ export const getFunctions = async (id) => {
     const detailFunction = {
       id: data.id,
       movie: data.idMovie,
-      dates: data.date.map((item) => item.dia),
-      horaFuncion: data.date.map((item) => item.horaFuncion),
+      dia: data.dia,
+      horaFuncion1: data.horaFuncion1,
+      horaFuncion2: data.horaFuncion2,
+      horaFuncion3: data.horaFuncion3,
     };
     return detailFunction;
   } catch (error) {
     return error;
+  }
+};
+
+export const saveFunction = async (item) => {
+  try {
+    const { data } = await axios.post(endPoints.urlFunction, item);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 };

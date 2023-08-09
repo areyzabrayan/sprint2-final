@@ -19,7 +19,7 @@ const Login = () => {
     const loggedUser = await getUser(dataForm);
     if (loggedUser) {
       Swal.fire(
-        `Exelente ${loggedUser.email}`,
+        `Exelente ${loggedUser.name}`,
         "Has iniciado sesión exitosamente",
         "success"
       ).then(() => {

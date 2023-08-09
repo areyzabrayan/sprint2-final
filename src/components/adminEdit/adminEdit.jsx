@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import "./adminEdit.scss";
-import dowm from "../../assets/down.svg";
 import add from "../../assets/add.svg";
 import calendar from "../../assets/calendar.svg";
 import editB from "../../assets/edit.svg";
@@ -30,10 +29,6 @@ const AdminEdit = () => {
   const [view, setView] = useState(false);
 
   useEffect(() => {
-    console.log("total mundo", selectedMovieId);
-  }, [selectedMovieId]);
-
-  useEffect(() => {
     getMovie(selectedMovieId).then((response) => {
       setMovie({ ...response });
     });
@@ -51,23 +46,19 @@ const AdminEdit = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // Crear una copia del objeto cinemas
     const updatedCinemas = [...cinemas];
 
-    // Agregar una nueva propiedad "numberOfRooms" con el valor ingresado en el formulario
     const newCinemaData = { ...newTheaterData, room: [...cinemas[0].room] };
 
     try {
-      // Enviar el nuevo teatro al servidor usando servicio postCinema
       const isCinemaAdded = await postCinema(newCinemaData);
 
       if (isCinemaAdded) {
         Swal.fire("Bien Hecho", "Nuevo teatro agregado", "success");
-        // Actualizar el estado con el nuevo objeto cinemas si se agregó correctamente
+
         updatedCinemas.push(newCinemaData);
         setCinemas(updatedCinemas);
         setNewTheaterData({ name: "", numberOfRooms: 0 });
-        // Limpiar el formulario
       } else {
         Swal.fire("Ooops", "No se pudo realizar la modificación", "error");
       }

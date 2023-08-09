@@ -21,6 +21,8 @@ const Navbar = () => {
     setCards,
     setSeatsSelection,
     isLogin,
+    loginImg,
+    loginName,
   } = useContext(AppContext);
   const location = useLocation();
   const pathname = location.pathname;
@@ -39,6 +41,10 @@ const Navbar = () => {
   useEffect(() => {
     getData(category, setCards);
   }, [category, setCards]);
+
+  useEffect(() => {
+    console.log(loginImg);
+  }, [loginImg]);
 
   return (
     <div className="navbar">
@@ -60,11 +66,21 @@ const Navbar = () => {
           </div>
         )}
 
-        <figure className={`person ${isOpen && "open"}`} onClick={() => {
-          setShow(true)
-          setIsOpen(false)
-          }}>
-          <img src={person} alt="" />
+        <figure
+          className={`person ${isOpen && "open"}`}
+          onClick={() => {
+            setShow(true);
+            setIsOpen(false);
+          }}
+        >
+          {isLogin ? (
+            <>
+              <img src={loginImg} alt="" />
+              <span className="name__isLogin">{loginName}</span>
+            </>
+          ) : (
+            <img src={person} alt="" />
+          )}
         </figure>
         <figure className="hamburger" onClick={() => setIsOpen(!isOpen)}>
           <img src={hamburguer} alt="" />

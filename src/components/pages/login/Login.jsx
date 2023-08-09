@@ -5,25 +5,27 @@ import useForm from "../../hook/useForm";
 import { getUser } from "../../../services/getUsers";
 import close from "../../../assets/close.svg";
 import { AppContext } from "../../router/router";
+import { useEffect } from "react";
 
 const Login = () => {
-  const { setIsLogin, show, setShow } = useContext(AppContext);
+  const { setIsLogin, show, setShow, setLoginImg, setLoginName } =
+    useContext(AppContext);
 
   const [dataForm, handleChange, resetForm] = useForm();
 
-
-
-    const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(dataForm);
     const loggedUser = await getUser(dataForm);
     if (loggedUser) {
       Swal.fire(
-        `Exelente ${loggedUser.email}`,
+        `Exelente ${loggedUser.name}`,
         "Has iniciado sesión exitosamente",
         "success"
       ).then(() => {
+        console.log("Setting login image:", loggedUser.img);
         setIsLogin(true);
+        setLoginImg(loggedUser.img);
+        setLoginName(loggedUser.name);
       });
     } else {
       Swal.fire(
@@ -32,8 +34,8 @@ const Login = () => {
         "error"
       );
     }
-    console.log(loggedUser);
-    sessionStorage.setItem('user',JSON.stringify(loggedUser));
+
+    sessionStorage.setItem("user", JSON.stringify(loggedUser));
     resetForm();
   };
 
@@ -60,7 +62,9 @@ const Login = () => {
             value={dataForm?.password || ""}
             type="password"
           />
-          <button className="buttom-Form" type="submit">Iniciar sesión</button>
+          <button className="buttom-Form" type="submit">
+            Iniciar sesión
+          </button>
         </form>
       </div>
     </>

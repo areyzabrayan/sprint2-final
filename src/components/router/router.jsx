@@ -39,8 +39,8 @@ const Router = () => {
   const [seatsSelection, setSeatsSelection] = useState([]); //Asientos seleccionados
   const [formData, setFormData] = useState(null);
   const [disabled, setDisabled] = useState(false);
-  //estado del fomulario, captura cada elemento del formulario.
-
+  const [loginImg, setLoginImg] = useState("");
+  const [loginName, setLoginName] = useState("");
   const [formState, setFormState] = useState({
     email: "",
     cardName: "",
@@ -50,18 +50,22 @@ const Router = () => {
   });
   // formulario desactivado
 
-  const userLogge = JSON.parse(sessionStorage.getItem('user'))
-  
+  const userLogge = JSON.parse(sessionStorage.getItem("user"));
+
   useEffect(() => {
-    if(userLogge?.name){
-      setIsLogin(true)
-    }else{
-      setIsLogin(false)
+    if (userLogge?.name) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
     }
-  },[isLogin])
+  }, [isLogin]);
   return (
     <AppContext.Provider
       value={{
+        loginName,
+        setLoginName,
+        loginImg,
+        setLoginImg,
         formState,
         setFormState,
         disabled,

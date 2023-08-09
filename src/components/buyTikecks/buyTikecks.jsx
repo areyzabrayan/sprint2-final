@@ -1,6 +1,6 @@
 import React, { useContext, useEffect} from "react";
 import { AppContext } from "../router/router";
-import "./buyTikecks.scss";
+import "./buytikecks.scss";
 import visa from "../../assets/visa.svg";
 import master from "../../assets/master.svg";
 import amex from "../../assets/amex.svg";

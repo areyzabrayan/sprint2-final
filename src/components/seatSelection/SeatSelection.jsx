@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 //import React from "react";
 import ResumeTiket from "../resumenTiket/resumeTiket";
 import SeatPicker from "react-seat-picker";
-import "./SeatSelection.scss";
+import "./seatSelection.scss";
 import { AppContext } from "../router/router";
 
 const SeatSelection = () => {

@@ -24,11 +24,10 @@ const AdminEdit = () => {
     setVideoMovie,
     selectedMovieId,
     cinemas,
-    setCinemas
+    setCinemas,
   } = useContext(AppContext);
 
-  const[view, setView] = useState(false)
-
+  const [view, setView] = useState(false);
 
   useEffect(() => {
     console.log("total mundo", selectedMovieId);
@@ -57,28 +56,20 @@ const AdminEdit = () => {
 
     // Agregar una nueva propiedad "numberOfRooms" con el valor ingresado en el formulario
     const newCinemaData = { ...newTheaterData, room: [...cinemas[0].room] };
-    
+
     try {
       // Enviar el nuevo teatro al servidor usando servicio postCinema
       const isCinemaAdded = await postCinema(newCinemaData);
 
       if (isCinemaAdded) {
-        Swal.fire(
-          'Bien Hecho',
-          'Nuevo teatro agregado',
-          'success'
-        )
+        Swal.fire("Bien Hecho", "Nuevo teatro agregado", "success");
         // Actualizar el estado con el nuevo objeto cinemas si se agregó correctamente
         updatedCinemas.push(newCinemaData);
         setCinemas(updatedCinemas);
         setNewTheaterData({ name: "", numberOfRooms: 0 });
-         // Limpiar el formulario
+        // Limpiar el formulario
       } else {
-        Swal.fire(
-          'Ooops',
-          'No se pudo realizar la modificación',
-          'error'
-        )
+        Swal.fire("Ooops", "No se pudo realizar la modificación", "error");
       }
     } catch (error) {
       console.log("Error al comunicarse con el servidor", error);
@@ -150,8 +141,11 @@ const AdminEdit = () => {
           <div className="funtionE">
             <div className="funtionE__title">
               <h2>Funciones por Teatros</h2>
-              <figure className="funtionE__newTeatro" onClick={() => setView(!view)}>
-                <figcaption >
+              <figure
+                className="funtionE__newTeatro"
+                onClick={() => setView(!view)}
+              >
+                <figcaption>
                   <p>Nuevo Teatro</p>
                 </figcaption>
                 <img src={add} alt="logo" />
@@ -159,7 +153,10 @@ const AdminEdit = () => {
             </div>
             <MenuAcordeon />
           </div>
-          <form className={`form-addC ${!view && 'viewF' } p-5`} onSubmit={handleFormSubmit}>
+          <form
+            className={`form-addC ${!view && "viewF"} p-5`}
+            onSubmit={handleFormSubmit}
+          >
             <div className="mb-3">
               <label htmlFor="theaterName" className="form-label">
                 Nombre del teatro

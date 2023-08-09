@@ -30,12 +30,15 @@ const Fecha = () => {
       return originalDate.toISOString().slice(0, 10);
     }) || [];
 
-  const adjustedDate =
-    date.dates?.map((dateStr) => {
-      const originalDate = new Date(dateStr);
-      originalDate.setDate(originalDate.getDate() + 1);
-      return originalDate.toISOString().slice(0, 10);
-    }) || [];
+  const addOneDay = (date) => {
+    const nextDay = new Date(date);
+    nextDay.setDate(nextDay.getDate() + 1);
+    return nextDay;
+  };
+
+  const adjustedDate = date.dia
+    ? [addOneDay(new Date(date.dia).toISOString().slice(0, 10))]
+    : [];
 
   useEffect(() => {
     if (path !== "home") {
@@ -60,7 +63,7 @@ const Fecha = () => {
 
       const dateFound = adjustedDates.includes(dataIdeal);
 
-      if (dateFound) {
+      if (!dateFound) {
       } else {
         Swal.fire({
           icon: "error",

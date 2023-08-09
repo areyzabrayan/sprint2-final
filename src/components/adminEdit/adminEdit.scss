@@ -74,28 +74,44 @@
   flex-direction: column;
   padding: 20px;
   .form-addC{
+    padding: 10px;
+    background-color: #ffffffff;
+    border: 1px solid black;
     position: absolute;
     top: 250px;
     left: 60%;
     z-index: 2;
     width: 300px;
-    height: 200px;
+    height: 280px;
     border-radius: 8px;
-    background-color: rgb(188, 243, 247) ;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     display: none;
+    h3{
+      margin-left: 28px;
+      padding-bottom: 6px;
+    }
     label{
       font-size: large;
       font-weight: bolder;
     }
     button{
-      border-color: cadetblue;
-      background-color: cadetblue;
-      width: 80px;
-      margin-left: 35%;
-      height: 30px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #171a1f;
+      margin-top: 35px;
+      width: 159px; 
+      height: 44px; 
+      padding: 0 16px; 
+      display: flex;
+      margin-left: 32px; 
+      align-items: center; 
+      justify-content: center; 
+      font-family: Roboto;
+      font-size: 16px; 
+      line-height: 26px; 
+      color: #FFFFFFFF; 
+      background: #19508AFF; 
+      opacity: 1; 
+      border: none; 
+      border-radius: 6px; 
+      box-shadow: 0px 8px 17px #19508a, 0px 0px 2px #19508a; 
     }
     button:hover{
       background-color: #326098ff;
@@ -331,8 +347,8 @@
       flex-direction: column;
       padding: 20px;
       .form-addC{
-        top: 1130px;
-        left: 12%;
+        top: 1030px;
+        left: 14%;
       }
     }
     .form-addC.viewF{

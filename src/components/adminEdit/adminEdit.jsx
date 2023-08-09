@@ -144,11 +144,9 @@ const AdminEdit = () => {
             </div>
             <MenuAcordeon />
           </div>
-          <form
-            className={`form-addC ${!view && "viewF"} p-5`}
-            onSubmit={handleFormSubmit}
-          >
+          <form className={`form-addC ${view && 'viewF' } p-5`} onSubmit={handleFormSubmit}>
             <div className="mb-3">
+              <h3>Agregar nuevo teatro</h3>
               <label htmlFor="theaterName" className="form-label">
                 Nombre del teatro
               </label>
